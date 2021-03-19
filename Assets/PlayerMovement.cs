@@ -13,14 +13,19 @@ public class PlayerMovement : MonoBehaviour
     }
     MovementInput input = new MovementInput();
     CharacterController2D controller;
+    float VerticalVelocity;
+
+    #region Inspector Parameters
 
     [Header("Movement")]
     public float Speed = 5;
-    float VerticalVelocity;
+
     [Header("Jumping")]
     [SerializeField] float JumpHeight = 2;
     [SerializeField] float GravityScale = 1;
     [SerializeField] float FallMultiplier = 2;
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
 
         moveVel += input.Horizontal * Speed * Vector3.right;
 
+        //Apply Gravity
+
         if (VerticalVelocity < 0)
         {
             VerticalVelocity += Physics.gravity.y * GravityScale * FallMultiplier * Time.deltaTime;
@@ -44,18 +51,23 @@ public class PlayerMovement : MonoBehaviour
             VerticalVelocity += Physics.gravity.y * GravityScale * Time.deltaTime;
         }
 
+        //When grounded, vertical velocity is always slightly downward
+
         if (controller.isGrounded)
         {
             VerticalVelocity = Physics.gravity.y * Time.deltaTime;
         }
 
-        if (VerticalVelocity > 0 && !input.EndJump)
+        //Cancel jump
+        if (VerticalVelocity > 0 && input.EndJump)
         {
             VerticalVelocity = 0;
         }
 
+        //Jump when grounded
         if (controller.isGrounded && input.StartJump)
         {
+            //Calculate velocity needed to reach the pretended jump height
             VerticalVelocity = Mathf.Sqrt(-JumpHeight * 2 * Physics.gravity.y * GravityScale);
         }
 
