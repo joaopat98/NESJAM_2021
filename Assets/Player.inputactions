@@ -25,7 +25,7 @@
                     "name": "Jump",
                     "type": "Value",
                     "id": "652158e1-6b68-43ad-825e-cc20bffa31fa",
-                    "expectedControlType": "Integer",
+                    "expectedControlType": "Digital",
                     "processors": "",
                     "interactions": ""
                 }

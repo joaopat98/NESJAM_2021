@@ -3974,11 +3974,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1258549354}
   - component: {fileID: 1258549353}
-  - component: {fileID: 1258549352}
-  - component: {fileID: 1258549356}
   - component: {fileID: 1258549355}
   - component: {fileID: 1258549358}
   - component: {fileID: 1258549357}
+  - component: {fileID: 1258549356}
+  - component: {fileID: 1258549352}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3998,22 +3998,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b9ccd5ddb858943a75f6f8fc7daa36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 10
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0
-  m_AirControl: 1
-  m_WhatIsGround:
+  ignoreOneWayPlatformsThisFrame: 0
+  _skinWidth: 0.02
+  platformMask:
     serializedVersion: 2
     m_Bits: 64
-  m_GroundCheck: {fileID: 1539688970}
-  m_CeilingCheck: {fileID: 911149629}
-  m_CrouchDisableCollider: {fileID: 0}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  triggerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  oneWayPlatformMask:
+    serializedVersion: 2
+    m_Bits: 0
+  slopeLimit: 30
+  jumpingThreshold: 0.07
+  slopeSpeedMultiplier:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -90
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 90
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  totalHorizontalRays: 8
+  totalVerticalRays: 4
 --- !u!212 &1258549353
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4122,12 +4154,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &1258549357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4222,7 +4254,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1583c3d7b74332c4982c1ac295fb5448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.8
+  Speed: 10
+  JumpHeight: 4
+  GravityScale: 6
+  FallMultiplier: 1.5
 --- !u!1 &1539688969
 GameObject:
   m_ObjectHideFlags: 0
