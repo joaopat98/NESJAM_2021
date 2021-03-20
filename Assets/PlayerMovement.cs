@@ -12,6 +12,11 @@ public class PlayerMovement : MonoBehaviour
         public bool EndJump;
     }
     MovementInput input = new MovementInput();
+
+    HashSet<object> movementLocks = new HashSet<object>();
+
+    public bool IsMovementLocked { get => movementLocks.Count > 0; }
+
     CharacterController2D controller;
     float VerticalVelocity;
 
@@ -38,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 moveVel = Vector3.zero;
 
-        moveVel += input.Horizontal * Speed * Vector3.right;
+        if (!IsMovementLocked)
+            moveVel += input.Horizontal * Speed * Vector3.right;
 
         //Apply Gravity
 
@@ -80,6 +86,16 @@ public class PlayerMovement : MonoBehaviour
     {
         input.StartJump = false;
         input.EndJump = false;
+    }
+
+    public void LockMovement(object owner)
+    {
+        movementLocks.Add(owner);
+    }
+
+    public void ReleaseMovement(object owner)
+    {
+        movementLocks.Remove(owner);
     }
 
     public void OnMove(InputValue value)
