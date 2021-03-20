@@ -88,12 +88,12 @@ public class PlayerMovement : MonoBehaviour
         input.EndJump = false;
     }
 
-    public void LockMovement(object owner)
+    public void Lock(object owner)
     {
         movementLocks.Add(owner);
     }
 
-    public void ReleaseMovement(object owner)
+    public void Release(object owner)
     {
         movementLocks.Remove(owner);
     }
