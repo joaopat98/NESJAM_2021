@@ -44,7 +44,13 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveVel = Vector3.zero;
 
         if (!IsMovementLocked)
+        {
             moveVel += input.Horizontal * Speed * Vector3.right;
+            if (input.Horizontal != 0)
+            {
+                transform.rotation = Quaternion.Euler(0, input.Horizontal > 0 ? 180 : 0, 0);
+            }
+        }
 
         //Apply Gravity
 
