@@ -12,9 +12,16 @@ public class Buster : Weapon
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] Transform BulletSpawn;
 
+    private ChargeShot chargeShot;
+
+    void Awake(){ chargeShot = GetComponent<ChargeShot>(); }
+
+
     void Update()
     {
-        if (FireStarted)
+        if(previousFire){ chargeShot.IncreaseTimer(); }
+        //On Key up Fire
+        if (FireEnded)
         {
             FireBullet();
         }
@@ -24,6 +31,8 @@ public class Buster : Weapon
     {
         var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<BusterBullet>();
         bullet.Init(-transform.right);
+        if (chargeShot.GetFullChargedShot()) { bullet.FullCharge(); }
+        else if (chargeShot.GetMidChargedShot()) { bullet.MidCharge(); }
     }
 
     void LateUpdate()
@@ -38,10 +47,12 @@ public class Buster : Weapon
         if (!previousFire && currentFire)
         {
             FireStarted = true;
+            chargeShot.ResetTimer();
         }
         if (previousFire && !currentFire)
         {
             FireEnded = true;
         }
+        previousFire = currentFire;
     }
 }

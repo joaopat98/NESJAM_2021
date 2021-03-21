@@ -151,3 +151,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Speed: 20
+  midChargeSpeedMod: 0.5
+  fullChargeSpeedMod: 1
+  midChargeScaleMod: 0.5
+  fullChargeScaleMod: 1
