@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     CharacterController2D controller;
     float VerticalVelocity;
+    bool startGoingUp = false;
 
     #region Inspector Parameters
 
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         //When grounded, vertical velocity is always slightly downward
 
-        if (controller.isGrounded)
+        if (controller.isGrounded && !startGoingUp)
         {
             VerticalVelocity = Physics.gravity.y * Time.deltaTime;
         }
@@ -92,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
     {
         input.StartJump = false;
         input.EndJump = false;
+        startGoingUp = false;
     }
 
     public void Lock(object owner)
@@ -102,6 +104,17 @@ public class PlayerMovement : MonoBehaviour
     public void Release(object owner)
     {
         movementLocks.Remove(owner);
+    }
+
+    public void AddVerticalVel(float value){
+        if (controller.isGrounded){
+            VerticalVelocity = Mathf.Sqrt(-value * 2 * Physics.gravity.y * GravityScale);
+            startGoingUp = true;
+        }
+        else {
+            //Not sure if the right math
+            VerticalVelocity += Mathf.Sqrt(-value * 2 * Physics.gravity.y * GravityScale);
+        }
     }
 
     public void OnMove(InputValue value)
