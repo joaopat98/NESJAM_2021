@@ -14,12 +14,12 @@ public class Buster : Weapon
 
     private ChargeShot chargeShot;
 
-    void Awake(){ chargeShot = GetComponent<ChargeShot>(); }
+    void Awake() { chargeShot = GetComponent<ChargeShot>(); }
 
 
     void Update()
     {
-        if(previousFire){ chargeShot.IncreaseTimer(); }
+        if (previousFire) { chargeShot.IncreaseTimer(); }
         //On Key up Fire
         if (FireEnded)
         {
@@ -30,7 +30,7 @@ public class Buster : Weapon
     private void FireBullet()
     {
         var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<BusterBullet>();
-        bullet.Init(-transform.right);
+        bullet.Init(transform.right);
         if (chargeShot.GetFullChargedShot()) { bullet.FullCharge(); }
         else if (chargeShot.GetMidChargedShot()) { bullet.MidCharge(); }
     }
