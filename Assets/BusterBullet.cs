@@ -23,7 +23,6 @@ public class BusterBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject);
         if (HitMask == (HitMask | (1 << collider.gameObject.layer)))
         {
             //hit target
