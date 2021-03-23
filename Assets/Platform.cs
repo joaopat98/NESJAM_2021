@@ -39,7 +39,7 @@ public class Platform : MonoBehaviour
             if (Vector2.Angle(Vector2.up, normal) < 10f)
                 Activate();
                 */
-            collision.transform.SetParent(transform);
+            collision.transform.parent = transform;
         }
     }
 
@@ -49,7 +49,7 @@ public class Platform : MonoBehaviour
         {
             //Deactivate();
 
-            collision.transform.SetParent(null);
+            collision.transform.parent = null;
         }
     }
 }

@@ -125,8 +125,12 @@ public class CustomCharacterController2D : MonoBehaviour
 
     void FixedUpdate()
     {
-        //rigidbody.MovePosition(rigidbody.position + deltaAcum);
-        deltaAcum = Vector2.zero;
+        if (timeDelta > 0)
+        {
+            rigidbody.velocity = deltaAcum / timeDelta;
+            deltaAcum = Vector2.zero;
+            timeDelta = 0;
+        }
 
     }
 
