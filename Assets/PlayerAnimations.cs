@@ -6,11 +6,13 @@ public class PlayerAnimations : MonoBehaviour
 {
     PlayerMovement movement;
     Animator anim;
+    new SpriteRenderer renderer;
     // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
+        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class PlayerAnimations : MonoBehaviour
         if (movement.HorizontalOutput != 0)
         {
             anim.Play("Player Run");
+            renderer.flipX = movement.HorizontalOutput < 0;
         }
         else
         {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    protected CustomCharacterController2D controller;
+    protected CharacterController2D controller;
     protected bool active;
 
     public void Activate()
@@ -20,7 +20,7 @@ public class Platform : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        controller = FindObjectOfType<CustomCharacterController2D>();
+        controller = FindObjectOfType<CharacterController2D>();
     }
 
 

@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     public bool IsMovementLocked { get => movementLocks.Count > 0; }
 
     CharacterController2D controller;
-    CustomCharacterController2D controller2D;
     float VerticalVelocity;
     bool startGoingUp = false;
 
@@ -40,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller2D = GetComponent<CustomCharacterController2D>();
+        controller = GetComponent<CharacterController2D>();
         //controller = GetComponent<CharacterController2D>();
     }
 
@@ -55,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
             moveVel += input.Horizontal * Speed * Vector2.right;
             if (input.Horizontal != 0)
             {
-                transform.rotation = Quaternion.Euler(0, input.Horizontal > 0 ? 0 : 180, 0);
+                //transform.rotation = Quaternion.Euler(0, input.Horizontal > 0 ? 0 : 180, 0);
             }
         }
 
@@ -71,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //When grounded, vertical velocity is always slightly downward
-        if (controller2D.isGrounded)
+        if (controller.isGrounded)
         {
             VerticalVelocity = 0;
         }
@@ -83,14 +82,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Jump when grounded
-        if (controller2D.isGrounded && input.StartJump)
+        if (controller.isGrounded && input.StartJump)
         {
             //Calculate velocity needed to reach the pretended jump height
             VerticalVelocity = Mathf.Sqrt(-JumpHeight * 2 * Physics.gravity.y * GravityScale);
         }
         moveVel += VerticalVelocity * Vector2.up;
 
-        controller2D.Move(moveVel * Time.deltaTime);
+        controller.Move(moveVel * Time.deltaTime);
         //controller.Move(moveVel * Time.deltaTime);
         //rb.MovePosition(moveVel * Time.deltaTime);
     }
