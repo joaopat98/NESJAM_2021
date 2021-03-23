@@ -104,14 +104,8 @@ public class CustomCharacterController2D : MonoBehaviour
             origin = (Vector2)bounds.max + SkinWidth * Vector2.down;
             end = origin + bounds.size.x * Vector2.left;
             direction = Vector2.up;
+            deltaMovement.y = CheckRays(origin, end, VerticalRays, direction, SkinWidth * 2) ? 0 : deltaMovement.y;
         }
-        else
-        {
-            origin = (Vector2)bounds.min + SkinWidth * Vector2.up;
-            end = origin + bounds.size.x * Vector2.right;
-            direction = Vector2.down;
-        }
-        deltaMovement.y = CheckRays(origin, end, VerticalRays, direction, SkinWidth * 2) ? 0 : deltaMovement.y;
         return deltaMovement;
     }
 
