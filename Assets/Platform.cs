@@ -28,6 +28,7 @@ public class Platform : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            /*
             Vector2 normal = Vector3.zero;
             for (int i = 0; i < collision.contactCount; i++)
             {
@@ -37,6 +38,8 @@ public class Platform : MonoBehaviour
             Debug.Log(normal);
             if (Vector2.Angle(Vector2.up, normal) < 10f)
                 Activate();
+                */
+            collision.transform.SetParent(transform);
         }
     }
 
@@ -44,7 +47,9 @@ public class Platform : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            Deactivate();
+            //Deactivate();
+
+            collision.transform.SetParent(null);
         }
     }
 }

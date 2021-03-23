@@ -7,8 +7,8 @@ using UnityEngine;
 public class CustomCharacterController2D : MonoBehaviour
 {
     Vector2 speed;
-    new Rigidbody2D rigidbody;
-    new Collider2D collider;
+    public new Rigidbody2D rigidbody { get; private set; }
+    public new Collider2D collider { get; private set; }
     [Range(2, 32)]
     [SerializeField] int VerticalRays = 8;
     [Range(2, 32)]
@@ -72,7 +72,7 @@ public class CustomCharacterController2D : MonoBehaviour
         {
             Vector2 rayOrigin = origin + i * segment;
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, distance, PlatformMask);
-            if (hit.collider != null)
+            if (hit.collider != null && Vector2.Angle(hit.normal, -direction) < 20)
             {
                 return true;
             }
@@ -117,12 +117,15 @@ public class CustomCharacterController2D : MonoBehaviour
 
     public void Move(Vector2 deltaMovement)
     {
-        deltaAcum += FilterCollisionVelocity(deltaMovement);
+        Vector2 before = deltaMovement;
+        Vector2 after = FilterCollisionVelocity(deltaMovement);
+        deltaAcum += after;
+        Debug.Log($"Before: {before} After: {after}");
     }
 
     void FixedUpdate()
     {
-        rigidbody.MovePosition(rigidbody.position + deltaAcum);
+        //rigidbody.MovePosition(rigidbody.position + deltaAcum);
         deltaAcum = Vector2.zero;
 
     }
