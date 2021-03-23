@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool IsMovementLocked { get => movementLocks.Count > 0; }
 
     CharacterController2D controller;
+    CustomCharacterController2D controller2D;
     float VerticalVelocity;
     bool startGoingUp = false;
 
@@ -30,23 +31,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float JumpHeight = 2;
     [SerializeField] float GravityScale = 1;
     [SerializeField] float FallMultiplier = 2;
+    [HideInInspector] public float HorizontalOutput;
+    Rigidbody2D rb;
+    Vector2 moveVel;
 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController2D>();
+        controller2D = GetComponent<CustomCharacterController2D>();
+        //controller = GetComponent<CharacterController2D>();
     }
 
 
     void Update()
     {
-        Vector3 moveVel = Vector3.zero;
-
+        moveVel = Vector3.zero;
+        HorizontalOutput = 0;
         if (!IsMovementLocked)
         {
-            moveVel += input.Horizontal * Speed * Vector3.right;
+            HorizontalOutput = input.Horizontal;
+            moveVel += input.Horizontal * Speed * Vector2.right;
             if (input.Horizontal != 0)
             {
                 transform.rotation = Quaternion.Euler(0, input.Horizontal > 0 ? 0 : 180, 0);
@@ -65,10 +71,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //When grounded, vertical velocity is always slightly downward
-
-        if (controller.isGrounded && !startGoingUp)
+        if (controller2D.isGrounded)
         {
-            VerticalVelocity = Physics.gravity.y * Time.deltaTime;
+            VerticalVelocity = 0;
         }
 
         //Cancel jump
@@ -78,15 +83,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Jump when grounded
-        if (controller.isGrounded && input.StartJump)
+        if (controller2D.isGrounded && input.StartJump)
         {
             //Calculate velocity needed to reach the pretended jump height
             VerticalVelocity = Mathf.Sqrt(-JumpHeight * 2 * Physics.gravity.y * GravityScale);
         }
+        moveVel += VerticalVelocity * Vector2.up;
 
-        moveVel += VerticalVelocity * Vector3.up;
-
-        controller.Move(moveVel * Time.deltaTime);
+        controller2D.Move(moveVel * Time.deltaTime);
+        //controller.Move(moveVel * Time.deltaTime);
+        //rb.MovePosition(moveVel * Time.deltaTime);
     }
 
     void LateUpdate()
@@ -106,12 +112,15 @@ public class PlayerMovement : MonoBehaviour
         movementLocks.Remove(owner);
     }
 
-    public void AddVerticalVel(float value){
-        if (controller.isGrounded){
+    public void AddVerticalVel(float value)
+    {
+        if (controller.isGrounded)
+        {
             VerticalVelocity = Mathf.Sqrt(-value * 2 * Physics.gravity.y * GravityScale);
             startGoingUp = true;
         }
-        else {
+        else
+        {
             //Not sure if the right math
             VerticalVelocity += Mathf.Sqrt(-value * 2 * Physics.gravity.y * GravityScale);
         }
