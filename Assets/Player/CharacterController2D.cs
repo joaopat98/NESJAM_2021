@@ -72,7 +72,7 @@ public class CharacterController2D : MonoBehaviour
         {
             Vector2 rayOrigin = origin + i * segment;
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, direction, distance, PlatformMask);
-            if (hit.collider != null && Vector2.Angle(hit.normal, -direction) < 20)
+            if (hit.collider != null && !hit.collider.CompareTag("Platform") && Vector2.Angle(hit.normal, -direction) < 20)
             {
                 return true;
             }
@@ -104,7 +104,7 @@ public class CharacterController2D : MonoBehaviour
             origin = (Vector2)bounds.max + SkinWidth * Vector2.down;
             end = origin + bounds.size.x * Vector2.left;
             direction = Vector2.up;
-            deltaMovement.y = CheckRays(origin, end, VerticalRays, direction, SkinWidth * 2) ? 0 : deltaMovement.y;
+            //deltaMovement.y = CheckRays(origin, end, VerticalRays, direction, SkinWidth * 2) ? 0 : deltaMovement.y;
         }
         return deltaMovement;
     }
@@ -114,7 +114,7 @@ public class CharacterController2D : MonoBehaviour
         Vector2 before = deltaMovement;
         Vector2 after = FilterCollisionVelocity(deltaMovement);
         deltaAcum += after;
-        Debug.Log($"Before: {before} After: {after}");
+        //Debug.Log($"Before: {before} After: {after}");
     }
 
     void FixedUpdate()

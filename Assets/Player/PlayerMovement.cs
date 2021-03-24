@@ -34,13 +34,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Vector2 moveVel;
 
+    PlayerAnimations animations;
+
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController2D>();
-        //controller = GetComponent<CharacterController2D>();
+        animations = GetComponent<PlayerAnimations>();
     }
 
 
@@ -70,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //When grounded, vertical velocity is always slightly downward
-        if (controller.isGrounded)
+        if (controller.isGrounded && VerticalVelocity < 0)
         {
             VerticalVelocity = 0;
         }

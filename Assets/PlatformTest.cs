@@ -7,14 +7,16 @@ public class PlatformTest : Platform
 
     [SerializeField] private Transform[] pointsToPassThrough;
     [SerializeField] private float velocity;
-    
+
     private int nextPoint;
     private bool forward;
 
     private Vector3 startingPos;
 
     // Start is called before the first frame update
-    void Start(){
+    protected override void Start()
+    {
+        base.Start();
         startingPos = transform.position;
         nextPoint = 0;
         transform.position = pointsToPassThrough[nextPoint].position;
@@ -22,29 +24,40 @@ public class PlatformTest : Platform
         GetNextPoint();
     }
 
-    private int GetNextPoint(){
-        if (forward){
+    private int GetNextPoint()
+    {
+        if (forward)
+        {
             //Go forward
-            if (nextPoint + 1 == pointsToPassThrough.Length){
+            if (nextPoint + 1 == pointsToPassThrough.Length)
+            {
                 nextPoint -= 1;
                 forward = false;
-            } else{ nextPoint += 1; }
-        } else {
+            }
+            else { nextPoint += 1; }
+        }
+        else
+        {
             //Go back
-            if (nextPoint - 1 == -1 ){
+            if (nextPoint - 1 == -1)
+            {
                 nextPoint += 1;
                 forward = true;
-            } else { nextPoint -= 1; }
+            }
+            else { nextPoint -= 1; }
         }
 
         return nextPoint;
     }
 
     // Update is called once per frame
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
         float step = velocity * Time.deltaTime;
+        //rigidbody.velocity = (pointsToPassThrough[nextPoint].position - transform.position).normalized * velocity;
         transform.position = Vector3.MoveTowards(transform.position, pointsToPassThrough[nextPoint].position, step);
-        if (Vector3.Distance(transform.position, pointsToPassThrough[nextPoint].position) < 0.01f){
+        if (Vector2.Distance(rigidbody.position, pointsToPassThrough[nextPoint].position) < 0.01f)
+        {
             GetNextPoint();
         }
     }

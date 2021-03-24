@@ -5,6 +5,7 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     protected CharacterController2D controller;
+    new protected Rigidbody2D rigidbody;
     protected bool active;
 
     public void Activate()
@@ -20,6 +21,7 @@ public class Platform : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
+        rigidbody = GetComponent<Rigidbody2D>();
         controller = FindObjectOfType<CharacterController2D>();
     }
 
@@ -28,7 +30,6 @@ public class Platform : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            /*
             Vector2 normal = Vector3.zero;
             for (int i = 0; i < collision.contactCount; i++)
             {
@@ -37,9 +38,7 @@ public class Platform : MonoBehaviour
             normal /= collision.contactCount;
             Debug.Log(normal);
             if (Vector2.Angle(Vector2.up, normal) < 10f)
-                Activate();
-                */
-            collision.transform.parent = transform;
+                collision.transform.parent = transform;
         }
     }
 
