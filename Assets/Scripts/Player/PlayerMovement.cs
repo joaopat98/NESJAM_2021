@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController2D>();
+        controller.OnAddImpulse.AddListener(_ => VerticalVelocity = 0);
         animations = GetComponent<PlayerAnimations>();
     }
 

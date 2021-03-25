@@ -9,26 +9,25 @@ public class PlayerGetHitEvent : UnityEvent { }
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int Health;
+    public int CurrentHealth;
     public int MaxHealth;
-
-    //Temporary -> Load Current Level
-    public string SceneToLoadName;
-
     public int NumLives;
     private static bool hasRan = false;
     public int CurrentLives;
+    PlayerEntity player;
 
     public PlayerGetHitEvent OnGetHit = new PlayerGetHitEvent();
 
 
-    public bool isAlive { get => Health > 0; }
+    public bool isAlive { get => CurrentHealth > 0; }
 
     // Start is called before the first frame update
     void Start()
     {
-        Health = MaxHealth;
-        if(!hasRan){
+        player = GetComponent<PlayerEntity>();
+        CurrentHealth = MaxHealth;
+        if (!hasRan)
+        {
             CurrentLives = NumLives;
             hasRan = true;
         }
@@ -36,23 +35,27 @@ public class PlayerHealth : MonoBehaviour
 
     public void Hit(int damage)
     {
-        Health = Mathf.Max(Health - damage, 0);
+        CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
         OnGetHit.Invoke();
-    }
-
-    public void Respawn(){
-        SceneManager.LoadScene(SceneToLoadName);
-    }
-
-    public void GameOver(){
-        Debug.Log("Game Over");
-    }
-
-    public void HasDied(){
-        Debug.Log(isAlive);
-        if (!isAlive){
-            CurrentLives -= 1;
-            if (CurrentLives <= 0){ GameOver(); } else { Respawn(); }
+        if (!isAlive)
+        {
+            CurrentHealth = MaxHealth;
+            CurrentLives--;
+            if (CurrentLives > 0)
+            {
+                Respawn();
+            }
         }
+    }
+
+    public void Respawn()
+    {
+        Vector3 respawnPoint = RoomManager.GetCurrentRespawnPoint();
+        player.controller.Teleport(respawnPoint);
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
     }
 }

@@ -134,12 +134,16 @@ public class PlayerAnimations : MonoBehaviour
         MoveToState(Idle);
     }
 
+    void Start()
+    {
+
+    }
+
     void MoveToState(PlayerAnimationState state)
     {
         if (current != null && current != state)
             current.OnStateExit.Invoke();
         current = state;
-        Debug.Log(current.StateName);
         if (current != state)
             current.OnStateEnter.Invoke();
         current.Play(anim);

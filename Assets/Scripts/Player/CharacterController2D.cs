@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public class AddImpulseEvent : UnityEvent<Impulse> { }
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -32,6 +35,10 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    public AddImpulseEvent OnAddImpulse = new AddImpulseEvent();
+
+    List<Impulse> impulses = new List<Impulse>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +54,22 @@ public class CharacterController2D : MonoBehaviour
         Vector2 segment = Vector2.right * width / (HorizontalRays - 1);
         _isGrounded = false;
         timeDelta += Time.deltaTime;
+
+        var impulsesTemp = new List<Impulse>(impulses);
+        int j = 0;
+        for (int i = 0; i < impulsesTemp.Count; i++)
+        {
+            var impulse = impulsesTemp[i];
+            Move(impulse.GetCurrentOffset(Time.deltaTime));
+            impulse.Update(Time.deltaTime);
+            if (impulse.isFinished)
+            {
+                impulses.RemoveAt(j);
+            }
+            else
+                j++;
+        }
+
         if (velocity.y > 0)
         {
             _isGrounded = false;
@@ -118,6 +141,12 @@ public class CharacterController2D : MonoBehaviour
         //Debug.Log($"Before: {before} After: {after}");
     }
 
+    public void AddImpulse(Impulse impulse)
+    {
+        impulses.Add(impulse);
+        OnAddImpulse.Invoke(impulse);
+    }
+
     void FixedUpdate()
     {
         if (timeDelta > 0)
@@ -127,6 +156,13 @@ public class CharacterController2D : MonoBehaviour
             timeDelta = 0;
         }
 
+    }
+
+    public void Teleport(Vector3 to)
+    {
+        rigidbody.Sleep();
+        transform.position = to;
+        rigidbody.WakeUp();
     }
 
 }

@@ -9,6 +9,7 @@ public class PlayerEntity : MonoBehaviour
     public PlayerWeapons weapons { get; private set; }
     public PlayerHealth health { get; private set; }
     public CharacterController2D controller { get; private set; }
+    
 
     void Awake()
     {
