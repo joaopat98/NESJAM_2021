@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
 
     CharacterController2D controller;
     float VerticalVelocity;
-    bool startGoingUp = false;
 
     #region Inspector Parameters
 
@@ -97,8 +96,7 @@ public class PlayerMovement : MonoBehaviour
         //Jump when grounded
         if (controller.isGrounded && input.StartJump)
         {
-            //Calculate velocity needed to reach the pretended jump height
-            VerticalVelocity = Mathf.Sqrt(-JumpHeight * 2 * Physics.gravity.y * GravityScale);
+            Jump();
         }
         moveVel += VerticalVelocity * Vector2.up;
 
@@ -111,7 +109,6 @@ public class PlayerMovement : MonoBehaviour
     {
         input.StartJump = false;
         input.EndJump = false;
-        startGoingUp = false;
     }
 
     public void Lock(object owner)
@@ -125,18 +122,15 @@ public class PlayerMovement : MonoBehaviour
             movementLocks.Remove(owner);
     }
 
-    public void AddVerticalVel(float value)
+    public void Jump()
     {
-        if (controller.isGrounded)
-        {
-            VerticalVelocity = Mathf.Sqrt(-value * 2 * Physics.gravity.y * GravityScale);
-            startGoingUp = true;
-        }
-        else
-        {
-            //Not sure if the right math
-            VerticalVelocity += Mathf.Sqrt(-value * 2 * Physics.gravity.y * GravityScale);
-        }
+        Jump(JumpHeight);
+    }
+
+    public void Jump(float height)
+    {
+        //Calculate velocity needed to reach the pretended jump height
+        VerticalVelocity = Mathf.Sqrt(-height * 2 * Physics.gravity.y * GravityScale);
     }
 
     public void OnMove(InputValue value)

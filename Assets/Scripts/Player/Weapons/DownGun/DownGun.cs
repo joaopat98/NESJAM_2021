@@ -11,13 +11,8 @@ public class DownGun : Weapon
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] Transform BulletSpawn;
 
-    PlayerMovement playerMovement;
-
-    Transform playerTransform;
-
-    void Awake(){
-        playerTransform = transform.parent.parent;
-        playerMovement = playerTransform.GetComponent<PlayerMovement>();
+    void Awake()
+    {
     }
 
     void Update()
@@ -32,7 +27,7 @@ public class DownGun : Weapon
     private void FireBullet()
     {
         var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<DownGunBullet>();
-        playerMovement.AddVerticalVel(bullet.GetBoostHeight());
+        player.movement.Jump(bullet.GetBoostHeight());
     }
 
     void LateUpdate()

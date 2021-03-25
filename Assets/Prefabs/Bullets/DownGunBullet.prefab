@@ -151,4 +151,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Speed: 30
-  ForceToAdd: 1
+  boostHeight: 4
