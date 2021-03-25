@@ -6,10 +6,16 @@ using UnityEngine.InputSystem;
 public abstract class Weapon : MonoBehaviour
 {
     public bool Unlocked;
+    protected PlayerEntity player;
 
-    protected virtual void OnEnable() {}
+    public virtual void Init(PlayerEntity player)
+    {
+        this.player = player;
+    }
 
-    protected virtual void OnDisable() {}
+    protected virtual void OnEnable() { }
+
+    protected virtual void OnDisable() { }
 
     protected abstract void OnFire(InputValue value);
 }

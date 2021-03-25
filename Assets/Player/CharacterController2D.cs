@@ -17,7 +17,8 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] LayerMask PlatformMask = 0;
     [Range(0, 90)]
     [SerializeField] float MaxSlope = 10;
-    public bool isGrounded { get; private set; }
+    private bool _isGrounded;
+    public bool isGrounded { get => _isGrounded && velocity.y <= 0; }
     Vector2 deltaAcum = Vector2.zero;
     float timeDelta = 0;
     public Vector2 velocity
@@ -44,11 +45,11 @@ public class CharacterController2D : MonoBehaviour
         Vector2 start = bounds.min;
         float width = bounds.size.x;
         Vector2 segment = Vector2.right * width / (HorizontalRays - 1);
-        isGrounded = false;
+        _isGrounded = false;
         timeDelta += Time.deltaTime;
         if (velocity.y > 0)
         {
-            isGrounded = false;
+            _isGrounded = false;
         }
         else
         {
@@ -58,7 +59,7 @@ public class CharacterController2D : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, SkinWidth * 2, PlatformMask);
                 if (hit.collider != null && Vector2.Angle(Vector3.up, hit.normal) < MaxSlope)
                 {
-                    isGrounded = true;
+                    _isGrounded = true;
                     break;
                 }
             }

@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public struct PlayerAnimationStateTransition
+public class PlayerAnimationStateTransition
 {
-    public System.Func<PlayerAnimationState> To;
-    public System.Func<bool> Condition;
+    public System.Func<PlayerAnimationState> To = null;
+    public System.Func<bool> Condition = null;
 }
 
+[System.Serializable]
 public class PlayerAnimationStateEvent : UnityEvent { }
 
 [System.Serializable]
@@ -15,20 +16,12 @@ public class PlayerAnimationState
 {
     public string StateName;
     public bool Loop;
-    public List<PlayerAnimationStateTransition> ImmediateTransitions;
-    public List<PlayerAnimationStateTransition> EndTransitions;
+    public List<PlayerAnimationStateTransition> ImmediateTransitions = null;
+    public List<PlayerAnimationStateTransition> EndTransitions = null;
     public PlayerAnimationStateEvent OnStateEnter = new PlayerAnimationStateEvent();
     public PlayerAnimationStateEvent OnStateExit = new PlayerAnimationStateEvent();
     public void Play(Animator animator)
     {
-        animator.Play(StateName);
-    }
-
-    public PlayerAnimationState(string stateName, bool loop, List<PlayerAnimationStateTransition> immediateTransitions = null, List<PlayerAnimationStateTransition> endTransitions = null)
-    {
-        StateName = stateName;
-        Loop = loop;
-        ImmediateTransitions = immediateTransitions;
-        EndTransitions = endTransitions;
+        animator.Play(StateName, 0, 0);
     }
 }

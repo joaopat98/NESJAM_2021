@@ -7,11 +7,21 @@ public class WeaponSet : MonoBehaviour
     Weapon[] weapons;
     public string id;
     int currentIndex = 0;
+    protected PlayerEntity player;
 
     void Awake()
     {
         weapons = GetComponentsInChildren<Weapon>();
         ActivateWeapon(currentIndex);
+    }
+
+    public virtual void Init(PlayerEntity player)
+    {
+        this.player = player;
+        foreach (var weapon in weapons)
+        {
+            weapon.Init(player);
+        }
     }
 
     public void NextWeapon()
@@ -31,7 +41,8 @@ public class WeaponSet : MonoBehaviour
         }
     }
 
-    protected virtual void OnEnable(){
+    protected virtual void OnEnable()
+    {
         currentIndex = 0;
         ActivateWeapon(currentIndex);
     }
@@ -43,6 +54,6 @@ public class WeaponSet : MonoBehaviour
     }
 
     #region "Public Getter"
-    public Weapon GetCurrentWeapon(){ return weapons[currentIndex]; }
+    public Weapon GetCurrentWeapon() { return weapons[currentIndex]; }
     #endregion
 }

@@ -5,13 +5,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    struct MovementInput
+    public struct MovementInput
     {
         public float Horizontal;
         public bool StartJump;
         public bool EndJump;
+
+        public bool isActive
+        {
+            get
+            {
+                return Horizontal != 0
+                    || StartJump;
+            }
+        }
     }
-    MovementInput input = new MovementInput();
+    public MovementInput input = new MovementInput();
 
     HashSet<object> movementLocks = new HashSet<object>();
 
@@ -48,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        animations.ActiveInputThisFrame = input.isActive;
+
         moveVel = Vector3.zero;
         HorizontalOutput = 0;
         if (!IsMovementLocked)
@@ -110,7 +121,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Release(object owner)
     {
-        movementLocks.Remove(owner);
+        if (movementLocks.Contains(owner))
+            movementLocks.Remove(owner);
     }
 
     public void AddVerticalVel(float value)

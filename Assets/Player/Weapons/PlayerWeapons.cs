@@ -10,11 +10,21 @@ public class PlayerWeapons : MonoBehaviour
 
     //arsenal and Weapons as circular lists to easily switchThrough
     private int currentIndex = 0;
+    PlayerEntity player;
 
     void Awake()
     {
         weaponSets = GetComponentsInChildren<WeaponSet>();
         ActivateSet(currentIndex);
+    }
+
+    void Start()
+    {
+        player = GetComponent<PlayerEntity>();
+        foreach (var set in weaponSets)
+        {
+            set.Init(player);
+        }
     }
 
     public void SwitchToSet(int index)

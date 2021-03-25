@@ -14,8 +14,16 @@ public class Buster : Weapon
 
     private ChargeShot chargeShot;
 
-    void Awake() { chargeShot = GetComponent<ChargeShot>(); }
+    void Awake()
+    {
+        chargeShot = GetComponent<ChargeShot>();
+    }
 
+    public override void Init(PlayerEntity player)
+    {
+        base.Init(player);
+        player.animations.Buster.OnStateExit.AddListener(() => player.movement.Release(this));
+    }
 
     void Update()
     {
@@ -24,6 +32,9 @@ public class Buster : Weapon
         if (FireEnded)
         {
             FireBullet();
+            player.animations.ShootBuster = true;
+            if (player.controller.isGrounded)
+                player.movement.Lock(this);
         }
     }
 
