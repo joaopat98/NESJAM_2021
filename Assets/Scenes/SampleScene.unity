@@ -10867,10 +10867,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 5
   MaxHealth: 5
-  shotNumber: 3
+  shotNumber: 1
   fireRate: 0.3
   shootingCooldown: 3
-  bulletPrefab: {fileID: 1782957219059536024, guid: 51ee2acb76829d649b96a75c5fddb79a, type: 3}
+  bulletPrefab: {fileID: 1782957219059536024, guid: 733464ccafbc8804d95eacda1a5fba30, type: 3}
   bulletSpawn: {fileID: 1059471466}
   facingRight: 0
   shield: 0
