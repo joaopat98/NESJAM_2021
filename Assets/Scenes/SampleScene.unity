@@ -10256,6 +10256,10 @@ PrefabInstance:
       propertyPath: OnGetHit.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3551230274612433946, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3551230275707976961, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10307,6 +10311,10 @@ PrefabInstance:
     - target: {fileID: 3551230275707976975, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3551230276321953970, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
