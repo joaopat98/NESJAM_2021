@@ -38,4 +38,16 @@ public abstract class EnemyBase<EnemyType> : EnemyBase where EnemyType : EnemyBa
             state.StateUpdate();
         }
     }
+
+    protected virtual void FixedUpdate()
+    {
+        if (IsAlive)
+        {
+            if (!state.Initialized)
+            {
+                state.StateStart();
+            }
+            state.StateFixedUpdate();
+        }
+    }
 }

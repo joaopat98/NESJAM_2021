@@ -8,6 +8,9 @@ public abstract class EnemyState : MonoBehaviour
         Initialized = true;
     }
     public abstract void StateUpdate();
+
+    public virtual void StateFixedUpdate() { }
+
 }
 
 public abstract class EnemyState<EnemyType> : EnemyState where EnemyType : EnemyBase<EnemyType>

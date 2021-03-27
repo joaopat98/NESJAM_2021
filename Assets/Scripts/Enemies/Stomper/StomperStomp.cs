@@ -2,9 +2,8 @@
 
 public class StomperStomp : StomperState
 {
-    float timer = 0;
-    bool dropped;
-
+    bool hit;
+    
     public static StomperStomp Create(Stomper target)
     {
         StomperStomp state = StomperState.Create<StomperStomp>(target);
@@ -14,22 +13,31 @@ public class StomperStomp : StomperState
     public override void StateStart()
     {
         base.StateStart();
-        animator.Play("Prepare");
+        //animator.Play("Stomp");
+        hit = false;
     }
-    public override void StateUpdate()
+    public override void StateFixedUpdate()
     {
-        //TODO pisar o player
-        if (!dropped)
+
+        if (!hit)
         {
-            timer += Time.deltaTime;
-            if (timer > target.TimeToPrepare)
-            {
-                animator.Play("Stomp");
-                dropped = true;
-            }
+          rb.MovePosition(rb.position + Vector2.down * target.DropSpeed * Time.fixedDeltaTime);
         }
-        //TODO meter um if para ser quando ele tocar no chao/player
-        SetState(StomperFlyUp.Create(target));
+        else
+        {
+            SetState(StomperFlyUp.Create(target));
+        }
     }
 
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (target.hittables.HasLayer(collider.gameObject.layer))
+        {
+            hit = true;
+        }
+    }
+
+    public override void StateUpdate()
+    {
+    }
 }
