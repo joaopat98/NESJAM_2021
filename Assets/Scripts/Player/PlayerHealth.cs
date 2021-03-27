@@ -46,7 +46,6 @@ public class PlayerHealth : MonoBehaviour
         {
             CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
             OnGetHit.Invoke();
-            StartCoroutine(GetHit());
             StartCoroutine(Invincibility());
             if (!isAlive)
             {
@@ -56,6 +55,10 @@ public class PlayerHealth : MonoBehaviour
                 {
                     Respawn();
                 }
+            }
+            else
+            {
+                StartCoroutine(GetHit());
             }
         }
     }
