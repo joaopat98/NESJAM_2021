@@ -563,6 +563,53 @@ MonoBehaviour:
   Unlocked: 1
   BulletPrefab: {fileID: 432945860730461941, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
   BulletSpawn: {fileID: 1301662831}
+--- !u!1 &244281251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 244281252}
+  - component: {fileID: 244281253}
+  m_Layer: 7
+  m_Name: SnakeShot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &244281252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244281251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 997003982}
+  m_Father: {fileID: 3551230274449460585}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &244281253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244281251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8eef37d2c7d8fa94cbbd71aa43b79cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unlocked: 1
+  BulletPrefab: {fileID: 7508031161343455810, guid: eaf3c0aaae1543748aa792a7f0a402ce, type: 3}
+  BulletSpawn: {fileID: 997003982}
 --- !u!4 &252784634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2678802110962343564, guid: cb8b14ba691e6f64eadc1ef432c7d166, type: 3}
@@ -4794,6 +4841,36 @@ Transform:
   m_Father: {fileID: 633673500}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &997003981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997003982}
+  m_Layer: 7
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &997003982
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997003981}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75, y: -0.1875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 244281252}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059224558
 GameObject:
   m_ObjectHideFlags: 0
@@ -5067,7 +5144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1301662831}
   m_Layer: 7
-  m_Name: Spawn1
+  m_Name: Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11115,7 +11192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3551230275707976962, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.1
+      value: 32.04
       objectReference: {fileID: 0}
     - target: {fileID: 3551230275707976962, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11163,7 +11240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3551230276321953970, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
