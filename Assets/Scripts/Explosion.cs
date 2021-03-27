@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    [SerializeField] int Damage = 5;
     bool exploded;
     [SerializeField] float Range;
     [SerializeField] float HorizontalImpulse = 3;
@@ -22,7 +23,6 @@ public class Explosion : MonoBehaviour
         {
             exploded = true;
             PlayerEntity player = PlayerEntity.instance;
-            player.health.Hit(5);
             Vector3 dir = (player.transform.position - transform.position).normalized;
             float factor;
             if (dir.y > 0)
@@ -33,8 +33,7 @@ public class Explosion : MonoBehaviour
             {
                 factor = Mathf.Lerp(HorizontalImpulse, DownwardImpulse, -dir.y);
             }
-
-            player.controller.AddImpulse(new Impulse(dir * factor, 0.25f));
+            player.health.Hit(Damage, new Impulse(dir * factor, 0.25f));
         }
     }
 }

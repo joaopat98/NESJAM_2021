@@ -19,27 +19,22 @@ public class Spike : MonoBehaviour
                 player.health.Hit(player.health.CurrentHealth);
             else
             {
-                if (player.health.CurrentHealth > Damage)
+                Vector2 normal = Vector2.zero;
+                for (int i = 0; i < collision.contactCount; i++)
                 {
-                    Vector2 normal = Vector2.zero;
-                    for (int i = 0; i < collision.contactCount; i++)
-                    {
-                        normal -= collision.GetContact(i).normal;
-                    }
-                    normal /= collision.contactCount;
-                    float factor;
-                    if (normal.y > 0)
-                    {
-                        factor = Mathf.Lerp(HorizontalImpulse, UpwardImpulse, normal.y);
-                    }
-                    else
-                    {
-                        factor = Mathf.Lerp(HorizontalImpulse, DownwardImpulse, -normal.y);
-                    }
-
-                    player.controller.AddImpulse(new Impulse(normal * factor, 0.25f));
+                    normal -= collision.GetContact(i).normal;
                 }
-                player.health.Hit(Damage);
+                normal /= collision.contactCount;
+                float factor;
+                if (normal.y > 0)
+                {
+                    factor = Mathf.Lerp(HorizontalImpulse, UpwardImpulse, normal.y);
+                }
+                else
+                {
+                    factor = Mathf.Lerp(HorizontalImpulse, DownwardImpulse, -normal.y);
+                }
+                player.health.Hit(Damage, new Impulse(normal * factor, 0.25f));
             }
             //player.movement.Jump();
         }
