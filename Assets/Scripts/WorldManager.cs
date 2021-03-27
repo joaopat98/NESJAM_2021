@@ -33,7 +33,7 @@ public class WorldManager : MonoBehaviour
         }
     }
 
-    void LateStart()
+    void Start()
     {
         SwitchToWorld(StartingWorld);
     }
