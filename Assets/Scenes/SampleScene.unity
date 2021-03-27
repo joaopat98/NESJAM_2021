@@ -490,6 +490,7 @@ MonoBehaviour:
   - {fileID: 1988388618}
   - {fileID: 1627061602}
   velocity: 6
+  loop: 0
 --- !u!251 &252784637
 PlatformEffector2D:
   m_ObjectHideFlags: 0

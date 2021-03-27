@@ -7,9 +7,10 @@ public class MovingPlatform : Platform
 
     [SerializeField] private Transform[] pointsToPassThrough;
     [SerializeField] private float velocity;
+    [SerializeField] private bool loop;
 
-    private int nextPoint;
-    private bool forward;
+    private int nextPoint = 0;
+    private int forward = 1;
 
     private Vector3 startingPos;
 
@@ -18,33 +19,26 @@ public class MovingPlatform : Platform
     {
         base.Start();
         startingPos = transform.position;
-        nextPoint = 0;
         transform.position = pointsToPassThrough[nextPoint].position;
-        forward = true;
-        GetNextPoint();
     }
 
     private int GetNextPoint()
     {
-        if (forward)
-        {
-            if (nextPoint + 1 == pointsToPassThrough.Length)
-            {
-                nextPoint -= 1;
-                forward = false;
-            }
-            else { nextPoint += 1; }
-        }
-        else
-        {
-            if (nextPoint - 1 == -1)
-            {
-                nextPoint += 1;
-                forward = true;
-            }
-            else { nextPoint -= 1; }
+        if (loop){ return GetNextPointLoop(); }
+        else { return GetNextPointBackAndForth(); }
+    }
+
+    private int GetNextPointLoop(){
+        if ( ++nextPoint  == pointsToPassThrough.Length){ nextPoint = 0; }
+        return nextPoint;
+    }
+
+    private int GetNextPointBackAndForth(){
+        if (nextPoint + forward == pointsToPassThrough.Length || nextPoint + forward == -1 ){ 
+            forward = -forward; 
         }
 
+        nextPoint += forward;
         return nextPoint;
     }
 
