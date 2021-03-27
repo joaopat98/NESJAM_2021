@@ -8,6 +8,9 @@ public class Flyer : EnemyBase<Flyer>
     public float waveAmplitude;
     public float wavePeriod;
     public float flySpeed;
+    public bool wavePath = false;
+
+    public LayerMask playerLayer;
     [HideInInspector] public Vector3 startPosition;
 
     protected override void Start()
