@@ -24,11 +24,11 @@ public class BusterBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (HitMask == (HitMask | (1 << collider.gameObject.layer)))
+        if (HitMask.HasLayer(collider.gameObject.layer))
         {
             //hit target
         }
-        if (DestroyMask == (DestroyMask | (1 << collider.gameObject.layer)))
+        if (DestroyMask.HasLayer(collider.gameObject.layer))
         {
             Destroy(gameObject);
         }
