@@ -22,10 +22,10 @@ public class SnakeBullet : Bullet
         }
         else
         {
-            bool horizontal = direction.x == 0;
+            bool horizontal = direction.x != 0;
 
-            RaycastHit2D down = Physics2D.Raycast(head.position, -transform.up, rayDistance);
-            RaycastHit2D forward = Physics2D.Raycast(head.position, transform.right, rayDistance); ;
+            RaycastHit2D down = Physics2D.Raycast(head.position, -transform.up, rayDistance, groundMask);
+            RaycastHit2D forward = Physics2D.Raycast(head.position, transform.right, rayDistance, groundMask); ;
 
             //escolher direção do down
             if (down.collider == null && forward.collider == null)
@@ -76,8 +76,8 @@ public class SnakeBullet : Bullet
         {
             hitFloor = true;
 
-            Vector2 normal = (collider.ClosestPoint(rigidbody.position) - rigidbody.position).normalized;
-            bool wall = Vector2.Angle(normal, Vector2.up) > 80; 
+            Vector2 normal = (rigidbody.position - collider.ClosestPoint(rigidbody.position)).normalized;
+            bool wall = Vector2.Angle(normal, Vector2.up) > 80;
 
             //se for parede
             if (wall)
