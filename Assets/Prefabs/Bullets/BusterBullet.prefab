@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 252234558382586276}
   - component: {fileID: 958564808460369858}
   - component: {fileID: 6943170950309131085}
+  - component: {fileID: 3602364647829371907}
   m_Layer: 0
   m_Name: BusterBullet
   m_TagString: Untagged
@@ -155,3 +156,15 @@ MonoBehaviour:
   midChargeScaleMod: 0.5
   fullChargeSpeedMod: 1
   fullChargeScaleMod: 1
+--- !u!114 &3602364647829371907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432945860730461941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0631a71a0320acd4dbf87e6d025cab11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
