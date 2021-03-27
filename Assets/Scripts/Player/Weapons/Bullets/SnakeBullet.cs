@@ -69,15 +69,18 @@ public class SnakeBullet : Bullet
         }
     }
 
-    protected override void OnTriggerEnter2D(Collider2D collision)
+    protected override void OnTriggerEnter2D(Collider2D collider)
     {
-        base.OnTriggerEnter2D(collision);
-        if (groundMask.HasLayer(collision.gameObject.layer))
+        base.OnTriggerEnter2D(collider);
+        if (groundMask.HasLayer(collider.gameObject.layer))
         {
             hitFloor = true;
 
+            Vector2 normal = (collider.ClosestPoint(rigidbody.position) - rigidbody.position).normalized;
+            bool wall = Vector2.Angle(normal, Vector2.up) > 80; 
+
             //se for parede
-            if (collision.gameObject)
+            if (wall)
             {
                 if (direction.x > 0)
                 {
