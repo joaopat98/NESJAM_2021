@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     new protected SpriteRenderer renderer;
     protected Vector2 direction;
 
-    public void Init(Vector2 direction)
+    public virtual void Init(Vector2 direction)
     {
         this.direction = direction;
     }
