@@ -10162,18 +10162,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 187050808131888721, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
-      propertyPath: OnGetHit.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3551230274612433946, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3551230275707976961, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7071935623343613943, guid: c2ca2ff7f7970354bb5c9f5ef30e1dc1, type: 3}
+      objectReference: {fileID: 2426177353743315425, guid: 24e349cb25540dc4c891f5319b0d0dcb, type: 3}
     - target: {fileID: 3551230275707976962, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -10221,10 +10213,6 @@ PrefabInstance:
     - target: {fileID: 3551230275707976975, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3551230276321953970, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}

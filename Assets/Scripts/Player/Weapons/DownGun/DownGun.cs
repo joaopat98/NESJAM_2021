@@ -10,6 +10,7 @@ public class DownGun : Weapon
     bool previousFire = false;
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] Transform BulletSpawn;
+    [SerializeField] float JumpBoost = 3;
 
     void Awake()
     {
@@ -26,8 +27,9 @@ public class DownGun : Weapon
 
     private void FireBullet()
     {
-        var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<DownGunBullet>();
-        player.movement.Jump(bullet.GetBoostHeight());
+        var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<Bullet>();
+        bullet.Init(Vector3.down);
+        player.movement.Jump(JumpBoost);
     }
 
     void LateUpdate()

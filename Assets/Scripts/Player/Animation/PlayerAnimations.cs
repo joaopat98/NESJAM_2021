@@ -22,8 +22,8 @@ public class PlayerAnimations : MonoBehaviour
     bool MovedState;
     public bool ActiveInputThisFrame;
 
-    [HideInInspector] public PlayerAnimationState Idle, Run, Buster, Jump, Fall;
-    public bool ShootBuster;
+    [HideInInspector] public PlayerAnimationState Idle, Run, BusterPrepare, BusterShoot, Jump, Fall;
+    public bool PrepareBuster;
     public PlayerAnimationState current;
     // Start is called before the first frame update
     void Awake()
@@ -33,16 +33,6 @@ public class PlayerAnimations : MonoBehaviour
         anim = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
 
-        System.Func<bool> ShootBusterCondition = () =>
-        {
-            if (ShootBuster == true)
-            {
-                ShootBuster = false;
-                return true;
-            }
-            return false;
-        };
-
         PlayerAnimationStateTransition JumpTransition = new PlayerAnimationStateTransition
         {
             To = () => Jump,
@@ -51,8 +41,8 @@ public class PlayerAnimations : MonoBehaviour
 
         PlayerAnimationStateTransition BusterTransition = new PlayerAnimationStateTransition
         {
-            To = () => Buster,
-            Condition = ShootBusterCondition
+            To = () => BusterPrepare,
+            Condition = () => PrepareBuster
         };
 
         Idle = new PlayerAnimationState
@@ -83,20 +73,32 @@ public class PlayerAnimations : MonoBehaviour
             }
         };
 
-        Buster = new PlayerAnimationState
+        BusterPrepare = new PlayerAnimationState
         {
-            StateName = "Buster",
+            StateName = "Buster Prepare",
+            Loop = false,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                new PlayerAnimationStateTransition {
+                    To = () => BusterShoot,
+                    Condition = () => AnimationFinished && !PrepareBuster
+                }
+            }
+        };
+
+        BusterShoot = new PlayerAnimationState
+        {
+            StateName = "Buster Shoot",
             Loop = false,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
                 new PlayerAnimationStateTransition {
                     To = () => Run,
                     Condition = () => AnimationFinished && ActiveInputThisFrame
                 },
-                BusterTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Jump,
                     Condition = () => !controller.isGrounded && movement.input.StartJump
-                }
+                },
+                BusterTransition,
             }
         };
 

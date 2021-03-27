@@ -78,6 +78,7 @@ MonoBehaviour:
   Unlocked: 1
   BulletPrefab: {fileID: 87869221130042425, guid: 49586080e73b7404b8a917a5fc12bc5a, type: 3}
   BulletSpawn: {fileID: 3551230275917505022}
+  JumpBoost: 3
 --- !u!1 &3551230275707976975
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +115,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551230275707976975}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.5625, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -394,7 +395,16 @@ MonoBehaviour:
     OnStateExit:
       m_PersistentCalls:
         m_Calls: []
-  Buster:
+  BusterPrepare:
+    StateName: 
+    Loop: 0
+    OnStateEnter:
+      m_PersistentCalls:
+        m_Calls: []
+    OnStateExit:
+      m_PersistentCalls:
+        m_Calls: []
+  BusterShoot:
     StateName: 
     Loop: 0
     OnStateEnter:
@@ -421,7 +431,7 @@ MonoBehaviour:
     OnStateExit:
       m_PersistentCalls:
         m_Calls: []
-  ShootBuster: 0
+  PrepareBuster: 0
   current:
     StateName: 
     Loop: 0
@@ -480,19 +490,7 @@ MonoBehaviour:
   CurrentLives: 0
   OnGetHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 187050808131888721}
-        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
-        m_MethodName: HasDied
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &8217642136172015303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,7 +602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3551230276137039756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3125, y: -0.1875, z: 0}
+  m_LocalPosition: {x: 0.75, y: -0.1875, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3551230276321953971}
@@ -734,8 +732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unlocked: 1
-  BulletPrefab: {fileID: 432945860730461941, guid: e2681ad28204ce24284c1232c3332cb7, type: 3}
-  BulletSpawn: {fileID: 3551230276137039757}
+  bulletSpawn: {fileID: 3551230276137039757}
 --- !u!114 &3551230276321953973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -750,3 +747,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   midChargeTime: 0.2
   fullChargeTime: 0.5
+  NormalChargeBulletPrefab: {fileID: 432945860730461941, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
+  MidChargeBulletPrefab: {fileID: 1670132652283622914, guid: 3269a3cd4a95a674eb872d930dbfb00d, type: 3}
+  FullChargeBulletPrefab: {fileID: 2735380241300482422, guid: 40149c11705636e45ae52fd1fd292143, type: 3}

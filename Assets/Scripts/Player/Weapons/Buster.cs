@@ -21,18 +21,11 @@ public class Buster : Weapon
     public override void Init(PlayerEntity player)
     {
         base.Init(player);
-        player.animations.Buster.OnStateExit.AddListener(() => player.movement.Release(this));
+        //player.animations.Buster.OnStateExit.AddListener(() => player.movement.Release(this));
     }
 
     void Update()
     {
-        //On Key up Fire
-        if (FireEnded)
-        {
-            player.animations.ShootBuster = true;
-            if (player.controller.isGrounded)
-                player.movement.Lock(this);
-        }
     }
 
     void LateUpdate()
@@ -47,11 +40,13 @@ public class Buster : Weapon
         if (!previousFire && currentFire)
         {
             FireStarted = true;
+            player.animations.PrepareBuster = true;
             chargeShot.StartTimer();
         }
         if (previousFire && !currentFire)
         {
             FireEnded = true;
+            player.animations.PrepareBuster = false;
             chargeShot.EndTimer(bulletSpawn);
         }
         previousFire = currentFire;
