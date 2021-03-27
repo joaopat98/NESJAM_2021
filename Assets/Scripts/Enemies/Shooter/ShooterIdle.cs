@@ -12,11 +12,11 @@ public class ShooterIdle : ShooterState
     {
         base.StateStart();
         target.cooldownLeft = target.shootingCooldown;
+        //TODO trocar sprite
     }
 
     public override void StateUpdate()
     {
-        //TODO trocar sprite
         target.cooldownLeft -= Time.deltaTime;
         if (target.cooldownLeft <= 0)
         {
