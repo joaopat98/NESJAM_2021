@@ -4,7 +4,7 @@ public class WallCrawlerWalk : WallCrawlerState
 {
     //TODO por alguma forma de 
     private int direction;
-    
+
     public static WallCrawlerWalk Create(WallCrawler target)
     {
         WallCrawlerWalk state = WallCrawlerState.Create<WallCrawlerWalk>(target);
@@ -14,7 +14,7 @@ public class WallCrawlerWalk : WallCrawlerState
     public override void StateStart()
     {
         base.StateStart();
-        direction = target.startUp? 1 : -1;
+        direction = target.startUp ? 1 : -1;
         //TODO trocar sprite
     }
 
@@ -26,7 +26,6 @@ public class WallCrawlerWalk : WallCrawlerState
         PlayerEntity player = PlayerEntity.instance;
         if (Mathf.Abs(transform.position.y - player.transform.position.y) < target.attackRange)
         {
-            Debug.Log("O player entrou a frente");
             SetState(WallCrawlerShoot.Create(target));
         }
 

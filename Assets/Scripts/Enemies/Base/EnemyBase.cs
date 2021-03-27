@@ -26,7 +26,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (isAlive)
         {
             CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
-            if (isAlive)
+            if (!isAlive)
             {
                 Die();
             }
@@ -63,7 +63,7 @@ public abstract class EnemyBase<EnemyType> : EnemyBase where EnemyType : EnemyBa
         {
             CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
             state.OnGetHit();
-            if (isAlive)
+            if (!isAlive)
             {
                 Die();
             }
