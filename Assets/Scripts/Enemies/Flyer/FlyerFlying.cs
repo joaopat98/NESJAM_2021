@@ -2,9 +2,6 @@
 
 public class FlyerFlying : FlyerState
 {
-    public float flightRange;
-    public float waveAmplitude;
-    public float wavePeriod;
     public static FlyerFlying Create(Flyer target)
     {
         FlyerFlying state = FlyerState.Create<FlyerFlying>(target);
@@ -19,7 +16,7 @@ public class FlyerFlying : FlyerState
     public override void StateUpdate()
     {
         //TODO voar em onda
-        if ((this.transform.position - StartPosition).x >= flightRange)
+        if ((this.transform.position - target.startPosition).x >= target.flightRange)
         {
             SetState(FlyerTeleportOut.Create(target));
         }
