@@ -17,6 +17,7 @@ public class DualShot : Weapon
 
     void Update()
     {
+        AddTimeSinceLastFire(Time.deltaTime);
         //On Key up Fire
         if (FireEnded)
         {
@@ -43,11 +44,18 @@ public class DualShot : Weapon
         bool currentFire = value.Get<float>() == 1;
         if (!previousFire && currentFire)
         {
-            FireStarted = true;
+            if (GetReadyToFire())
+            {
+                FireStarted = true;
+                ResetTimeSinceLastFire();
+            }
         }
         if (previousFire && !currentFire)
         {
-            FireEnded = true;
+            if (GetAbleToFire())
+            {
+                FireEnded = true;
+            }
         }
         previousFire = currentFire;
     }

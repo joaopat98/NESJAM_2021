@@ -26,6 +26,17 @@ public class Buster : Weapon
 
     void Update()
     {
+        AddTimeSinceLastFire(Time.deltaTime);
+        //On Key up Fire
+        if (FireEnded)
+        {
+            FireBullet();
+        }
+    }
+
+    void FireBullet()
+    {
+        chargeShot.EndTimer(bulletSpawn);
     }
 
     void LateUpdate()
@@ -39,15 +50,22 @@ public class Buster : Weapon
         bool currentFire = value.Get<float>() == 1;
         if (!previousFire && currentFire)
         {
-            FireStarted = true;
-            player.animations.PrepareBuster = true;
-            chargeShot.StartTimer();
+            if (GetReadyToFire())
+            {
+                FireStarted = true;
+                player.animations.PrepareBuster = true;
+                chargeShot.StartTimer();
+
+                ResetTimeSinceLastFire();
+            }
         }
         if (previousFire && !currentFire)
         {
-            FireEnded = true;
-            player.animations.PrepareBuster = false;
-            chargeShot.EndTimer(bulletSpawn);
+            if (GetAbleToFire())
+            {
+                FireEnded = true;
+                player.animations.PrepareBuster = false;
+            }
         }
         previousFire = currentFire;
     }
