@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected LayerMask DestroyMask;
     [SerializeField] protected float Speed;
     new protected Rigidbody2D rigidbody;
+    new protected BoxCollider2D collider;
     new protected SpriteRenderer renderer;
     protected Vector2 direction;
 
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour
     protected virtual void Awake()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
         renderer = GetComponent<SpriteRenderer>();
     }
 

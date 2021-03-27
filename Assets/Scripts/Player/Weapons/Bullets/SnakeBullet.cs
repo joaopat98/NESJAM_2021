@@ -9,28 +9,37 @@ public class SnakeBullet : Bullet
     private int bounces = 0;
 
     public Transform head;
+    public Transform WallFinder;
     public float rayDistance = 0.1f;
 
     public LayerMask groundMask;
+    float colliderSize;
+
+    void Start()
+    {
+        colliderSize = collider.bounds.extents.y;
+    }
 
     protected override void FixedUpdate()
     {
-
         if (!hitFloor)
         {
             rigidbody.MovePosition(rigidbody.position + (direction.normalized + Vector2.down) * Speed * Time.deltaTime);
         }
         else
         {
+            rigidbody.MovePosition(rigidbody.position + (Vector2)transform.right.normalized * Speed * Time.deltaTime);
             bool horizontal = direction.x != 0;
 
             RaycastHit2D down = Physics2D.Raycast(head.position, -transform.up, rayDistance, groundMask);
-            RaycastHit2D forward = Physics2D.Raycast(head.position, transform.right, rayDistance, groundMask); ;
+            RaycastHit2D forward = Physics2D.Raycast(head.position, transform.right, rayDistance, groundMask);
 
             //escolher direção do down
             if (down.collider == null && forward.collider == null)
             {
+                RaycastHit2D wallHit = Physics2D.Raycast(WallFinder.position, -transform.right, rayDistance, groundMask);
                 transform.Rotate(Vector3.forward, -90);
+                /*
                 if (horizontal)
                 {
                     direction.x = 0;
@@ -41,12 +50,15 @@ public class SnakeBullet : Bullet
                     direction.x = transform.up.x > 0 ? -1 : 1;
                     direction.y = 0;
                 }
+                */
+                rigidbody.MovePosition(wallHit.point + wallHit.normal * colliderSize);
                 bounces++;
             }
             //escolher direção oposta ao down
             else if (down.collider != null && forward.collider != null)
             {
                 transform.Rotate(Vector3.forward, 90);
+                /*
                 if (horizontal)
                 {
                     direction.x = 0;
@@ -57,26 +69,28 @@ public class SnakeBullet : Bullet
                     direction.x = transform.up.x < 0 ? -1 : 1;
                     direction.y = 0;
                 }
+                */
                 bounces++;
-
+                rigidbody.MovePosition(forward.point + forward.normal * colliderSize);
             }
-            if (bounces >= maxBounces)
+            if (bounces > maxBounces)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
 
-            rigidbody.MovePosition(rigidbody.position + (direction.normalized) * Speed * Time.deltaTime);
+            Debug.Log(bounces);
         }
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         base.OnTriggerEnter2D(collider);
-        if (groundMask.HasLayer(collider.gameObject.layer))
+        if (!hitFloor && groundMask.HasLayer(collider.gameObject.layer))
         {
             hitFloor = true;
-
-            Vector2 normal = (rigidbody.position - collider.ClosestPoint(rigidbody.position)).normalized;
+            Vector2 closestPoint = collider.ClosestPoint(rigidbody.position);
+            Vector2 normal = (rigidbody.position - closestPoint).normalized;
+            RaycastHit2D hit;
             bool wall = Vector2.Angle(normal, Vector2.up) > 80;
 
             //se for parede
@@ -91,12 +105,13 @@ public class SnakeBullet : Bullet
                     transform.Rotate(Vector3.forward, -90);
                 }
                 direction = new Vector2(0, 1);
-
             }
             else
             {
-                direction = new Vector2(1, 0);
+                direction = new Vector2(Mathf.Sign(direction.x), 0);
             }
+            hit = Physics2D.Raycast(head.position, -transform.up, rayDistance, groundMask);
+            rigidbody.position = hit.point + hit.normal * colliderSize;
         }
     }
 }
