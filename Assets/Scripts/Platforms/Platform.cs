@@ -17,6 +17,6 @@ public class Platform : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    protected virtual void Start(){}
+    protected virtual void Start() { }
 
 }

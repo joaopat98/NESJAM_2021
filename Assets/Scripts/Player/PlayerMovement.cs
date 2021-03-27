@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    public bool IsJumping = false;
+    private bool forcedJump = false;
     public MovementInput input = new MovementInput();
 
     HashSet<object> movementLocks = new HashSet<object>();
@@ -94,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Cancel jump
-        if (VerticalVelocity > 0 && input.EndJump)
+        if (VerticalVelocity > 0 && input.EndJump && !forcedJump)
         {
             VerticalVelocity = 0;
         }
@@ -115,6 +118,11 @@ public class PlayerMovement : MonoBehaviour
     {
         input.StartJump = false;
         input.EndJump = false;
+
+        if (controller.isGrounded)
+        {
+            forcedJump = false;
+        }
     }
 
     public void Lock(object owner)
@@ -139,6 +147,12 @@ public class PlayerMovement : MonoBehaviour
         VerticalVelocity = Mathf.Sqrt(-height * 2 * Physics.gravity.y * GravityScale);
     }
 
+    public void ForcedJump(float height)
+    {
+        forcedJump = true;
+        Jump(height);
+    }
+
     public void OnMove(InputValue value)
     {
         input.Horizontal = value.Get<Vector2>().x;
@@ -151,10 +165,12 @@ public class PlayerMovement : MonoBehaviour
         if (!previousJump && currentJump)
         {
             input.StartJump = true;
+            IsJumping = true;
         }
         if (previousJump && !currentJump)
         {
             input.EndJump = true;
+            IsJumping = false;
         }
         previousJump = currentJump;
     }
