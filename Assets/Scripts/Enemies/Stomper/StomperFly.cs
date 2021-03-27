@@ -12,7 +12,7 @@ public class StomperFly : StomperState
     public override void StateStart()
     {
         base.StateStart();
-        animator.Play("Fly");
+        //animator.Play("Fly");
     }
 
     public override void StateUpdate()

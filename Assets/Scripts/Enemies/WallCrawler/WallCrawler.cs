@@ -6,6 +6,10 @@ public class WallCrawler : EnemyBase<WallCrawler>
 {
 
     public bool startUp;
+    public float walkSpeed = 2f;
+    public float attackRange = 0.5f;
+
+    public LayerMask directionChangers; 
 
     protected override void Start()
     {

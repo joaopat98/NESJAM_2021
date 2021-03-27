@@ -2,6 +2,8 @@
 
 public class StomperFlyUp : StomperState
 {
+    float timer = 0;
+
     public static StomperFlyUp Create(Stomper target)
     {
         StomperFlyUp state = StomperState.Create<StomperFlyUp>(target);
@@ -10,16 +12,19 @@ public class StomperFlyUp : StomperState
     public override void StateStart()
     {
         base.StateStart();
-        animator.Play("FlyUp");
+        //animator.Play("Fly");
     }
 
     public override void StateUpdate()
     {
-        //TODO voltar a voar ao y inicial
-    }
-
-    void FinishFlyUp()
-    {
-        SetState(StomperFly.Create(target));
+        timer += Time.deltaTime;
+        if (timer > target.TimeToPrepare)
+        {
+            transform.Translate(Vector3.up * target.FlyUpSpeed * Time.deltaTime);
+            if (transform.position.y >= target.StartPos.y)
+            {
+                SetState(StomperFly.Create(target));
+            }
+        }
     }
 }
