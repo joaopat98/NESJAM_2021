@@ -88,6 +88,11 @@ public class PlayerMovement : MonoBehaviour
             VerticalVelocity = 0;
         }
 
+        if (controller.hasCeiling && VerticalVelocity > 0)
+        {
+            VerticalVelocity = 0;
+        }
+
         //Cancel jump
         if (VerticalVelocity > 0 && input.EndJump)
         {
