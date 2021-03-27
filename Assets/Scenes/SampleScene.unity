@@ -742,7 +742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e6f82acab80d2b4f9cfca6928b2312d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeadZone: {x: 3.375, y: 5.44}
+  DeadZone: {x: 1.8125, y: 5.4375}
+  CenterOffset: {x: -3.375, y: 0}
 --- !u!61 &519420034
 BoxCollider2D:
   m_ObjectHideFlags: 0
