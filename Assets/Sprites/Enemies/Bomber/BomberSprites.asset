@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: BomberSprites
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Light
+    m_Hash: -1428458509
+    m_CategoryList:
+    - m_Name: Fly0
+      m_Hash: 114432170
+      m_Sprite: {fileID: 1943159362067526861, guid: 7ee5b73b021faa24f855902b153adf11, type: 3}
+    - m_Name: Fly1
+      m_Hash: 1909794876
+      m_Sprite: {fileID: 794231074274380924, guid: 7ee5b73b021faa24f855902b153adf11, type: 3}
+    - m_Name: Wings0
+      m_Hash: -2134783012
+      m_Sprite: {fileID: 5027549202518240836, guid: 813fe652eac90e047baf7b321600236f, type: 3}
+    - m_Name: Wings1
+      m_Hash: -137954486
+      m_Sprite: {fileID: 3130449278611037098, guid: 813fe652eac90e047baf7b321600236f, type: 3}
+    - m_Name: Regen0
+      m_Hash: -1810087786
+      m_Sprite: {fileID: 7225561576097866253, guid: 1955818db2c7b4447be4f6f5c53046aa, type: 3}
+    - m_Name: Regen1
+      m_Hash: -484741120
+      m_Sprite: {fileID: -6412867138512674850, guid: 1955818db2c7b4447be4f6f5c53046aa, type: 3}
+    - m_Name: Regen2
+      m_Hash: 2048008634
+      m_Sprite: {fileID: 3620424328389346045, guid: 1955818db2c7b4447be4f6f5c53046aa, type: 3}
+    - m_Name: Regen3
+      m_Hash: 219484460
+      m_Sprite: {fileID: -2111412546450232602, guid: 1955818db2c7b4447be4f6f5c53046aa, type: 3}
+    - m_Name: Bomb
+      m_Hash: 540923433
+      m_Sprite: {fileID: 21300000, guid: dfc829c97ba01e541839e683a42b3c5e, type: 3}

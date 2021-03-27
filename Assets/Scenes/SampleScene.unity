@@ -138,6 +138,8 @@ GameObject:
   - component: {fileID: 172338520}
   - component: {fileID: 172338519}
   - component: {fileID: 172338521}
+  - component: {fileID: 172338523}
+  - component: {fileID: 172338522}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -311,6 +313,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Children: {fileID: 633673500}
+--- !u!114 &172338522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172338514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: -3.898267e-13
+  m_labelHash: 7.902946e-35
+--- !u!114 &172338523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172338514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: 2d7a931d4e0dcb14397f65472c9438b4, type: 2}
 --- !u!1 &252784631
 GameObject:
   m_ObjectHideFlags: 0
@@ -10227,6 +10256,10 @@ PrefabInstance:
       propertyPath: OnGetHit.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3551230275707976961, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7071935623343613943, guid: c2ca2ff7f7970354bb5c9f5ef30e1dc1, type: 3}
     - target: {fileID: 3551230275707976962, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_RootOrder
       value: 2

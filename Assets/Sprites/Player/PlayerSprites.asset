@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: PlayerSprites
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Light
+    m_Hash: -1428458509
+    m_CategoryList:
+    - m_Name: Run0
+      m_Hash: -807549941
+      m_Sprite: {fileID: 7071935623343613943, guid: c2ca2ff7f7970354bb5c9f5ef30e1dc1, type: 3}
+    - m_Name: Run1
+      m_Hash: -1193610083
+      m_Sprite: {fileID: 7927430643088319458, guid: c2ca2ff7f7970354bb5c9f5ef30e1dc1, type: 3}
+    - m_Name: Run2
+      m_Hash: 567518503
+      m_Sprite: {fileID: -1396096166093489214, guid: c2ca2ff7f7970354bb5c9f5ef30e1dc1, type: 3}
+    - m_Name: Run3
+      m_Hash: 1456772529
+      m_Sprite: {fileID: 1781292534199600417, guid: c2ca2ff7f7970354bb5c9f5ef30e1dc1, type: 3}
+    - m_Name: Jump
+      m_Hash: 125937960
+      m_Sprite: {fileID: -4142276880962872504, guid: f56988c99d1ce7e4e9bb90a4d452cc0e, type: 3}
+    - m_Name: Fall
+      m_Hash: 1533177906
+      m_Sprite: {fileID: -2833288000470796695, guid: f56988c99d1ce7e4e9bb90a4d452cc0e, type: 3}
+    - m_Name: Buster0
+      m_Hash: 989112475
+      m_Sprite: {fileID: 2426177353743315425, guid: 24e349cb25540dc4c891f5319b0d0dcb, type: 3}
+    - m_Name: Buster1
+      m_Hash: 1307809805
+      m_Sprite: {fileID: -127833002965872716, guid: 24e349cb25540dc4c891f5319b0d0dcb, type: 3}
+    - m_Name: Idle0
+      m_Hash: 1478176891
+      m_Sprite: {fileID: -6908397802840381993, guid: e0934d0774a3f0f468bc1fc99f7d49f3, type: 3}
+    - m_Name: Idle1
+      m_Hash: 790364397
+      m_Sprite: {fileID: -2044858937279758487, guid: e0934d0774a3f0f468bc1fc99f7d49f3, type: 3}
+    - m_Name: Idle2
+      m_Hash: -1240116905
+      m_Sprite: {fileID: -1227263323078087035, guid: e0934d0774a3f0f468bc1fc99f7d49f3, type: 3}
+  - m_Name: Dark
+    m_Hash: -1152511291
+    m_CategoryList:
+    - m_Name: Run0
+      m_Hash: -807549941
+      m_Sprite: {fileID: 0}
+    - m_Name: Run1
+      m_Hash: -1193610083
+      m_Sprite: {fileID: 0}
+    - m_Name: Run2
+      m_Hash: 567518503
+      m_Sprite: {fileID: 0}
+    - m_Name: Run3
+      m_Hash: 1456772529
+      m_Sprite: {fileID: 0}
+    - m_Name: Jump
+      m_Hash: 125937960
+      m_Sprite: {fileID: 0}
+    - m_Name: Fall
+      m_Hash: 1533177906
+      m_Sprite: {fileID: 0}
+    - m_Name: Buster0
+      m_Hash: 989112475
+      m_Sprite: {fileID: 0}
+    - m_Name: Buster1
+      m_Hash: 1307809805
+      m_Sprite: {fileID: 0}
+    - m_Name: Idle0
+      m_Hash: 1478176891
+      m_Sprite: {fileID: 0}
+    - m_Name: Idle1
+      m_Hash: 790364397
+      m_Sprite: {fileID: 0}
+    - m_Name: Idle2
+      m_Hash: -1240116905
+      m_Sprite: {fileID: 0}

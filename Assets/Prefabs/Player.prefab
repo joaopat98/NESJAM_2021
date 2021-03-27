@@ -98,6 +98,8 @@ GameObject:
   - component: {fileID: 3551230275707976960}
   - component: {fileID: 3551230275707976986}
   - component: {fileID: 187050808131888721}
+  - component: {fileID: 8217642136172015303}
+  - component: {fileID: 2618131490952504859}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -472,9 +474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4133e2794feb9904b8250b176fc4d8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  CurrentHealth: 0
   MaxHealth: 10
-  SceneToLoadName: SampleScene
   NumLives: 3
   CurrentLives: 0
   OnGetHit:
@@ -492,6 +493,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8217642136172015303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551230275707976975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: bea71316056046649bd9d2727db905a4, type: 2}
+--- !u!114 &2618131490952504859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3551230275707976975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: -3.898267e-13
+  m_labelHash: -7.441225e+9
 --- !u!1 &3551230275917505021
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 5813295109102768408}
   - component: {fileID: 5813295109102768409}
   - component: {fileID: 2932570642101929412}
+  - component: {fileID: 3549564426722942239}
+  - component: {fileID: 1150380226246837277}
   m_Layer: 0
   m_Name: Bomber_Bomb
   m_TagString: Untagged
@@ -150,3 +152,30 @@ MonoBehaviour:
   Flip: 0
   dropper: {fileID: 0}
   ExplosionPrefab: {fileID: 2973301809393341137, guid: c1d7cff0938bdf5448a1378f032ad517, type: 3}
+--- !u!114 &3549564426722942239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813295109102768390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SpriteLibraryAsset: {fileID: 11400000, guid: 2d7a931d4e0dcb14397f65472c9438b4, type: 2}
+--- !u!114 &1150380226246837277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5813295109102768390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: -3.898267e-13
+  m_labelHash: 1.6079782e-19
