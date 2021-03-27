@@ -4,7 +4,7 @@ public class WallCrawlerWalk : WallCrawlerState
 {
     //TODO por alguma forma de 
     private int direction;
-
+    
     public static WallCrawlerWalk Create(WallCrawler target)
     {
         WallCrawlerWalk state = WallCrawlerState.Create<WallCrawlerWalk>(target);
@@ -20,8 +20,24 @@ public class WallCrawlerWalk : WallCrawlerState
 
     public override void StateUpdate()
     {
-            //TODO andar para cima e para baixo conforma direction
-            //Parar para disparar quando fica em frente ao player
+        renderer.flipY = direction < 0;
+        transform.Translate(Vector3.up * direction * target.walkSpeed * Time.deltaTime);
+        //a troca de direção ocorre quando tocas em alguma coisa
+        PlayerEntity player = PlayerEntity.instance;
+        if (Mathf.Abs(transform.position.y - player.transform.position.y) < target.attackRange)
+        {
+            Debug.Log("O player entrou a frente");
             SetState(WallCrawlerShoot.Create(target));
+        }
+
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (target.directionChangers.HasLayer(collision.gameObject.layer))
+        {
+            direction = -direction;
+        }
+    }
+
 }
