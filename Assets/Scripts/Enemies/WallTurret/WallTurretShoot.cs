@@ -2,6 +2,8 @@
 
 public class WallTurretShoot : WallTurretState
 {
+    int direction;
+
     public static WallTurretShoot Create(WallTurret target)
     {
         WallTurretShoot state = WallTurretState.Create<WallTurretShoot>(target);
@@ -12,12 +14,23 @@ public class WallTurretShoot : WallTurretState
     {
         base.StateStart();
         //TODO trocar sprite
+        direction = target.facingRight ? 1 : -1;
     }
 
     public override void StateUpdate()
     {
-        //TODO disparar tiros 
+        var bullet1 = Instantiate(target.bulletPrefab, target.bulletSpawn[0].position, Quaternion.identity).GetComponent<Bullet>();
+        var bullet2 = Instantiate(target.bulletPrefab, target.bulletSpawn[1].position, Quaternion.identity).GetComponent<Bullet>();
+        var bullet3 = Instantiate(target.bulletPrefab, target.bulletSpawn[2].position, Quaternion.identity).GetComponent<Bullet>();
 
+        bullet1.Init(Vector3.right * direction);
+        bullet2.Init((Vector3.up + Vector3.right) * direction);
+        bullet3.Init((Vector3.down + Vector3.right) * direction);
+        /*
+          bullet1.Init(target.bulletSpawn[0].position * 2 * direction);
+        bullet2.Init(target.bulletSpawn[1].position * 2 * direction);
+        bullet3.Init(target.bulletSpawn[2].position * 2 * direction); 
+         */
         SetState(WallTurretIdle.Create(target));
     }
 }

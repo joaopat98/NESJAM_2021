@@ -2,7 +2,7 @@
 
 public class ShooterIdle : ShooterState
 {
-     float cooldownLeft;
+    float cooldownLeft;
     public static ShooterIdle Create(Shooter target)
     {
         ShooterIdle state = ShooterState.Create<ShooterIdle>(target);

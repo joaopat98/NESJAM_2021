@@ -28,7 +28,6 @@ public class ShooterShoot : ShooterState
             bullet.Init(Vector3.right * direction);
             shotsFired++;
             bulletCooldown = target.fireRate;
-            
         }
 
         if (shotsFired == target.shotNumber)

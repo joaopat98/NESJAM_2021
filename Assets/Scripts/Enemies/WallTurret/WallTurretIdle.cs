@@ -2,6 +2,8 @@
 
 public class WallTurretIdle : WallTurretState
 {
+    float cooldownLeft;
+
     public static WallTurretIdle Create(WallTurret target)
     {
         WallTurretIdle state = WallTurretState.Create<WallTurretIdle>(target);
@@ -11,14 +13,14 @@ public class WallTurretIdle : WallTurretState
     public override void StateStart()
     {
         base.StateStart();
-        target.cooldownLeft = target.shootingCooldown;
+        cooldownLeft = target.shootingCooldown;
         //TODO trocar sprite
     }
 
     public override void StateUpdate()
     {
-        target.cooldownLeft -= Time.deltaTime;
-        if (target.cooldownLeft <= 0)
+        cooldownLeft -= Time.deltaTime;
+        if (cooldownLeft <= 0)
         {
             SetState(WallTurretShoot.Create(target));
         }
