@@ -42,6 +42,11 @@ public class PlayerHealth : MonoBehaviour
 
     public void Hit(int damage)
     {
+        Hit(damage, null);
+    }
+
+    public void Hit(int damage, Impulse impulse)
+    {
         if (!Invincible)
         {
             CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
@@ -58,6 +63,10 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
+                if (impulse != null)
+                {
+                    player.controller.AddImpulse(impulse);
+                }
                 StartCoroutine(GetHit());
             }
         }
@@ -91,6 +100,7 @@ public class PlayerHealth : MonoBehaviour
     {
         Vector3 respawnPoint = RoomManager.GetCurrentRespawnPoint();
         player.controller.Teleport(respawnPoint);
+        WorldManager.SwitchWorld();
     }
 
     public void GameOver()
