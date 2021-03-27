@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerAnimations : MonoBehaviour
 {
     [SerializeField] Transform flipParent;
-    PlayerMovement movement;
-    CharacterController2D controller;
+    PlayerEntity player;
     Animator anim;
     new SpriteRenderer renderer;
 
@@ -22,21 +21,20 @@ public class PlayerAnimations : MonoBehaviour
     bool MovedState;
     public bool ActiveInputThisFrame;
 
-    [HideInInspector] public PlayerAnimationState Idle, Run, BusterPrepare, BusterShoot, Jump, Fall;
+    [HideInInspector] public PlayerAnimationState Idle, Run, BusterPrepare, BusterShoot, Jump, Fall, GetHit;
     public bool PrepareBuster;
     public PlayerAnimationState current;
     // Start is called before the first frame update
     void Awake()
     {
-        movement = GetComponent<PlayerMovement>();
-        controller = GetComponent<CharacterController2D>();
+        player = GetComponent<PlayerEntity>();
         anim = GetComponent<Animator>();
         renderer = GetComponent<SpriteRenderer>();
 
         PlayerAnimationStateTransition JumpTransition = new PlayerAnimationStateTransition
         {
             To = () => Jump,
-            Condition = () => !controller.isGrounded
+            Condition = () => !player.controller.isGrounded
         };
 
         PlayerAnimationStateTransition BusterTransition = new PlayerAnimationStateTransition
@@ -45,14 +43,21 @@ public class PlayerAnimations : MonoBehaviour
             Condition = () => PrepareBuster
         };
 
+        PlayerAnimationStateTransition GetHitTransition = new PlayerAnimationStateTransition
+        {
+            To = () => GetHit,
+            Condition = () => player.health.GettingHit
+        };
+
         Idle = new PlayerAnimationState
         {
             StateName = "Idle",
             Loop = true,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Run,
-                    Condition = () => movement.HorizontalOutput != 0
+                    Condition = () => player.movement.HorizontalOutput != 0
                 },
                 BusterTransition,
                 JumpTransition,
@@ -64,9 +69,10 @@ public class PlayerAnimations : MonoBehaviour
             StateName = "Run",
             Loop = true,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Idle,
-                    Condition = () => movement.HorizontalOutput == 0
+                    Condition = () => player.movement.HorizontalOutput == 0
                 },
                 BusterTransition,
                 JumpTransition,
@@ -78,6 +84,7 @@ public class PlayerAnimations : MonoBehaviour
             StateName = "Buster Prepare",
             Loop = false,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
                 new PlayerAnimationStateTransition {
                     To = () => BusterShoot,
                     Condition = () => AnimationFinished && !PrepareBuster
@@ -90,13 +97,14 @@ public class PlayerAnimations : MonoBehaviour
             StateName = "Buster Shoot",
             Loop = false,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Run,
                     Condition = () => AnimationFinished && ActiveInputThisFrame
                 },
                 new PlayerAnimationStateTransition {
                     To = () => Jump,
-                    Condition = () => !controller.isGrounded && movement.input.StartJump
+                    Condition = () => !player.controller.isGrounded && player.movement.input.StartJump
                 },
                 BusterTransition,
             }
@@ -107,14 +115,15 @@ public class PlayerAnimations : MonoBehaviour
             StateName = "Jump",
             Loop = true,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Idle,
-                    Condition = () => controller.isGrounded
+                    Condition = () => player. controller.isGrounded
                 },
                 BusterTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Fall,
-                    Condition = () => controller.velocity.y < 0
+                    Condition = () => player.controller.velocity.y < 0
                 },
             }
         };
@@ -124,11 +133,25 @@ public class PlayerAnimations : MonoBehaviour
             StateName = "Fall",
             Loop = true,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Idle,
-                    Condition = () => controller.isGrounded
+                    Condition = () => player.controller.isGrounded
                 },
                 BusterTransition,
+            }
+        };
+
+        GetHit = new PlayerAnimationState
+        {
+            StateName = "Get Hit",
+            Loop = true,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition>
+            {
+                new PlayerAnimationStateTransition {
+                    To = () => Idle,
+                    Condition = () => !player.health.GettingHit
+                }
             }
         };
 
@@ -184,10 +207,10 @@ public class PlayerAnimations : MonoBehaviour
                 }
             }
         } while (MovedState);
-        if (movement.HorizontalOutput != 0)
+        if (player.movement.HorizontalOutput != 0)
         {
-            renderer.flipX = movement.HorizontalOutput < 0;
-            flipParent.rotation = Quaternion.Euler(0, movement.HorizontalOutput < 0 ? 180 : 0, 0);
+            renderer.flipX = player.movement.HorizontalOutput < 0;
+            flipParent.rotation = Quaternion.Euler(0, player.movement.HorizontalOutput < 0 ? 180 : 0, 0);
         }
     }
 }

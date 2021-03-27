@@ -12,9 +12,15 @@ public class PlayerHealth : MonoBehaviour
     public int CurrentHealth;
     public int MaxHealth;
     public int NumLives;
+    public float InvincibilityFrame;
+    [SerializeField] float BlinkFrequency = 4;
+    public float TimeToRecover;
     private static bool hasRan = false;
     public int CurrentLives;
     PlayerEntity player;
+    new SpriteRenderer renderer;
+    public bool GettingHit { get; private set; }
+    public bool Invincible { get; private set; }
 
     public PlayerGetHitEvent OnGetHit = new PlayerGetHitEvent();
 
@@ -25,6 +31,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         player = GetComponent<PlayerEntity>();
+        renderer = GetComponent<SpriteRenderer>();
         CurrentHealth = MaxHealth;
         if (!hasRan)
         {
@@ -35,17 +42,46 @@ public class PlayerHealth : MonoBehaviour
 
     public void Hit(int damage)
     {
-        CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
-        OnGetHit.Invoke();
-        if (!isAlive)
+        if (!Invincible)
         {
-            CurrentHealth = MaxHealth;
-            CurrentLives--;
-            if (CurrentLives > 0)
+            CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
+            OnGetHit.Invoke();
+            StartCoroutine(GetHit());
+            StartCoroutine(Invincibility());
+            if (!isAlive)
             {
-                Respawn();
+                CurrentHealth = MaxHealth;
+                CurrentLives--;
+                if (CurrentLives > 0)
+                {
+                    Respawn();
+                }
             }
         }
+    }
+
+    IEnumerator GetHit()
+    {
+        GettingHit = true;
+        yield return new WaitForSeconds(TimeToRecover);
+        GettingHit = false;
+    }
+
+    IEnumerator Invincibility()
+    {
+        Invincible = true;
+        Color color = renderer.color;
+        float t = 0;
+        while (t < InvincibilityFrame)
+        {
+            Color c = color;
+            c.a = 1 - Mathf.FloorToInt(t * BlinkFrequency) % 2;
+            renderer.color = c;
+            yield return 0;
+            t += Time.deltaTime;
+        }
+        renderer.color = color;
+        Invincible = false;
     }
 
     public void Respawn()
