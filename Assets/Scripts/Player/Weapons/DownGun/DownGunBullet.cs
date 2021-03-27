@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DownGunBullet : MonoBehaviour
+public class DownGunBullet : Bullet
 {
     Vector3 direction;
     [SerializeField] LayerMask HitMask;

@@ -153,9 +153,9 @@ MonoBehaviour:
     m_Bits: 64
   Speed: 20
   midChargeSpeedMod: 0.5
-  midChargeScaleMod: 0.5
+  midChargeSprite: {fileID: 21300000, guid: 7832be611a025ec4b8c7803e6a9da0e1, type: 3}
   fullChargeSpeedMod: 1
-  fullChargeScaleMod: 1
+  fullChargeSprite: {fileID: 21300000, guid: 9b91632f48ec1c54781facd1abb1569b, type: 3}
 --- !u!114 &3602364647829371907
 MonoBehaviour:
   m_ObjectHideFlags: 0

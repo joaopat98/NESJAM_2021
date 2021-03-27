@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CameraSpaceObject))]
-public class BusterBullet : MonoBehaviour
+public class BusterBullet : Bullet
 {
     Vector3 direction;
     [SerializeField] LayerMask HitMask;
@@ -11,16 +11,21 @@ public class BusterBullet : MonoBehaviour
     [SerializeField] float Speed;
 
     private BoxCollider2D collider;
+    private SpriteRenderer spriteRenderer;
 
     [Header("Mid Charge Shot")]
     [SerializeField] private float midChargeSpeedMod;
-    [SerializeField] private float midChargeScaleMod;
+    [SerializeField] private Sprite midChargeSprite;
 
     [Header("Full Charge Shot")]
     [SerializeField] private float fullChargeSpeedMod;
-    [SerializeField] private float fullChargeScaleMod;
+    [SerializeField] private Sprite fullChargeSprite;
 
-    void Awake() { collider = GetComponent<BoxCollider2D>(); }
+    void Awake()
+    {
+        collider = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -46,24 +51,21 @@ public class BusterBullet : MonoBehaviour
 
     public void MidCharge()
     {
-        ChangeBulletScale(1 + midChargeScaleMod);
+        ChangeBulletSprite(midChargeSprite);
         ChangeBulletSpeed(1 + midChargeSpeedMod);
     }
 
     public void FullCharge()
     {
-        ChangeBulletScale(1 + fullChargeScaleMod);
+        ChangeBulletSprite(fullChargeSprite);
         ChangeBulletSpeed(1 + fullChargeSpeedMod);
     }
 
     private void ChangeBulletSpeed(float modifier) { Speed *= modifier; }
 
-    private void ChangeBulletScale(float modifier)
+    private void ChangeBulletSprite(Sprite newSprite)
     {
-        transform.localScale = new Vector3(modifier, modifier, modifier);
-
-        Vector2 S = gameObject.GetComponent<SpriteRenderer>().sprite.bounds.size;
-        collider.size = S;
+        spriteRenderer.sprite = newSprite;
     }
 
 }
