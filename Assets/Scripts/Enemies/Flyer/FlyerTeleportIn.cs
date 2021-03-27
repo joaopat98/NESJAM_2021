@@ -11,7 +11,7 @@ public class FlyerTeleportIn : FlyerState
     public override void StateStart()
     {
         base.StateStart();
-        transform.position = StartPosition;
+        transform.position = target.startPosition;
         animator.Play("TeleportIn");
         SetState(FlyerFlying.Create(target));
     }
