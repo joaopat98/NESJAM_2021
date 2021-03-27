@@ -11,6 +11,8 @@ public abstract class EnemyState : MonoBehaviour
 
     public virtual void StateFixedUpdate() { }
 
+    public virtual void OnGetHit() { }
+
 }
 
 public abstract class EnemyState<EnemyType> : EnemyState where EnemyType : EnemyBase<EnemyType>
@@ -29,4 +31,5 @@ public abstract class EnemyState<EnemyType> : EnemyState where EnemyType : Enemy
         target.SetState(state);
         Destroy(this);
     }
+
 }

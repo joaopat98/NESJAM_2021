@@ -5,7 +5,6 @@ using UnityEngine.U2D;
 
 public class CameraFollow : MonoBehaviour
 {
-    PlayerMovement player;
     [SerializeField] Vector2 DeadZone;
     [SerializeField] Vector2 CenterOffset;
 
@@ -33,13 +32,12 @@ public class CameraFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 pos = player.transform.position;
+        Vector3 pos = PlayerEntity.instance.transform.position;
         pos.z = transform.position.z;
         Vector3 offset = pos - (transform.position + (Vector3)CenterOffset);
         Vector3 camMove = Vector3.zero;
@@ -52,6 +50,5 @@ public class CameraFollow : MonoBehaviour
             camMove.y += Mathf.Sign(offset.y) * (Mathf.Abs(offset.y) - DeadZone.y);
         }
         transform.position += camMove;
-
     }
 }

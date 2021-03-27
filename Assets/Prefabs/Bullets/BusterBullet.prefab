@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4674475720223165246}
   - component: {fileID: 252234558382586276}
   - component: {fileID: 958564808460369858}
-  - component: {fileID: 6943170950309131085}
   - component: {fileID: 3602364647829371907}
+  - component: {fileID: -5784363963390729116}
   m_Layer: 0
   m_Name: BusterBullet
   m_TagString: Untagged
@@ -133,25 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.375}
   m_EdgeRadius: 0
---- !u!114 &6943170950309131085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432945860730461941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29b73b467bd048949ad632768f26eff8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitMask:
-    serializedVersion: 2
-    m_Bits: 0
-  DestroyMask:
-    serializedVersion: 2
-    m_Bits: 0
-  Speed: 20
 --- !u!114 &3602364647829371907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +145,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0631a71a0320acd4dbf87e6d025cab11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5784363963390729116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432945860730461941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c773e0ef295b47a30b21238e0b309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HitMask:
+    serializedVersion: 2
+    m_Bits: 512
+  DestroyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  Speed: 20
+  Damage: 5

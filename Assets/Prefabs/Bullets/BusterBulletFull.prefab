@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5784363963390729116, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
+      propertyPath: Speed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 432945860730461941, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
       propertyPath: m_Name
       value: BusterBulletFull
