@@ -24,18 +24,21 @@ public class MovingPlatform : Platform
 
     private int GetNextPoint()
     {
-        if (loop){ return GetNextPointLoop(); }
+        if (loop) { return GetNextPointLoop(); }
         else { return GetNextPointBackAndForth(); }
     }
 
-    private int GetNextPointLoop(){
-        if ( ++nextPoint  == pointsToPassThrough.Length){ nextPoint = 0; }
+    private int GetNextPointLoop()
+    {
+        if (++nextPoint == pointsToPassThrough.Length) { nextPoint = 0; }
         return nextPoint;
     }
 
-    private int GetNextPointBackAndForth(){
-        if (nextPoint + forward == pointsToPassThrough.Length || nextPoint + forward == -1 ){ 
-            forward = -forward; 
+    private int GetNextPointBackAndForth()
+    {
+        if (nextPoint + forward == pointsToPassThrough.Length || nextPoint + forward == -1)
+        {
+            forward = -forward;
         }
 
         nextPoint += forward;
@@ -54,7 +57,8 @@ public class MovingPlatform : Platform
     }
 
 
-    Vector2 GetCollisionNormal(Collision2D collision){
+    Vector2 GetCollisionNormal(Collision2D collision)
+    {
         Vector2 normal = Vector3.zero;
         for (int i = 0; i < collision.contactCount; i++)
         {
@@ -64,12 +68,13 @@ public class MovingPlatform : Platform
 
         return normal;
     }
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            if (Vector2.Angle(Vector2.up, GetCollisionNormal(collision)) < 10f){
+            if (Vector2.Angle(Vector2.up, GetCollisionNormal(collision)) < 10f)
+            {
                 base.Activate();
                 collision.transform.parent = transform;
             }
