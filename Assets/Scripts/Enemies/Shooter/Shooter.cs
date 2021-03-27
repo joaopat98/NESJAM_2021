@@ -6,9 +6,11 @@ public class Shooter : EnemyBase<Shooter>
 {
     public float shotNumber = 3;
     public float fireRate = 1;
-    [HideInInspector] public float shotsFired = 0;
     public float shootingCooldown = 3;
-    [HideInInspector] public float cooldownLeft;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+    public bool facingRight = false;
+    public bool shield = false;
     protected override void Start()
     {
         base.Start();

@@ -2,6 +2,7 @@
 
 public class ShooterIdle : ShooterState
 {
+    float cooldownLeft;
     public static ShooterIdle Create(Shooter target)
     {
         ShooterIdle state = ShooterState.Create<ShooterIdle>(target);
@@ -11,14 +12,14 @@ public class ShooterIdle : ShooterState
     public override void StateStart()
     {
         base.StateStart();
-        target.cooldownLeft = target.shootingCooldown;
+        cooldownLeft = target.shootingCooldown;
         //TODO trocar sprite
     }
 
     public override void StateUpdate()
     {
-        target.cooldownLeft -= Time.deltaTime;
-        if (target.cooldownLeft <= 0)
+        cooldownLeft -= Time.deltaTime;
+        if (cooldownLeft <= 0)
         {
             SetState(ShooterShoot.Create(target));
         }
