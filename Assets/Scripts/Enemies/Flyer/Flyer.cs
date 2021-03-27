@@ -7,6 +7,7 @@ public class Flyer : EnemyBase<Flyer>
     public float flightRange;
     public float waveAmplitude;
     public float wavePeriod;
+    public float flySpeed;
     [HideInInspector] public Vector3 startPosition;
 
     protected override void Start()

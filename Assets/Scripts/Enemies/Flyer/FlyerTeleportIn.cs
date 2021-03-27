@@ -12,12 +12,17 @@ public class FlyerTeleportIn : FlyerState
     {
         base.StateStart();
         transform.position = target.startPosition;
-        animator.Play("TeleportIn");
+        //animator.Play("TeleportIn");
+        //TODO dar timing disto melhor com a animação
+        Invoke("SwitchStates", 2f);
+    }
+
+    public void SwitchStates()
+    {
         SetState(FlyerFlying.Create(target));
     }
 
     public override void StateUpdate()
     {
-        //só toca a animação nova e transita de estado
     }
 }

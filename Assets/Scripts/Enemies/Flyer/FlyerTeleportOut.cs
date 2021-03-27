@@ -11,12 +11,16 @@ public class FlyerTeleportOut : FlyerState
     public override void StateStart()
     {
         base.StateStart();
-        animator.Play("TeleportOut");
-        SetState(FlyerTeleportIn.Create(target));
+        //animator.Play("TeleportOut");
+        //TODO dar timing disto melhor com a animação
+        Invoke("SwitchStates", 2f);
+    }
+    public void SwitchStates()
+    {
+        SetState(FlyerFlying.Create(target));
     }
 
     public override void StateUpdate()
     {  
-        //ele só para e teletransporta para o inicio do seu path
     }
 }
