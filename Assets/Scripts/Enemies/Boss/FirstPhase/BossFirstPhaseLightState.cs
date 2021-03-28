@@ -30,6 +30,16 @@ public abstract class BossFirstPhaseLightState : BossState
     public override void OnGetHit()
     {
         base.OnGetHit();
-        StartCoroutine(PrepareTeleport());
+        if (target.CurrentHealth <= props.HealthThreshold)
+        {
+            if (teleportCoroutine != null)
+                StopCoroutine(teleportCoroutine);
+            props.Assets.SetActive(false);
+            SetState(BossSecondPhaseLightThrow.Create(target));
+        }
+        else
+        {
+            StartCoroutine(PrepareTeleport());
+        }
     }
 }
