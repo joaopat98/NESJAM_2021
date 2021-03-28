@@ -149,7 +149,7 @@ MonoBehaviour:
     m_Bits: 512
   DestroyMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   Speed: 5
   detonationTime: 1.5
   bulletPrefab: {fileID: 1782957219059536024, guid: f9d295283407ee14a8bc6371c65149dc, type: 3}

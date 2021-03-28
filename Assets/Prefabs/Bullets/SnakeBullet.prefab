@@ -192,7 +192,7 @@ MonoBehaviour:
     m_Bits: 512
   DestroyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2560
   Speed: 10
   maxBounces: 3
   head: {fileID: 2747495068454812697}

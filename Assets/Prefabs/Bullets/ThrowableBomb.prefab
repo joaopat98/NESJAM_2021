@@ -162,7 +162,7 @@ MonoBehaviour:
     m_Bits: 128
   DestroyMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   Speed: 5
   BounceMask:
     serializedVersion: 2

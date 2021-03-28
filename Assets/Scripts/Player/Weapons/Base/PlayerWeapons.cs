@@ -15,7 +15,6 @@ public class PlayerWeapons : MonoBehaviour
     void Awake()
     {
         weaponSets = GetComponentsInChildren<WeaponSet>();
-        ActivateSet(currentIndex);
     }
 
     void Start()
