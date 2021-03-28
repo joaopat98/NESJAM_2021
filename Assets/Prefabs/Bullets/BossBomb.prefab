@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1782957219059536026}
   - component: {fileID: 1782957219059536025}
   - component: {fileID: 6225658125428654573}
-  - component: {fileID: 4078085371015364498}
+  - component: {fileID: -7943202567329578003}
   m_Layer: 0
-  m_Name: NapalmShot
+  m_Name: BossBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,13 +74,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1389633787
   m_SortingLayer: 3
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0e599178fdb48d94390643936c52e2d4, type: 3}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 2459114febc4b374bb0f0fb0164c4c23, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -94,9 +94,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782957219059536024}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1782957219059536025
 BoxCollider2D:
@@ -125,13 +125,13 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.5, y: 0.375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.25}
+  m_Size: {x: 0.65, y: 0.65}
   m_EdgeRadius: 0
 --- !u!114 &6225658125428654573
 MonoBehaviour:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0631a71a0320acd4dbf87e6d025cab11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4078085371015364498
+--- !u!114 &-7943202567329578003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,14 +154,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1782957219059536024}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c773e0ef295b47a30b21238e0b309, type: 3}
+  m_Script: {fileID: 11500000, guid: b1e40169b0eaafc49bcc27399feee70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   HitMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
   DestroyMask:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 192
   Speed: 5
-  Damage: 5
+  BounceMask:
+    serializedVersion: 2
+    m_Bits: 0
+  MaxBounceHeight: 4
+  GravityScale: 6
+  ExplosionPrefab: {fileID: 3448344348988600878, guid: c51be17fa51981a489980ca5b5eb6f2e, type: 3}

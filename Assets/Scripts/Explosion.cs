@@ -36,4 +36,14 @@ public class Explosion : MonoBehaviour
             player.health.Hit(Damage, new Impulse(dir * factor, 0.25f));
         }
     }
+
+    public void Inactivate()
+    {
+        exploded = true;
+    }
+
+    public void Finish()
+    {
+        Destroy(gameObject);
+    }
 }
