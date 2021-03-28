@@ -9,7 +9,7 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
     }
     void Update()
     {

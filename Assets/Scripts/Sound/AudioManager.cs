@@ -7,15 +7,14 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-    public static AudioManager instance;
+    public static AudioManager instance { get; private set;  }
 
     private Sound intro;
     private Sound loop;
 
     void Awake()
     {
-        // Needed if we want the audio manager to persist through scenes (do we?)
-        /*
+        // Needed if we want the audio manager to persist through scenes
         if (instance == null)
         {
             instance = this;
@@ -26,7 +25,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-        */
 
         // Add audio source components
         foreach (Sound s in sounds)
@@ -59,6 +57,11 @@ public class AudioManager : MonoBehaviour
 
     public void SetMusic(string introName, string loopName)
     {
+        if (intro != null && introName == intro.name && loop != null && loopName == loop.name)
+        {
+            Debug.Log(introName + "/" + loopName + " already playing, ignoring.");
+            return;
+        }
         if (intro != null)
             intro.Stop();
         if (loop != null)

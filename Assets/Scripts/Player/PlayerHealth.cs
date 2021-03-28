@@ -32,11 +32,12 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
 
         player = GetComponent<PlayerEntity>();
         renderer = GetComponent<SpriteRenderer>();
         CurrentHealth = MaxHealth;
+        Debug.Log(hasRan);
         if (!hasRan)
         {
             CurrentLives = NumLives;
@@ -65,6 +66,11 @@ public class PlayerHealth : MonoBehaviour
                 if (CurrentLives > 0)
                 {
                     Respawn();
+                }
+                else
+                {
+                    hasRan = false;
+                    SceneManager.LoadScene("Scenes/GameOver");
                 }
             }
             else
