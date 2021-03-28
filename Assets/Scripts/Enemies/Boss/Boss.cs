@@ -32,6 +32,7 @@ public class Boss : EnemyBase<Boss>
             public Transform CloneStart;
             public LayerMask GroundMask;
             public float Speed;
+            public float TimeWithShield;
         }
 
         public Dark dark;
@@ -78,7 +79,8 @@ public class Boss : EnemyBase<Boss>
 
     public Third third;
 
-    public bool isClone;
+    public GameObject Shield;
+    [HideInInspector] public bool isClone;
 
     [HideInInspector] public Boss other;
 
@@ -86,5 +88,10 @@ public class Boss : EnemyBase<Boss>
     {
         base.Start();
         state = BossFirstPhaseDarkIdle.Create(this);
+    }
+
+    public void SetShieldStatus(bool status)
+    {
+        Shield.SetActive(status);
     }
 }
