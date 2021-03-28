@@ -25,8 +25,9 @@ public class SnakeShot : Weapon
         }
     }
 
-    private void FireBullet()
+    protected override void FireBullet()
     {
+        base.FireBullet();
         Vector2 rayOrigin = new Vector2(transform.position.x, BulletSpawn.position.y);
         float rayDistance = Mathf.Abs(BulletSpawn.position.x - transform.position.x);
         RaycastHit2D wallHit = Physics2D.Raycast(rayOrigin, transform.right, rayDistance, GroundMask);

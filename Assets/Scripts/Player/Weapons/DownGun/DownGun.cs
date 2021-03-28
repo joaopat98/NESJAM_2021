@@ -27,8 +27,9 @@ public class DownGun : Weapon
         }
     }
 
-    private void FireBullet()
+    protected override void FireBullet()
     {
+        base.FireBullet();
         var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<DownGunBullet>();
         bullet.Init(Vector3.down, this);
         player.movement.Jump(JumpBoost);

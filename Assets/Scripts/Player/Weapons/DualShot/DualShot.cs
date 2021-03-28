@@ -25,8 +25,9 @@ public class DualShot : Weapon
         }
     }
 
-    private void FireBullet()
+    protected override void FireBullet()
     {
+        base.FireBullet();
         var bullet1 = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<Bullet>();
         var bullet2 = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<Bullet>();
         bullet1.Init(Vector3.up);
