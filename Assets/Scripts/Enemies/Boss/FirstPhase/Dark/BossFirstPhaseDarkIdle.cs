@@ -3,6 +3,8 @@ using UnityEngine;
 public class BossFirstPhaseDarkIdle : BossFirstPhaseDarkState
 {
     float t = 0;
+    float ShieldTimer = 0;
+    bool HasShield = true;
     int direction = 1;
     new BoxCollider2D collider;
     public static BossFirstPhaseDarkIdle Create(Boss target)
@@ -17,6 +19,7 @@ public class BossFirstPhaseDarkIdle : BossFirstPhaseDarkState
         base.StateStart();
         if (!target.isClone)
         {
+            target.Shield.SetActive(true);
             transform.position = props.StartPos.position;
             BossClone other = Instantiate(props.ClonePrefab, props.CloneStart.position, Quaternion.Euler(0, 0, 180)).GetComponent<BossClone>();
             other.InitClone(target);
@@ -37,6 +40,18 @@ public class BossFirstPhaseDarkIdle : BossFirstPhaseDarkState
             t = 0;
             var bullet = Instantiate(props.BulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.Init(PlayerEntity.instance.transform.position - transform.position);
+        }
+
+        if (!target.isClone)
+        {
+            ShieldTimer += Time.deltaTime;
+            if (ShieldTimer > props.TimeWithShield)
+            {
+                ShieldTimer = 0;
+                HasShield = !HasShield;
+                target.SetShieldStatus(HasShield);
+                target.other.SetShieldStatus(!HasShield);
+            }
         }
     }
 }
