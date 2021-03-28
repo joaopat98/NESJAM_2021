@@ -121,8 +121,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 284.53854, y: -263.4042}
-  m_SizeDelta: {x: 36.0304, y: 36.0304}
+  m_AnchoredPosition: {x: 113.2, y: -106.6}
+  m_SizeDelta: {x: 17.076, y: 17.076}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4585934099091458715
 GameObject:
