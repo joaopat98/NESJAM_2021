@@ -5,14 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class RoomDivider : MonoBehaviour
 {
-    bool Activated;
+    protected bool Activated;
 
     public Vector3 GetRespawnPoint()
     {
         return transform.position;
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    protected virtual void OnTriggerEnter2D(Collider2D collider)
     {
         if (!Activated && collider.CompareTag("Player"))
         {
