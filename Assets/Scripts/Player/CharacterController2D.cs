@@ -22,6 +22,8 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] float MaxSlope = 10;
     private bool _isGrounded;
     public bool isGrounded { get => _isGrounded && velocity.y <= 0; }
+    private bool _hasCeiling;
+    public bool hasCeiling { get => _hasCeiling && velocity.y >= 0; }
     Vector2 deltaAcum = Vector2.zero;
     float timeDelta = 0;
     public Vector2 velocity
@@ -49,9 +51,7 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         Bounds bounds = collider.bounds;
-        Vector2 start = bounds.min;
         float width = bounds.size.x;
-        Vector2 segment = Vector2.right * width / (HorizontalRays - 1);
         _isGrounded = false;
         timeDelta += Time.deltaTime;
 
@@ -76,6 +76,8 @@ public class CharacterController2D : MonoBehaviour
         }
         else
         {
+            Vector2 start = bounds.min;
+            Vector2 segment = Vector2.right * width / (HorizontalRays - 1);
             for (int i = 0; i < HorizontalRays; i++)
             {
                 Vector2 rayOrigin = start + i * segment + SkinWidth * Vector2.up;
@@ -83,6 +85,26 @@ public class CharacterController2D : MonoBehaviour
                 if (hit.collider != null && Vector2.Angle(Vector3.up, hit.normal) < MaxSlope)
                 {
                     _isGrounded = true;
+                    break;
+                }
+            }
+        }
+
+        if (velocity.y < 0)
+        {
+            _hasCeiling = false;
+        }
+        else
+        {
+            Vector2 start = bounds.max;
+            Vector2 segment = Vector2.left * width / (HorizontalRays - 1);
+            for (int i = 0; i < HorizontalRays; i++)
+            {
+                Vector2 rayOrigin = start + i * segment + SkinWidth * Vector2.down;
+                RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up, SkinWidth * 2, PlatformMask);
+                if (hit.collider != null && Vector2.Angle(Vector3.down, hit.normal) < MaxSlope)
+                {
+                    _hasCeiling = true;
                     break;
                 }
             }
