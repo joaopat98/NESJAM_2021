@@ -32,6 +32,11 @@ public class Sound
         source.Play();
     }
 
+    public void PlayScheduled(double time)
+    {
+        source.PlayScheduled(time);
+    }
+
     public void Stop()
     {
         source.Stop();

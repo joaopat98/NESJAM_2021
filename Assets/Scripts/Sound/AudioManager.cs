@@ -9,6 +9,9 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager instance;
 
+    private Sound intro;
+    private Sound loop;
+
     void Awake()
     {
         // Needed if we want the audio manager to persist through scenes (do we?)
@@ -52,6 +55,33 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.Stop();
+    }
+
+    public void SetMusic(string introName, string loopName)
+    {
+        if (intro != null)
+            intro.Stop();
+        if (loop != null)
+            loop.Stop();
+
+        intro = Array.Find(sounds, sound => sound.name == introName);
+        if (intro == null)
+        {
+            Debug.LogWarning("Sound " + introName + " not found!");
+            return;
+        }
+
+        loop = Array.Find(sounds, sound => sound.name == loopName);
+        if (intro == null)
+        {
+            Debug.LogWarning("Sound " + loopName + " not found!");
+            return;
+        }
+
+        double introDuration = intro.clip.length;
+        double startTime = AudioSettings.dspTime + 0.2;
+        intro.PlayScheduled(startTime);
+        loop.PlayScheduled(startTime + introDuration);
     }
 
     public bool isPlaying(String name)
