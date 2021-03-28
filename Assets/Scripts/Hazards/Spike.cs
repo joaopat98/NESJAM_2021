@@ -10,7 +10,7 @@ public class Spike : MonoBehaviour
     [SerializeField] float UpwardImpulse = 5;
     [SerializeField] float DownwardImpulse = 1;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
