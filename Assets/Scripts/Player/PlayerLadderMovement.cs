@@ -8,6 +8,7 @@ public class PlayerLadderMovement : MonoBehaviour
     public PlayerMovement.MovementInput ladderInput = new PlayerMovement.MovementInput();
 
     [HideInInspector] public bool OnLadder = false;
+    Transform ladder;
     private PlayerMovement playerMovement;
 
     CharacterController2D controller;
@@ -32,6 +33,33 @@ public class PlayerLadderMovement : MonoBehaviour
             moveVel += ladderInput.Vertical * Speed * Vector2.up;
 
             controller.Move(moveVel * Time.deltaTime);
+        }
+        else
+        {
+            if (ladder && ladderInput.Vertical != 0)
+            {
+                OnLadder = true;
+                Vector2 newPos = transform.position;
+                newPos.x = ladder.position.x;
+                controller.Teleport(newPos);
+                playerMovement.Lock(this, true);
+            }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Ladder"))
+        {
+            ladder = collider.transform;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Ladder") && collider.transform == ladder)
+        {
+            ladder = null;
         }
     }
 
