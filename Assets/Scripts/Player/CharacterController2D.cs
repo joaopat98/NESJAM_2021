@@ -9,9 +9,6 @@ public class AddImpulseEvent : UnityEvent<Impulse> { }
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController2D : MonoBehaviour
 {
-    static int grounded;
-
-
     Vector2 speed;
     public new Rigidbody2D rigidbody { get; private set; }
     public new Collider2D collider { get; private set; }
@@ -87,7 +84,6 @@ public class CharacterController2D : MonoBehaviour
                 RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, SkinWidth * 2, PlatformMask);
                 if (hit.collider != null && Vector2.Angle(Vector3.up, hit.normal) < MaxSlope)
                 {
-                    Debug.Log($"Grounded {grounded++}");
                     _isGrounded = true;
                     break;
                 }
