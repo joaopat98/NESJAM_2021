@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unlocked: 1
-  TimeBetweenFire: 0
-  BulletPrefab: {fileID: 432945860730461941, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
+  TimeBetweenFire: 0.75
+  BulletPrefab: {fileID: 1809762467263088743, guid: 99e70d41b633a2c41ba98b5fbd7b8264, type: 3}
   BulletSpawn: {fileID: 1753923371572981576}
 --- !u!1 &714722362109053230
 GameObject:
