@@ -5,14 +5,19 @@ using UnityEngine;
 public class WallCrawler : EnemyBase<WallCrawler>
 {
 
-    public bool startUp;
+    public bool startUp = false;
+    public bool faceLeft = false;
     public float walkSpeed = 2f;
-    public float attackRange = 0.5f;
-    public Transform Head;
+    public float horizontalAttackRange = 10f;
+    public float TimeToPrepare = 0.5f;
 
-    public float RayDistance;
+    public GameObject bulletPrefab;
+    public Transform bulletSpawn;
+
+    //public float RayDistance;
 
     public LayerMask directionChangers;
+    public LayerMask playerMask;
 
     protected override void Start()
     {
