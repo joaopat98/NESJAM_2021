@@ -7,6 +7,7 @@ public class DownGun : Weapon
 {
     bool FireStarted;
     bool FireEnded;
+    bool ShotAvailable = true;
     bool previousFire = false;
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] Transform BulletSpawn;
@@ -20,7 +21,7 @@ public class DownGun : Weapon
     {
         AddTimeSinceLastFire(Time.deltaTime);
         //On Key up Fire
-        if (FireEnded)
+        if (FireEnded && ShotAvailable)
         {
             FireBullet();
         }
@@ -29,9 +30,10 @@ public class DownGun : Weapon
     protected override void FireBullet()
     {
         base.FireBullet();
-        var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<Bullet>();
-        bullet.Init(Vector3.down);
+        var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<DownGunBullet>();
+        bullet.Init(Vector3.down, this);
         player.movement.Jump(JumpBoost);
+        ShotAvailable = false;
     }
 
     void LateUpdate()
@@ -59,5 +61,10 @@ public class DownGun : Weapon
             }
         }
         previousFire = currentFire;
+    }
+
+    public void OnShotDestroyed()
+    {
+        ShotAvailable = true;
     }
 }

@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 1753923371572981576}
   m_Father: {fileID: 3551230274206657101}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8209611639453286939
 MonoBehaviour:
@@ -76,6 +76,36 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8519349133718873389}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1239204818640257781
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4730150514077122951}
+  m_Layer: 7
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730150514077122951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239204818640257781}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.75, y: -0.1875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5559866704756072168}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2458520847343935199
@@ -136,7 +166,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3551230274612433947}
+  - {fileID: 5559866704756072168}
+  - {fileID: 4537895038253593663}
   - {fileID: 8519349133718873389}
   m_Father: {fileID: 3551230276265848056}
   m_RootOrder: 1
@@ -183,8 +214,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3551230275917505022}
-  m_Father: {fileID: 3551230274206657101}
-  m_RootOrder: 0
+  m_Father: {fileID: 3551230276139095691}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3551230274612433948
 MonoBehaviour:
@@ -200,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Unlocked: 1
   TimeBetweenFire: 0.3
-  BulletPrefab: {fileID: 432945860730461941, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
+  BulletPrefab: {fileID: 432945860730461941, guid: b12a17929e45cf84aacfb4ca96acbc5e, type: 3}
   BulletSpawn: {fileID: 3551230275917505022}
   JumpBoost: 3
 --- !u!1 &3551230275707976975
@@ -327,7 +358,7 @@ MonoBehaviour:
   IsJumping: 0
   Speed: 10
   JumpHeight: 4
-  GravityScale: 8
+  GravityScale: 6
   FallMultiplier: 1.5
   HorizontalOutput: 0
 --- !u!114 &3551230275707976967
@@ -771,9 +802,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 7583439985734860363}
-  - {fileID: 4537895038253593663}
   - {fileID: 3551230276321953971}
+  - {fileID: 3551230274612433947}
+  - {fileID: 7583439985734860363}
   m_Father: {fileID: 3551230276265848056}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -853,7 +884,7 @@ Transform:
   m_Children:
   - {fileID: 3551230276137039757}
   m_Father: {fileID: 3551230276139095691}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3551230276321953972
 MonoBehaviour:
@@ -941,12 +972,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605316094864197052}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1173249362058522418}
-  m_Father: {fileID: 3551230276139095691}
+  m_Father: {fileID: 3551230274206657101}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7094319108512810163
@@ -998,7 +1029,7 @@ Transform:
   m_Children:
   - {fileID: 1061442615424531610}
   m_Father: {fileID: 3551230276139095691}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &632946507380750869
 MonoBehaviour:
@@ -1016,3 +1047,68 @@ MonoBehaviour:
   TimeBetweenFire: 2
   BulletPrefab: {fileID: 8035390794158653678, guid: 141716d3744f5ee4fab94abacdfc5ae5, type: 3}
   BulletSpawn: {fileID: 1061442615424531610}
+--- !u!1 &8123415508409417520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5559866704756072168}
+  - component: {fileID: 7959818248599722887}
+  - component: {fileID: 4124868602819609970}
+  m_Layer: 7
+  m_Name: Buster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5559866704756072168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123415508409417520}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4730150514077122951}
+  m_Father: {fileID: 3551230274206657101}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7959818248599722887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123415508409417520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44c703145fdee641af6a868f78706f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unlocked: 1
+  TimeBetweenFire: 0.3
+  bulletSpawn: {fileID: 4730150514077122951}
+--- !u!114 &4124868602819609970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8123415508409417520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4516c5917049b469d5df4a8331f286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  midChargeTime: 0.2
+  fullChargeTime: 0.5
+  NormalChargeBulletPrefab: {fileID: 432945860730461941, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
+  MidChargeBulletPrefab: {fileID: 1670132652283622914, guid: 3269a3cd4a95a674eb872d930dbfb00d, type: 3}
+  FullChargeBulletPrefab: {fileID: 2735380241300482422, guid: 40149c11705636e45ae52fd1fd292143, type: 3}

@@ -1,17 +1,16 @@
 ﻿using UnityEngine;
 
-public class CaterpillarIdle : CaterpillarState
+public class FixedEnemyIdle : FixedEnemyState
 {
-    public static CaterpillarIdle Create(Caterpillar target)
+    public static FixedEnemyIdle Create(FixedEnemy target)
     {
-        CaterpillarIdle state = CaterpillarState.Create<CaterpillarIdle>(target);
+        FixedEnemyIdle state = FixedEnemyState.Create<FixedEnemyIdle>(target);
         return state;
     }
 
     public override void StateStart()
     {
         base.StateStart();
-        animator.Play("Idle");
     }
 
     public override void StateUpdate()
