@@ -15,6 +15,6 @@ public class RotateChildren : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Children.localRotation = Quaternion.Euler(0, renderer.flipX ? 180 : 0, 0);
+        Children.localRotation = Quaternion.Euler(renderer.flipY ? 180 : 0, renderer.flipX ? 180 : 0, 0);
     }
 }

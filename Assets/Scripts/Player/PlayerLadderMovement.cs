@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerLadderMovement : MonoBehaviour
 {
+    float previousVertical;
+    bool wasGrounded;
     public PlayerMovement.MovementInput ladderInput = new PlayerMovement.MovementInput();
 
     [HideInInspector] public bool OnLadder = false;
@@ -29,22 +31,34 @@ public class PlayerLadderMovement : MonoBehaviour
     {
         if (OnLadder)
         {
-            moveVel = Vector3.zero;
-            moveVel += ladderInput.Vertical * Speed * Vector2.up;
-
-            controller.Move(moveVel * Time.deltaTime);
+            controller.Move(Vector2.up * ladderInput.Vertical * Speed * Time.deltaTime);
+            if (ladderInput.StartJump || ladder == null || (!wasGrounded && controller.isGrounded))
+            {
+                OnLadder = false;
+                playerMovement.Release(this);
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground"), false);
+            }
         }
         else
         {
-            if (ladder && ladderInput.Vertical != 0)
+            if (ladder && previousVertical == 0 && ladderInput.Vertical != 0)
             {
                 OnLadder = true;
                 Vector2 newPos = transform.position;
                 newPos.x = ladder.position.x;
                 controller.Teleport(newPos);
                 playerMovement.Lock(this, true);
+                Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground"), true);
             }
         }
+    }
+
+    void LateUpdate()
+    {
+        ladderInput.StartJump = false;
+        ladderInput.EndJump = false;
+        previousVertical = ladderInput.Vertical;
+        wasGrounded = controller.isGrounded;
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -75,9 +89,25 @@ public class PlayerLadderMovement : MonoBehaviour
         OnLadder = false;
     }
 
-    public void OnMove(InputValue value)
+    void OnMove(InputValue value)
     {
         ladderInput.Vertical = value.Get<Vector2>().y;
+    }
+
+
+    bool previousJump;
+    public void OnJump(InputValue value)
+    {
+        bool currentJump = value.Get<float>() == 1;
+        if (!previousJump && currentJump)
+        {
+            ladderInput.StartJump = true;
+        }
+        if (previousJump && !currentJump)
+        {
+            ladderInput.EndJump = true;
+        }
+        previousJump = currentJump;
     }
 
 }

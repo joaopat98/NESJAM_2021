@@ -78,7 +78,7 @@ public class SnakeBullet : Bullet
                 Destroy(gameObject);
             }
 
-            Debug.Log(bounces);
+            //Debug.Log(bounces);
         }
     }
 
