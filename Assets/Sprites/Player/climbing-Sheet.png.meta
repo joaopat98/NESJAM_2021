@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 6da80818daf03e949a542d1f599833e2
+guid: 916dfd47784781f498906cba4524d452
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1840823336674746120
-    second: Player Down Gun_0
+      213: 8949172508596909132
+    second: climbing-Sheet_0
   - first:
-      213: 6389790473451850887
-    second: Player Down Gun_1
+      213: 169736258161819525
+    second: climbing-Sheet_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player Down Gun_0
+      name: climbing-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80f5fb4521beb8910800000000000000
-      internalID: 1840823336674746120
+      spriteID: c443c985bf8d13c70800000000000000
+      internalID: 8949172508596909132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Down Gun_1
+      name: climbing-Sheet_1
       rect:
         serializedVersion: 2
         x: 16
@@ -156,8 +156,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78cc54fb4981da850800000000000000
-      internalID: 6389790473451850887
+      spriteID: 58f3d3d3a360b5200800000000000000
+      internalID: 169736258161819525
       vertices: []
       indices: 
       edges: []
