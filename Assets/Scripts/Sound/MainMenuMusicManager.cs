@@ -8,7 +8,7 @@ public class MainMenuMusicManager : MonoBehaviour
 
     void Start()
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
         audioManager.SetMusic("MenuIntro", "MenuLoop");
     }
 }

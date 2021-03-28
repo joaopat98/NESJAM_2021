@@ -15,7 +15,7 @@ public abstract class Weapon : MonoBehaviour
     private AudioManager audioManager;
     public virtual void Init(PlayerEntity player)
     {
-        audioManager = FindObjectOfType<AudioManager>();
+        audioManager = AudioManager.instance;
         this.player = player;
         TimeSinceLastFire = TimeBetweenFire;
     }
