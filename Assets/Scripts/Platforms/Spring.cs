@@ -10,10 +10,12 @@ public class Spring : Platform
     private float jumpHeight;
 
     private PlayerEntity currentPlayerOn;
+    private Animator animator;
 
     protected override void Start()
     {
         base.Start();
+        animator = this.gameObject.GetComponent<Animator>();
         jumpHeight = minJumpHeight;
     }
 
@@ -37,6 +39,7 @@ public class Spring : Platform
         {
             if (Vector2.Angle(Vector2.up, GetCollisionNormal(collision)) < 10f)
             {
+                animator.Play("Crunch");
                 base.Activate();
                 currentPlayerOn = collision.collider.GetComponent<PlayerEntity>();
                 currentPlayerOn.movement.ForcedJump(jumpHeight);
@@ -49,6 +52,7 @@ public class Spring : Platform
         if (collision.collider.CompareTag("Player"))
         {
             base.Deactivate();
+            animator.Play("Bounce");
         }
     }
 
