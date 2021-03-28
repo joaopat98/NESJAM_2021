@@ -49,6 +49,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHealth: 1
   MaxHealth: 1
+  ExplosionPrefab: {fileID: 0}
+  ExplosionSpawn: {fileID: 0}
   flightRange: 10
   waveAmplitude: 1
   wavePeriod: 1
@@ -98,7 +100,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dfc829c97ba01e541839e683a42b3c5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 127772e9c8d67074ab3c90092d888155, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,8 +148,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5625, y: 0.5625}
-    oldSize: {x: 2, y: 2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
