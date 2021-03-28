@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5932033422158853625}
   m_Layer: 0
-  m_Name: Children
+  m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,41 +24,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727878210008574686}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2641986269466683000}
-  m_Father: {fileID: 6059394830734441769}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &4306795004058822523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2641986269466683000}
-  m_Layer: 0
-  m_Name: Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2641986269466683000
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4306795004058822523}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.024999619, y: -0.269, z: 0}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5932033422158853625}
+  m_Father: {fileID: 6059394830734441769}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6059394830734441775
@@ -114,13 +83,18 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 0}
   ExplosionSpawn: {fileID: 0}
   startUp: 0
+  faceLeft: 1
   walkSpeed: 2
-  attackRange: 0.5
-  Head: {fileID: 2641986269466683000}
-  RayDistance: 0.5
+  horizontalAttackRange: 10
+  TimeToPrepare: 0.5
+  bulletPrefab: {fileID: 1782957219059536024, guid: e416d489343d18a4ea9dbb4fa54cff9f, type: 3}
+  bulletSpawn: {fileID: 5932033422158853625}
   directionChangers:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 1600
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 384
 --- !u!212 &6059394830734441770
 SpriteRenderer:
   m_ObjectHideFlags: 0

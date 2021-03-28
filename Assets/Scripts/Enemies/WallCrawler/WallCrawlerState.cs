@@ -12,4 +12,13 @@ public abstract class WallCrawlerState : EnemyState<WallCrawler>
         state.animator = target.GetComponent<Animator>();
         return state;
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (target.directionChangers.HasLayer(collision.gameObject.layer))
+        {
+            direction = -direction;
+        }
+    }
+
 }
