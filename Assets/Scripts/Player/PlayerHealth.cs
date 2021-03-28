@@ -58,6 +58,8 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(Invincibility());
             if (!isAlive)
             {
+                audioManager.Play("PlayerDeath");
+
                 CurrentHealth = MaxHealth;
                 CurrentLives--;
                 if (CurrentLives > 0)
@@ -67,6 +69,8 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
+                audioManager.Play("TakeDamage");
+
                 if (impulse != null)
                 {
                     player.controller.AddImpulse(impulse);
@@ -102,7 +106,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Respawn()
     {
-        audioManager.Play("PlayerDeath");
         Vector3 respawnPoint = RoomManager.GetCurrentRespawnPoint();
         player.controller.Teleport(respawnPoint);
         WorldManager.SwitchWorld();
