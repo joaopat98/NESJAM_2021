@@ -2,6 +2,8 @@
 
 public class ThrowerIdle : ThrowerState
 {
+    float cooldownLeft;
+
     public static ThrowerIdle Create(Thrower target)
     {
         ThrowerIdle state = ThrowerState.Create<ThrowerIdle>(target);
@@ -11,14 +13,14 @@ public class ThrowerIdle : ThrowerState
     public override void StateStart()
     {
         base.StateStart();
-        target.cooldownLeft = target.shootingCooldown;
+        cooldownLeft = target.shootingCooldown;
         //TODO trocar sprite/animação
     }
 
     public override void StateUpdate()
     {
-        target.cooldownLeft -= Time.deltaTime;
-        if (target.cooldownLeft <= 0)
+        cooldownLeft -= Time.deltaTime;
+        if (cooldownLeft <= 0)
         {
             SetState(ThrowerThrow.Create(target));
         }
