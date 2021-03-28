@@ -10,6 +10,7 @@ public class SnakeShot : Weapon
     bool previousFire = false;
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] Transform BulletSpawn;
+    [SerializeField] LayerMask GroundMask;
 
     void Awake()
     {
@@ -26,7 +27,15 @@ public class SnakeShot : Weapon
 
     private void FireBullet()
     {
-        var bullet = Instantiate(BulletPrefab, BulletSpawn.position, Quaternion.identity).GetComponent<Bullet>();
+        Vector2 rayOrigin = new Vector2(transform.position.x, BulletSpawn.position.y);
+        float rayDistance = Mathf.Abs(BulletSpawn.position.x - transform.position.x);
+        RaycastHit2D wallHit = Physics2D.Raycast(rayOrigin, transform.right, rayDistance, GroundMask);
+        Vector2 spawnPos = BulletSpawn.position;
+        if (wallHit.collider != null)
+        {
+            spawnPos.x = transform.position.x;
+        }
+        var bullet = Instantiate(BulletPrefab, spawnPos, Quaternion.identity).GetComponent<Bullet>();
         bullet.Init(transform.right);
     }
 

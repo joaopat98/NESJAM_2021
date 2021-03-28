@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public struct MovementInput
     {
         public float Horizontal;
+        public float Vertical;
         public bool StartJump;
         public bool EndJump;
 
@@ -27,7 +28,10 @@ public class PlayerMovement : MonoBehaviour
 
     HashSet<object> movementLocks = new HashSet<object>();
 
+    HashSet<object> verticalLocks = new HashSet<object>();
+
     public bool IsMovementLocked { get => movementLocks.Count > 0; }
+    public bool IsVerticalLocked { get => verticalLocks.Count > 0; }
 
     CharacterController2D controller;
     float VerticalVelocity;
@@ -74,40 +78,44 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //Apply Gravity
+        if (!IsVerticalLocked)
+        {
+            //Apply Gravity
 
-        if (VerticalVelocity < 0)
-        {
-            VerticalVelocity += Physics.gravity.y * GravityScale * FallMultiplier * Time.deltaTime;
-        }
-        else
-        {
-            VerticalVelocity += Physics.gravity.y * GravityScale * Time.deltaTime;
+            if (VerticalVelocity < 0)
+            {
+                VerticalVelocity += Physics.gravity.y * GravityScale * FallMultiplier * Time.deltaTime;
+            }
+            else
+            {
+                VerticalVelocity += Physics.gravity.y * GravityScale * Time.deltaTime;
+            }
+
+            //When grounded, vertical velocity is always slightly downward
+            if (controller.isGrounded && VerticalVelocity < 0)
+            {
+                VerticalVelocity = 0;
+            }
+
+            if (controller.hasCeiling && VerticalVelocity > 0)
+            {
+                VerticalVelocity = 0;
+            }
+
+            //Cancel jump
+            if (VerticalVelocity > 0 && input.EndJump && !forcedJump)
+            {
+                VerticalVelocity = 0;
+            }
+
+            //Jump when grounded
+            if (controller.isGrounded && input.StartJump)
+            {
+                Jump();
+            }
+            moveVel += VerticalVelocity * Vector2.up;
         }
 
-        //When grounded, vertical velocity is always slightly downward
-        if (controller.isGrounded && VerticalVelocity < 0)
-        {
-            VerticalVelocity = 0;
-        }
-
-        if (controller.hasCeiling && VerticalVelocity > 0)
-        {
-            VerticalVelocity = 0;
-        }
-
-        //Cancel jump
-        if (VerticalVelocity > 0 && input.EndJump && !forcedJump)
-        {
-            VerticalVelocity = 0;
-        }
-
-        //Jump when grounded
-        if (controller.isGrounded && input.StartJump)
-        {
-            Jump();
-        }
-        moveVel += VerticalVelocity * Vector2.up;
 
         controller.Move(moveVel * Time.deltaTime);
         //controller.Move(moveVel * Time.deltaTime);
@@ -125,15 +133,22 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Lock(object owner)
+    public void Lock(object owner, bool vertical = false)
     {
         movementLocks.Add(owner);
+        if (vertical)
+        {
+            verticalLocks.Add(owner);
+        }
+
     }
 
     public void Release(object owner)
     {
         if (movementLocks.Contains(owner))
             movementLocks.Remove(owner);
+        if (verticalLocks.Contains(owner))
+            verticalLocks.Remove(owner);
     }
 
     public void Jump()

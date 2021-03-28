@@ -104,12 +104,8 @@ public class SnakeBullet : Bullet
                 {
                     transform.Rotate(Vector3.forward, -90);
                 }
-                direction = new Vector2(0, 1);
             }
-            else
-            {
-                direction = new Vector2(Mathf.Sign(direction.x), 0);
-            }
+            direction = new Vector2(Mathf.Sign(direction.x), 0);
             hit = Physics2D.Raycast(head.position, -transform.up, rayDistance, groundMask);
             rigidbody.position = hit.point + hit.normal * colliderSize;
         }

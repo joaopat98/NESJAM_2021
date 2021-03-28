@@ -950,6 +950,9 @@ MonoBehaviour:
   TimeBetweenFire: 0
   BulletPrefab: {fileID: 7508031161343455810, guid: eaf3c0aaae1543748aa792a7f0a402ce, type: 3}
   BulletSpawn: {fileID: 1173249362058522418}
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5890770837557446143
 GameObject:
   m_ObjectHideFlags: 0
