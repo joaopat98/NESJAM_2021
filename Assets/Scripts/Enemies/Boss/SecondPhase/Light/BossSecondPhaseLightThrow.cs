@@ -16,7 +16,7 @@ public class BossSecondPhaseLightThrow : BossSecondPhaseLightState
         if (!phaseProps.Started)
         {
             phaseProps.Started = true;
-            phaseProps.Assets.SetActive(true);
+            props.Assets.SetActive(true);
             transform.position = props.StartPoint.position;
         }
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SnakeBullet : Bullet
+public class SnakeBullet : PlayerBullet
 {
     private bool hitFloor = false;
     public int maxBounces = 3;

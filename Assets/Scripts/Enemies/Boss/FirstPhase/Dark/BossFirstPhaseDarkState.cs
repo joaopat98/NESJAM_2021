@@ -18,8 +18,11 @@ public abstract class BossFirstPhaseDarkState : BossState
         base.OnGetHit();
         if (!target.isClone && target.CurrentHealth <= phaseProps.HealthThreshold)
         {
-            phaseProps.Assets.SetActive(false);
-            //SetState(BossSecondPhaseDarkThrow.Create(target));
+            props.Assets.SetActive(false);
+            Destroy(target.other.gameObject);
+            target.SetShieldStatus(true);
+            target.other = null;
+            SetState(BossSecondPhaseDarkHover.Create(target));
         }
     }
 }

@@ -5,12 +5,12 @@ public class Boss : EnemyBase<Boss>
     [System.Serializable]
     public class First
     {
-        public GameObject Assets;
         public int HealthThreshold;
 
         [System.Serializable]
         public class Light
         {
+            public GameObject Assets;
             public GameObject BombPrefab;
             public int NumBombs;
             public float TimeBetweenBombs;
@@ -25,6 +25,7 @@ public class Boss : EnemyBase<Boss>
         [System.Serializable]
         public class Dark
         {
+            public GameObject Assets;
             public GameObject ClonePrefab;
             public GameObject BulletPrefab;
             public float TimeBetweenShots;
@@ -42,12 +43,13 @@ public class Boss : EnemyBase<Boss>
     [System.Serializable]
     public class Second
     {
-        public GameObject Assets;
         public int HealthThreshold;
         [HideInInspector] public bool Started = false;
 
+        [System.Serializable]
         public class Light
         {
+            public GameObject Assets;
             public Transform StartPoint;
             public GameObject BombPrefab;
             public float TimeBetweenBombs;
@@ -58,6 +60,23 @@ public class Boss : EnemyBase<Boss>
         [System.Serializable]
         public class Dark
         {
+            public GameObject Assets;
+            [HideInInspector] public bool Started;
+            public int Damage;
+            public float ImpulseStrength;
+            public float ImpulseTime;
+            public Transform StartPos;
+            public LayerMask HitMask;
+            public float FlySpeed;
+            public float AttackRange;
+
+            public float FlyRange;
+
+            public float LockOnTime;
+
+            public float DropSpeed;
+
+            public float RecoverSpeed;
         }
 
         public Dark dark;
@@ -80,6 +99,7 @@ public class Boss : EnemyBase<Boss>
     public Third third;
 
     public GameObject Shield;
+    public GameObject SecondShield;
     [HideInInspector] public bool isClone;
 
     [HideInInspector] public Boss other;
