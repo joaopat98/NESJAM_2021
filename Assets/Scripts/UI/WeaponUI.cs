@@ -15,6 +15,7 @@ public class WeaponUI : MonoBehaviour
         player = PlayerEntity.instance;
         image = gameObject.GetComponent<Image>();
         lastWeapon = player.weapons.GetCurrentSet().GetCurrentWeapon();
+        image.sprite = lastWeapon.icon;
     }
 
     void Update()
