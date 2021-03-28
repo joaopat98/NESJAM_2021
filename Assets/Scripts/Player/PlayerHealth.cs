@@ -24,12 +24,16 @@ public class PlayerHealth : MonoBehaviour
 
     public PlayerGetHitEvent OnGetHit = new PlayerGetHitEvent();
 
+    private AudioManager audioManager;
+
 
     public bool isAlive { get => CurrentHealth > 0; }
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         player = GetComponent<PlayerEntity>();
         renderer = GetComponent<SpriteRenderer>();
         CurrentHealth = MaxHealth;
@@ -98,6 +102,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Respawn()
     {
+        audioManager.Play("PlayerDeath");
         Vector3 respawnPoint = RoomManager.GetCurrentRespawnPoint();
         player.controller.Teleport(respawnPoint);
         WorldManager.SwitchWorld();

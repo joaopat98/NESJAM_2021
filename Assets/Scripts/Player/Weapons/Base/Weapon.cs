@@ -11,8 +11,10 @@ public abstract class Weapon : MonoBehaviour
     public float TimeBetweenFire;
     protected float TimeSinceLastFire;
     private bool ableToFire = false;
+    private AudioManager audioManager;
     public virtual void Init(PlayerEntity player)
     {
+        audioManager = FindObjectOfType<AudioManager>();
         this.player = player;
         TimeSinceLastFire = TimeBetweenFire;
     }
@@ -20,6 +22,11 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void OnEnable() { }
 
     protected virtual void OnDisable() { }
+
+    protected virtual void FireBullet()
+    {
+        audioManager.Play("Shot");
+    }
 
     protected abstract void OnFire(InputValue value);
 
