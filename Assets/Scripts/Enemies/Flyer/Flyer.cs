@@ -13,10 +13,20 @@ public class Flyer : EnemyBase<Flyer>
     public LayerMask playerLayer;
     [HideInInspector] public Vector3 startPosition;
 
+    public int Damage;
+
     protected override void Start()
     {
         base.Start();
         state = FlyerFlying.Create(this);
         startPosition = transform.position;
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            PlayerEntity.instance.health.Hit(Damage);
+        }
     }
 }

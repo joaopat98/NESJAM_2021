@@ -37,7 +37,6 @@ public class PlayerHealth : MonoBehaviour
         player = GetComponent<PlayerEntity>();
         renderer = GetComponent<SpriteRenderer>();
         CurrentHealth = MaxHealth;
-        Debug.Log(hasRan);
         if (!hasRan)
         {
             CurrentLives = NumLives;
