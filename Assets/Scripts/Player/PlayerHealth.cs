@@ -24,12 +24,16 @@ public class PlayerHealth : MonoBehaviour
 
     public PlayerGetHitEvent OnGetHit = new PlayerGetHitEvent();
 
+    private AudioManager audioManager;
+
 
     public bool isAlive { get => CurrentHealth > 0; }
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = FindObjectOfType<AudioManager>();
+
         player = GetComponent<PlayerEntity>();
         renderer = GetComponent<SpriteRenderer>();
         CurrentHealth = MaxHealth;
@@ -54,6 +58,8 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(Invincibility());
             if (!isAlive)
             {
+                audioManager.Play("PlayerDeath");
+
                 CurrentHealth = MaxHealth;
                 CurrentLives--;
                 if (CurrentLives > 0)
@@ -63,6 +69,8 @@ public class PlayerHealth : MonoBehaviour
             }
             else
             {
+                audioManager.Play("TakeDamage");
+
                 if (impulse != null)
                 {
                     player.controller.AddImpulse(impulse);

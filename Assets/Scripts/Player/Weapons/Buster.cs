@@ -34,8 +34,9 @@ public class Buster : Weapon
         }
     }
 
-    void FireBullet()
+    protected override void FireBullet()
     {
+        base.FireBullet();
         chargeShot.EndTimer(bulletSpawn);
     }
 
