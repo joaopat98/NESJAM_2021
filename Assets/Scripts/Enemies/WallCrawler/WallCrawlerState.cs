@@ -4,6 +4,7 @@ public abstract class WallCrawlerState : EnemyState<WallCrawler>
 {
     new protected SpriteRenderer renderer;
     protected Animator animator;
+    protected int direction;
     protected static new T Create<T>(WallCrawler target) where T : WallCrawlerState
     {
         var state = EnemyState<WallCrawler>.Create<T>(target);

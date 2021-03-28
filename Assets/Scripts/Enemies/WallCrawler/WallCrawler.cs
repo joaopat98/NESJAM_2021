@@ -7,10 +7,11 @@ public class WallCrawler : EnemyBase<WallCrawler>
 
     public bool startUp;
     public float walkSpeed = 2f;
-    public float attackRange = 0.5f;
+    public float verticalAttackRange = 0.5f;
+    public float horizontalAttackRange = 10f;
     public Transform Head;
 
-    public float RayDistance;
+    //public float RayDistance;
 
     public LayerMask directionChangers;
 
