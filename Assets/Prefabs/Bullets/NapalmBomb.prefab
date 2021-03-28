@@ -151,5 +151,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   Speed: 5
-  detonationTime: 1
+  detonationTime: 1.5
   bulletPrefab: {fileID: 1782957219059536024, guid: f9d295283407ee14a8bc6371c65149dc, type: 3}
