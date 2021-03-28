@@ -207,10 +207,10 @@ public class PlayerAnimations : MonoBehaviour
                 }
             }
         } while (MovedState);
-        if (player.movement.HorizontalOutput != 0)
+        if (player.movement.input.Horizontal != 0)
         {
-            renderer.flipX = player.movement.HorizontalOutput < 0;
-            flipParent.rotation = Quaternion.Euler(0, player.movement.HorizontalOutput < 0 ? 180 : 0, 0);
+            renderer.flipX = player.movement.input.Horizontal < 0;
+            flipParent.rotation = Quaternion.Euler(0, player.movement.input.Horizontal < 0 ? 180 : 0, 0);
         }
     }
 }
