@@ -81,6 +81,18 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: MenuIntro
+    clip: {fileID: 8300000, guid: 82dfe3eee9e16f3459dce74d984ba205, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MenuLoop
+    clip: {fileID: 8300000, guid: 1376c2e77b1b93944a24e747511abe7d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: Shot
     clip: {fileID: 8300000, guid: 5b76fd6c3ad3f064babceee68e7be3a7, type: 3}
     volume: 1
