@@ -498,7 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VerticalRays: 16
   HorizontalRays: 8
-  SkinWidth: 0.02
+  SkinWidth: 0.06
   PlatformMask:
     serializedVersion: 2
     m_Bits: 320
