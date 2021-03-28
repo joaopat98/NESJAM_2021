@@ -3,12 +3,14 @@ using UnityEngine;
 
 public abstract class BossFirstPhaseLightState : BossState
 {
-    protected Boss.Light.First props;
+    protected Boss.First phaseProps;
+    protected Boss.First.Light props;
     protected Coroutine teleportCoroutine;
     public static new T Create<T>(Boss target) where T : BossFirstPhaseLightState
     {
         var state = BossState.Create<T>(target);
-        state.props = target.light.first;
+        state.phaseProps = target.first;
+        state.props = target.first.light;
         return state;
     }
 
@@ -30,11 +32,11 @@ public abstract class BossFirstPhaseLightState : BossState
     public override void OnGetHit()
     {
         base.OnGetHit();
-        if (target.CurrentHealth <= props.HealthThreshold)
+        if (target.CurrentHealth <= phaseProps.HealthThreshold)
         {
             if (teleportCoroutine != null)
                 StopCoroutine(teleportCoroutine);
-            props.Assets.SetActive(false);
+            phaseProps.Assets.SetActive(false);
             SetState(BossSecondPhaseLightThrow.Create(target));
         }
         else

@@ -13,10 +13,10 @@ public class BossSecondPhaseLightThrow : BossSecondPhaseLightState
     public override void StateStart()
     {
         base.StateStart();
-        if (!props.Started)
+        if (!phaseProps.Started)
         {
-            props.Started = true;
-            props.Assets.SetActive(true);
+            phaseProps.Started = true;
+            phaseProps.Assets.SetActive(true);
             transform.position = props.StartPoint.position;
         }
     }
