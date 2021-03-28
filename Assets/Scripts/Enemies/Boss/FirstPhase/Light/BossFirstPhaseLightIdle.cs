@@ -8,6 +8,13 @@ public class BossFirstPhaseLightIdle : BossFirstPhaseLightState
         var state = BossFirstPhaseLightState.Create<BossFirstPhaseLightIdle>(target);
         return state;
     }
+
+    public override void StateStart()
+    {
+        base.StateStart();
+        transform.position = props.Teleports[0].position;
+    }
+
     public override void StateUpdate()
     {
         t += Time.deltaTime;

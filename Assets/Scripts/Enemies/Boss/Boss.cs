@@ -19,7 +19,22 @@ public class Boss : EnemyBase<Boss>
             public Transform[] Teleports;
             [HideInInspector] public int currentTeleport;
         }
+
         public Light light;
+
+        [System.Serializable]
+        public class Dark
+        {
+            public GameObject ClonePrefab;
+            public GameObject BulletPrefab;
+            public float TimeBetweenShots;
+            public Transform StartPos;
+            public Transform CloneStart;
+            public LayerMask GroundMask;
+            public float Speed;
+        }
+
+        public Dark dark;
     }
     public First first;
 
@@ -38,6 +53,13 @@ public class Boss : EnemyBase<Boss>
         }
 
         public Light light;
+
+        [System.Serializable]
+        public class Dark
+        {
+        }
+
+        public Dark dark;
     }
 
     public Second second;
@@ -56,10 +78,13 @@ public class Boss : EnemyBase<Boss>
 
     public Third third;
 
+    public bool isClone;
+
+    [HideInInspector] public Boss other;
+
     protected override void Start()
     {
         base.Start();
-        transform.position = first.light.Teleports[0].position;
-        state = BossFirstPhaseLightIdle.Create(this);
+        state = BossFirstPhaseDarkIdle.Create(this);
     }
 }
