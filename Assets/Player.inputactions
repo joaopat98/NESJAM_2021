@@ -22,6 +22,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "WeaponSwitch",
+                    "type": "Button",
+                    "id": "99c5e290-0402-4a27-ba3e-eece930eae24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "Jump",
                     "type": "Value",
                     "id": "652158e1-6b68-43ad-825e-cc20bffa31fa",
@@ -226,6 +234,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1fc8780-710d-49e1-b1e2-cbe93595e372",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "WeaponSwitch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

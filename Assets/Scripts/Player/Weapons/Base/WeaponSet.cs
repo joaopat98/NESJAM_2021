@@ -53,6 +53,11 @@ public class WeaponSet : MonoBehaviour
 
     }
 
+    void OnWeaponSwitch()
+    {
+        NextWeapon();
+    }
+
     #region "Public Getter"
     public Weapon GetCurrentWeapon() { return weapons[currentIndex]; }
     #endregion

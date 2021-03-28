@@ -25,6 +25,10 @@ public class PlayerWeapons : MonoBehaviour
         {
             set.Init(player);
         }
+        WorldManager.OnWorldSwitch.AddListener(world =>
+        {
+            SwitchToSet(world.ToString());
+        });
     }
 
     public void SwitchToSet(int index)
@@ -55,8 +59,6 @@ public class PlayerWeapons : MonoBehaviour
             weaponSets[i].gameObject.SetActive(i == index);
         }
     }
-
-
 
     #region "Public Getters"
     public WeaponSet GetCurrentSet() { return weaponSets[currentIndex]; }

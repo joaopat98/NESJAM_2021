@@ -14,6 +14,7 @@ public abstract class Weapon : MonoBehaviour
     public virtual void Init(PlayerEntity player)
     {
         this.player = player;
+        TimeSinceLastFire = TimeBetweenFire;
     }
 
     protected virtual void OnEnable() { }
