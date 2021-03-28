@@ -20,8 +20,57 @@ public class SnakeBullet : Bullet
         colliderSize = collider.bounds.extents.y;
     }
 
+    protected override void Update()
+    {
+        base.Update();
+        if (!hitFloor)
+        {
+            transform.localPosition += (Vector3)(direction.normalized + Vector2.down) * Speed * Time.deltaTime;
+        }
+        else
+        {
+            Vector3 moveVector;
+            if (transform.parent != null)
+            {
+                moveVector = transform.parent.InverseTransformVector(head.right * Speed * Time.deltaTime);
+            }
+            else
+            {
+                moveVector = head.right * Speed * Time.deltaTime;
+            }
+            transform.localPosition += moveVector;
+            bool horizontal = direction.x != 0;
+
+            RaycastHit2D down = Physics2D.Raycast(head.position, -head.up, rayDistance, groundMask);
+            RaycastHit2D forward = Physics2D.Raycast(head.position, head.right, rayDistance, groundMask);
+
+            //escolher direção do down
+            if (down.collider == null && forward.collider == null)
+            {
+                RaycastHit2D wallHit = Physics2D.Raycast(WallFinder.position, -WallFinder.right, rayDistance, groundMask);
+                transform.Rotate(Vector3.forward, -90 * Mathf.Sign(direction.x));
+                transform.position = wallHit.point + wallHit.normal * colliderSize;
+                bounces++;
+            }
+            //escolher direção oposta ao down
+            else if (down.collider != null && forward.collider != null)
+            {
+                transform.Rotate(Vector3.forward, 90 * Mathf.Sign(direction.x));
+                bounces++;
+                transform.position = forward.point + forward.normal * colliderSize;
+            }
+            if (bounces > maxBounces)
+            {
+                Destroy(gameObject);
+            }
+
+            //Debug.Log(bounces);
+        }
+    }
+
     protected override void FixedUpdate()
     {
+        /*
         if (!hitFloor)
         {
             rigidbody.MovePosition(rigidbody.position + (direction.normalized + Vector2.down) * Speed * Time.deltaTime);
@@ -39,18 +88,6 @@ public class SnakeBullet : Bullet
             {
                 RaycastHit2D wallHit = Physics2D.Raycast(WallFinder.position, -WallFinder.right, rayDistance, groundMask);
                 transform.Rotate(Vector3.forward, -90 * Mathf.Sign(direction.x));
-                /*
-                if (horizontal)
-                {
-                    direction.x = 0;
-                    direction.y = transform.up.y > 0 ? -1 : 1;
-                }
-                else
-                {
-                    direction.x = transform.up.x > 0 ? -1 : 1;
-                    direction.y = 0;
-                }
-                */
                 rigidbody.MovePosition(wallHit.point + wallHit.normal * colliderSize);
                 bounces++;
             }
@@ -58,18 +95,6 @@ public class SnakeBullet : Bullet
             else if (down.collider != null && forward.collider != null)
             {
                 transform.Rotate(Vector3.forward, 90 * Mathf.Sign(direction.x));
-                /*
-                if (horizontal)
-                {
-                    direction.x = 0;
-                    direction.y = transform.up.y > 0 ? 1 : -1;
-                }
-                else
-                {
-                    direction.x = transform.up.x < 0 ? -1 : 1;
-                    direction.y = 0;
-                }
-                */
                 bounces++;
                 rigidbody.MovePosition(forward.point + forward.normal * colliderSize);
             }
@@ -79,7 +104,9 @@ public class SnakeBullet : Bullet
             }
 
             //Debug.Log(bounces);
+    
         }
+        */
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
@@ -107,7 +134,11 @@ public class SnakeBullet : Bullet
             }
             direction = new Vector2(Mathf.Sign(direction.x), 0);
             hit = Physics2D.Raycast(head.position, -transform.up, rayDistance, groundMask);
-            rigidbody.position = hit.point + hit.normal * colliderSize;
+            transform.position = hit.point + hit.normal * colliderSize;
+            if (collider.CompareTag("Moving Platform"))
+            {
+                transform.SetParent(collider.transform);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Platform
   - Ladder
+  - Moving Platform
   layers:
   - Default
   - TransparentFX
