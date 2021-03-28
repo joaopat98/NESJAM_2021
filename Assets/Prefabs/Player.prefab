@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1583c3d7b74332c4982c1ac295fb5448, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsJumping: 0
   Speed: 10
   JumpHeight: 4
   GravityScale: 8
@@ -934,7 +935,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4537895038253593663
 Transform:
   m_ObjectHideFlags: 0
@@ -962,7 +963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eef37d2c7d8fa94cbbd71aa43b79cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unlocked: 0
+  Unlocked: 1
   TimeBetweenFire: 0
   BulletPrefab: {fileID: 7508031161343455810, guid: eaf3c0aaae1543748aa792a7f0a402ce, type: 3}
   BulletSpawn: {fileID: 1173249362058522418}
@@ -982,7 +983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7583439985734860363
 Transform:
   m_ObjectHideFlags: 0
@@ -1010,7 +1011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a929cacb3f91b4f8d2f89bd0a4bf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unlocked: 1
+  Unlocked: 0
   TimeBetweenFire: 0
   BulletPrefab: {fileID: 8035390794158653678, guid: 141716d3744f5ee4fab94abacdfc5ae5, type: 3}
   BulletSpawn: {fileID: 1061442615424531610}

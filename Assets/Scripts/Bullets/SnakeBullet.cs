@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,17 +28,17 @@ public class SnakeBullet : Bullet
         }
         else
         {
-            rigidbody.MovePosition(rigidbody.position + (Vector2)transform.right.normalized * Speed * Time.deltaTime);
+            rigidbody.MovePosition(rigidbody.position + (Vector2)head.right * Speed * Time.deltaTime);
             bool horizontal = direction.x != 0;
 
-            RaycastHit2D down = Physics2D.Raycast(head.position, -transform.up, rayDistance, groundMask);
-            RaycastHit2D forward = Physics2D.Raycast(head.position, transform.right, rayDistance, groundMask);
+            RaycastHit2D down = Physics2D.Raycast(head.position, -head.up, rayDistance, groundMask);
+            RaycastHit2D forward = Physics2D.Raycast(head.position, head.right, rayDistance, groundMask);
 
             //escolher direção do down
             if (down.collider == null && forward.collider == null)
             {
-                RaycastHit2D wallHit = Physics2D.Raycast(WallFinder.position, -transform.right, rayDistance, groundMask);
-                transform.Rotate(Vector3.forward, -90);
+                RaycastHit2D wallHit = Physics2D.Raycast(WallFinder.position, -WallFinder.right, rayDistance, groundMask);
+                transform.Rotate(Vector3.forward, -90 * Mathf.Sign(direction.x));
                 /*
                 if (horizontal)
                 {
@@ -57,7 +57,7 @@ public class SnakeBullet : Bullet
             //escolher direção oposta ao down
             else if (down.collider != null && forward.collider != null)
             {
-                transform.Rotate(Vector3.forward, 90);
+                transform.Rotate(Vector3.forward, 90 * Mathf.Sign(direction.x));
                 /*
                 if (horizontal)
                 {

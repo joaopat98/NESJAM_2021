@@ -15527,11 +15527,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3254133139507212980, guid: f030dda7c0fc8704d9a8ce3145884e4b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.5048
+      value: 21.5
       objectReference: {fileID: 0}
     - target: {fileID: 3254133139507212980, guid: f030dda7c0fc8704d9a8ce3145884e4b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.91
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3254133139507212980, guid: f030dda7c0fc8704d9a8ce3145884e4b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15581,18 +15581,6 @@ PrefabInstance:
     - target: {fileID: 2618131490952504859, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_CategoryHash
       value: -3.898267e-13
-      objectReference: {fileID: 0}
-    - target: {fileID: 3551230274612433946, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3551230274612433948, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
-      propertyPath: BulletPrefab
-      value: 
-      objectReference: {fileID: 432945860730461941, guid: c10a5579f52a6a04ea2f7e28a92564af, type: 3}
-    - target: {fileID: 3551230274612433948, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
-      propertyPath: TimeBetweenFire
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3551230275707976961, guid: 683806eaefe8d35429b6edd81e8d10fe, type: 3}
       propertyPath: m_Sprite
