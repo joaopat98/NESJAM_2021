@@ -14,6 +14,7 @@ public class ShooterIdle : ShooterState
         base.StateStart();
         cooldownLeft = target.shootingCooldown;
         //TODO trocar sprite
+        animator.Play("Idle");
     }
 
     public override void StateUpdate()

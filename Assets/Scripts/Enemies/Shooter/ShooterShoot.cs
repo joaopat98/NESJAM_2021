@@ -21,6 +21,7 @@ public class ShooterShoot : ShooterState
         prepareCooldown = target.TimeToPrepare;
         idleCooldown = target.TimeToPrepare;
         bulletCooldown = target.fireRate;
+        animator.Play("Shoot");
     }
 
     public override void StateUpdate()
