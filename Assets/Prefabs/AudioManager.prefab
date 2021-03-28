@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3298322795555205590}
   - component: {fileID: 3298322795555205591}
-  - component: {fileID: 390506118}
+  - component: {fileID: 6169586697070748471}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -123,7 +123,7 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
---- !u!114 &390506118
+--- !u!114 &6169586697070748471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
