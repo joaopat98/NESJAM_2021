@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public abstract class Weapon : MonoBehaviour
 {
+    public Sprite icon;
     public bool Unlocked;
     protected PlayerEntity player;
 
