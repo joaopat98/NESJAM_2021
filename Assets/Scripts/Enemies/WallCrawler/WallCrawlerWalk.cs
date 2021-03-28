@@ -26,7 +26,6 @@ public class WallCrawlerWalk : WallCrawlerState
     public override void StateUpdate()
     {
         renderer.flipY = direction > 0;
-        Debug.Log(direction);
         transform.Translate(Vector3.up * direction * target.walkSpeed * Time.deltaTime);
         RaycastHit2D up = Physics2D.Raycast(target.bulletSpawn.position, -target.bulletSpawn.right, target.horizontalAttackRange, target.playerMask);
 
