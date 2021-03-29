@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6059394830734441771}
   - component: {fileID: 6059394830734441780}
   - component: {fileID: 1649547659195357236}
+  - component: {fileID: 1975620342}
   m_Layer: 0
   m_Name: WallCrawler
   m_TagString: Untagged
@@ -78,8 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736f9291461fc4f4ebcaf65f94acdce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 3
-  MaxHealth: 3
+  CurrentHealth: 1
+  MaxHealth: 1
   ExplosionPrefab: {fileID: 0}
   ExplosionSpawn: {fileID: 0}
   startUp: 0
@@ -135,7 +136,7 @@ SpriteRenderer:
   m_SortingLayerID: -1389633787
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dfc829c97ba01e541839e683a42b3c5e, type: 3}
+  m_Sprite: {fileID: -144086436941075341, guid: f4c62c1434e142a42b451f1468373d00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -162,8 +163,8 @@ BoxCollider2D:
   m_Offset: {x: -0.054354668, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5625, y: 0.5625}
-    oldSize: {x: 2, y: 2}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -206,3 +207,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Children: {fileID: 5932033422158853625}
+--- !u!95 &1975620342
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059394830734441775}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa7d0681b67c42f4782ff509da6de12c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

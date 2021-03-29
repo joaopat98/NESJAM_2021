@@ -60,6 +60,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   startPosition: {x: 0, y: 0, z: 0}
+  Damage: 1
 --- !u!212 &405836795824123294
 SpriteRenderer:
   m_ObjectHideFlags: 0

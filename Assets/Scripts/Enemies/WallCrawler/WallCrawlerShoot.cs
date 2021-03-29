@@ -20,6 +20,7 @@ public class WallCrawlerShoot : WallCrawlerState
         prepareCooldown = target.TimeToPrepare;
         idleCooldown = target.TimeToPrepare;
         shot = false;
+        animator.Play("LockOn");
     }
 
     public override void StateUpdate()
@@ -30,6 +31,7 @@ public class WallCrawlerShoot : WallCrawlerState
             if (prepareCooldown <= 0)
             {
                 int bulletDirection = target.faceLeft ? -1 : 1;
+                animator.Play("Shoot");
                 var bullet = Instantiate(target.bulletPrefab, target.bulletSpawn.position, Quaternion.identity).GetComponent<Bullet>();
                 bullet.Init(transform.right * bulletDirection);
                 shot = true;
