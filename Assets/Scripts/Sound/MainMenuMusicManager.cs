@@ -6,9 +6,12 @@ public class MainMenuMusicManager : MonoBehaviour
 {
     private AudioManager audioManager;
 
+    public string intro = "MenuIntro";
+    public string loop = "MenuLoop";
+
     void Start()
     {
         audioManager = AudioManager.instance;
-        audioManager.SetMusic("MenuIntro", "MenuLoop");
+        audioManager.SetMusic(intro, loop);
     }
 }
