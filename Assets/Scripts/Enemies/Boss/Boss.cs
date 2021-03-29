@@ -6,11 +6,11 @@ public class Boss : EnemyBase<Boss>
     public class First
     {
         public int HealthThreshold;
+        public GameObject Assets;
 
         [System.Serializable]
         public class Light
         {
-            public GameObject Assets;
             public GameObject BombPrefab;
             public int NumBombs;
             public float TimeBetweenBombs;
@@ -18,6 +18,7 @@ public class Boss : EnemyBase<Boss>
             public float TeleportTime;
             public Transform[] Teleports;
             [HideInInspector] public int currentTeleport;
+            [HideInInspector] public bool started;
         }
 
         public Light light;
@@ -25,7 +26,6 @@ public class Boss : EnemyBase<Boss>
         [System.Serializable]
         public class Dark
         {
-            public GameObject Assets;
             public GameObject ClonePrefab;
             public GameObject BulletPrefab;
             public float TimeBetweenShots;
@@ -34,6 +34,7 @@ public class Boss : EnemyBase<Boss>
             public LayerMask GroundMask;
             public float Speed;
             public float TimeWithShield;
+            [HideInInspector] public bool started;
         }
 
         public Dark dark;
@@ -44,15 +45,16 @@ public class Boss : EnemyBase<Boss>
     public class Second
     {
         public int HealthThreshold;
-        [HideInInspector] public bool Started = false;
+        [HideInInspector] public bool started = false;
+        public GameObject Assets;
 
         [System.Serializable]
         public class Light
         {
-            public GameObject Assets;
             public Transform StartPoint;
             public GameObject BombPrefab;
             public float TimeBetweenBombs;
+            [HideInInspector] public bool started;
         }
 
         public Light light;
@@ -60,8 +62,7 @@ public class Boss : EnemyBase<Boss>
         [System.Serializable]
         public class Dark
         {
-            public GameObject Assets;
-            [HideInInspector] public bool Started;
+            [HideInInspector] public bool started;
             public int Damage;
             public float ImpulseStrength;
             public float ImpulseTime;

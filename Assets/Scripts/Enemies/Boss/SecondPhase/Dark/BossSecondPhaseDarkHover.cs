@@ -20,10 +20,14 @@ public class BossSecondPhaseDarkHover : BossSecondPhaseDarkState
         if (!target.isClone)
         {
             target.Shield.SetActive(true);
-            if (props.Started == false)
+            if (!phaseProps.started)
             {
-                props.Assets.SetActive(true);
-                props.Started = true;
+                phaseProps.Assets.SetActive(true);
+                phaseProps.started = true;
+            }
+            if (!props.started)
+            {
+                props.started = true;
                 target.SecondShield.SetActive(true);
                 transform.position = props.StartPos.position;
             }
