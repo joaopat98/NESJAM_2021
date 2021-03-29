@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     public int CurrentHealth;
     public int MaxHealth;
     public int NumLives;
+    public int shotsPerLife;
+    private int shotsHit;
     public float InvincibilityFrame;
     [SerializeField] float BlinkFrequency = 4;
     public float TimeToRecover;
@@ -119,5 +121,16 @@ public class PlayerHealth : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over");
+    }
+
+    public void AddHitScore()
+    {
+        if (CurrentLives < NumLives)
+            shotsHit++;
+        if (shotsHit >= shotsPerLife)
+        {
+                CurrentLives++;
+                shotsHit = 0;
+        }
     }
 }
