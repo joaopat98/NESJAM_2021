@@ -12,7 +12,11 @@ public class BossFirstPhaseLightIdle : BossFirstPhaseLightState
     public override void StateStart()
     {
         base.StateStart();
-        transform.position = props.Teleports[0].position;
+        if (!props.started)
+        {
+            props.started = true;
+            transform.position = props.Teleports[0].position;
+        }
     }
 
     public override void StateUpdate()

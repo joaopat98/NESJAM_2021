@@ -18,11 +18,22 @@ public abstract class BossFirstPhaseDarkState : BossState
         base.OnGetHit();
         if (!target.isClone && target.CurrentHealth <= phaseProps.HealthThreshold)
         {
-            props.Assets.SetActive(false);
             Destroy(target.other.gameObject);
-            target.SetShieldStatus(true);
+            target.SetShieldStatus(false);
             target.other = null;
+            phaseProps.Assets.SetActive(false);
             SetState(BossSecondPhaseDarkHover.Create(target));
+        }
+    }
+
+    protected override void WorldSwitch(WorldType world)
+    {
+        if (!target.isClone && world == WorldType.Light)
+        {
+            Destroy(target.other.gameObject);
+            target.SetShieldStatus(false);
+            target.other = null;
+            SetState(BossFirstPhaseLightIdle.Create(target));
         }
     }
 }
