@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 6398137780742429417}
   - component: {fileID: 4011897972310358494}
   - component: {fileID: 7813577826744761091}
+  - component: {fileID: 4222940573079230577}
   m_Layer: 0
   m_Name: SnakeBullet
   m_TagString: Untagged
@@ -141,18 +142,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.06450982, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 0.375}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.375}
+  m_Size: {x: 0.49555105, y: 0.24457759}
   m_EdgeRadius: 0
 --- !u!50 &3055146097057211363
 Rigidbody2D:
@@ -242,7 +243,7 @@ SpriteRenderer:
   m_SortingLayerID: -1389633787
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: -123894271831263638, guid: ba721b58a8a16da439c92360a67052d9, type: 3}
+  m_Sprite: {fileID: 9114149987288363760, guid: 54aecbe456897f94faa007fdeec26301, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -266,3 +267,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Children: {fileID: 372659327165941520}
+--- !u!95 &4222940573079230577
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508031161343455810}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7aa62f9b01613d04586b22dee4c4abb9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
