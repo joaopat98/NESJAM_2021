@@ -20,12 +20,12 @@ public class WallCrawlerWalk : WallCrawlerState
     public override void StateStart()
     {
         base.StateStart();
-        //TODO trocar sprite
+        animator.Play("Idle");
     }
 
     public override void StateUpdate()
     {
-        renderer.flipY = direction > 0;
+        //renderer.flipY = direction > 0;
         transform.Translate(Vector3.up * direction * target.walkSpeed * Time.deltaTime);
         RaycastHit2D up = Physics2D.Raycast(target.bulletSpawn.position, -target.bulletSpawn.right, target.horizontalAttackRange, target.playerMask);
 

@@ -18,8 +18,17 @@ public abstract class BossSecondPhaseLightState : BossState
         base.OnGetHit();
         if (target.CurrentHealth <= phaseProps.HealthThreshold)
         {
-            props.Assets.SetActive(false);
+            phaseProps.Assets.SetActive(false);
             SetState(BossThirdPhaseIdle.Create(target));
+        }
+    }
+
+    protected override void WorldSwitch(WorldType world)
+    {
+        if (world == WorldType.Dark)
+        {
+            props.started = false;
+            SetState(BossSecondPhaseDarkHover.Create(target));
         }
     }
 }

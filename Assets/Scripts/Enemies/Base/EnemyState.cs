@@ -6,12 +6,15 @@ public abstract class EnemyState : MonoBehaviour
     public virtual void StateStart()
     {
         Initialized = true;
+        WorldManager.OnWorldSwitch.AddListener(WorldSwitch);
     }
     public abstract void StateUpdate();
 
     public virtual void StateFixedUpdate() { }
 
     public virtual void OnGetHit() { }
+
+    protected virtual void WorldSwitch(WorldType world) { }
 
 }
 

@@ -21,6 +21,7 @@ public class ThrowerThrow : ThrowerState
         prepareCooldown = target.TimeToPrepare;
         idleCooldown = target.TimeToPrepare;
         bulletCooldown = target.fireRate;
+        animator.Play("Throw");
     }
 
     public override void StateUpdate()

@@ -36,12 +36,21 @@ public abstract class BossFirstPhaseLightState : BossState
         {
             if (teleportCoroutine != null)
                 StopCoroutine(teleportCoroutine);
-            props.Assets.SetActive(false);
+            phaseProps.Assets.SetActive(false);
             SetState(BossSecondPhaseLightThrow.Create(target));
         }
         else
         {
             StartCoroutine(PrepareTeleport());
+        }
+    }
+
+    protected override void WorldSwitch(WorldType world)
+    {
+        if (world == WorldType.Dark)
+        {
+            props.started = false;
+            SetState(BossFirstPhaseDarkIdle.Create(target));
         }
     }
 }
