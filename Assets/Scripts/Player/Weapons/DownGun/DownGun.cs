@@ -34,6 +34,7 @@ public class DownGun : Weapon
         bullet.Init(Vector3.down, this);
         player.movement.Jump(JumpBoost);
         ShotAvailable = false;
+        player.animations.StartDownShot = true;
     }
 
     void LateUpdate()

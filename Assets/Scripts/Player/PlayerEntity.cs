@@ -7,6 +7,7 @@ public class PlayerEntity : MonoBehaviour
     public static PlayerEntity instance { get; private set; }
     public PlayerAnimations animations { get; private set; }
     public PlayerMovement movement { get; private set; }
+    public PlayerLadderMovement ladder { get; private set; }
     public PlayerWeapons weapons { get; private set; }
     public PlayerHealth health { get; private set; }
     public CharacterController2D controller { get; private set; }
@@ -25,6 +26,7 @@ public class PlayerEntity : MonoBehaviour
         }
         animations = GetComponent<PlayerAnimations>();
         movement = GetComponent<PlayerMovement>();
+        ladder = GetComponent<PlayerLadderMovement>();
         weapons = GetComponent<PlayerWeapons>();
         health = GetComponent<PlayerHealth>();
         controller = GetComponent<CharacterController2D>();

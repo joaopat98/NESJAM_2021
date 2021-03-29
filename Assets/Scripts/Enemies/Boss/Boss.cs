@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Boss : EnemyBase<Boss>
 {
@@ -114,5 +116,14 @@ public class Boss : EnemyBase<Boss>
     public void SetShieldStatus(bool status)
     {
         Shield.SetActive(status);
+    }
+
+    void OnDestroy()
+    {
+        if (!isClone)
+        {
+            Debug.Log("End");
+            SceneManager.LoadScene("Scenes/Credits");
+        }
     }
 }

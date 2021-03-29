@@ -25,6 +25,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (isAlive)
         {
+            PlayerEntity.instance.health.AddHitScore();
             CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
             if (!isAlive)
             {
@@ -61,6 +62,7 @@ public abstract class EnemyBase<EnemyType> : EnemyBase where EnemyType : EnemyBa
     {
         if (isAlive)
         {
+            PlayerEntity.instance.health.AddHitScore();
             CurrentHealth = Mathf.Max(CurrentHealth - damage, 0);
             state.OnGetHit();
             if (!isAlive)
