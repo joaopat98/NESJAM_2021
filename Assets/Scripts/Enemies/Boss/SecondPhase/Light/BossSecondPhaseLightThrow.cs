@@ -30,6 +30,7 @@ public class BossSecondPhaseLightThrow : BossSecondPhaseLightState
         t += Time.deltaTime;
         if (t > props.TimeBetweenBombs)
         {
+            animator.Play("Shoot");
             t = 0;
             var bomb = Instantiate(props.BombPrefab, transform.position, Quaternion.identity).GetComponent<ThrowableBomb>();
             bomb.Init(PlayerEntity.instance.transform.position - transform.position);

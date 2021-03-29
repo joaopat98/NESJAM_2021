@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 2303756400339872590}
   - component: {fileID: 2303756400339872591}
   - component: {fileID: 3154527550693076642}
+  - component: {fileID: 1595857884615238494}
   m_Layer: 9
   m_Name: Boss
   m_TagString: Untagged
@@ -436,7 +437,7 @@ SpriteRenderer:
   m_SortingLayerID: -1389633787
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
+  m_Sprite: {fileID: 7161209093309611107, guid: 44dc41bb1545ee642a13da76984ccc7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -465,8 +466,8 @@ MonoBehaviour:
   ExplosionSpawn: {fileID: 0}
   first:
     HealthThreshold: 30
+    Assets: {fileID: 0}
     light:
-      Assets: {fileID: 0}
       BombPrefab: {fileID: 0}
       NumBombs: 0
       TimeBetweenBombs: 0
@@ -474,8 +475,8 @@ MonoBehaviour:
       TeleportTime: 0
       Teleports: []
       currentTeleport: 0
+      started: 0
     dark:
-      Assets: {fileID: 0}
       ClonePrefab: {fileID: 5644474679879106215, guid: 4927340d075186849a0f6b7d04107b1d, type: 3}
       BulletPrefab: {fileID: 1782957219059536024, guid: ea6c87721e3a99244a8596e0b65e1935, type: 3}
       TimeBetweenShots: 3
@@ -486,17 +487,18 @@ MonoBehaviour:
         m_Bits: 64
       Speed: 3
       TimeWithShield: 5
+      started: 0
   second:
     HealthThreshold: 20
-    Started: 0
+    started: 0
+    Assets: {fileID: 0}
     light:
-      Assets: {fileID: 0}
       StartPoint: {fileID: 0}
       BombPrefab: {fileID: 0}
       TimeBetweenBombs: 2
+      started: 0
     dark:
-      Assets: {fileID: 0}
-      Started: 0
+      started: 0
       Damage: 5
       ImpulseStrength: 5
       ImpulseTime: 0.25
@@ -543,14 +545,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!50 &3154527550693076642
 Rigidbody2D:
@@ -573,6 +575,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!95 &1595857884615238494
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2303756400339872584}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a873592c35112d41be77bb297f0159b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7252387042127850642
 GameObject:
   m_ObjectHideFlags: 0

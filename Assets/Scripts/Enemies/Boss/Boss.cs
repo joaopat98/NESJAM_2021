@@ -110,7 +110,15 @@ public class Boss : EnemyBase<Boss>
     protected override void Start()
     {
         base.Start();
-        state = BossFirstPhaseDarkIdle.Create(this);
+        switch (WorldManager.currentWorld)
+        {
+            case WorldType.Light:
+                state = BossFirstPhaseLightIdle.Create(this);
+                break;
+            case WorldType.Dark:
+                state = BossFirstPhaseDarkIdle.Create(this);
+                break;
+        }
     }
 
     public void SetShieldStatus(bool status)

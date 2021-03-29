@@ -32,6 +32,7 @@ public class BossSecondPhaseDarkStomp : BossSecondPhaseDarkState
         t += Time.deltaTime;
         if (t > props.LockOnTime)
         {
+            animator.Play("Shoot");
             transform.position += Vector3.down * props.DropSpeed * Time.deltaTime;
         }
     }

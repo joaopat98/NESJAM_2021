@@ -37,6 +37,7 @@ public class BossFirstPhaseDarkIdle : BossFirstPhaseDarkState
         transform.Translate(transform.right * direction * props.Speed * Time.deltaTime, Space.World);
         if (t > props.TimeBetweenShots)
         {
+            animator.Play("Shoot");
             t = 0;
             var bullet = Instantiate(props.BulletPrefab, transform.position, Quaternion.identity).GetComponent<Bullet>();
             bullet.Init(PlayerEntity.instance.transform.position - transform.position);

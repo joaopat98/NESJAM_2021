@@ -59,6 +59,7 @@ public class PlayerAnimations : MonoBehaviour
             {
                 if (PrepareBuster)
                 {
+                    Debug.Log(player.ladder.OnLadder);
                     if (player.ladder.OnLadder)
                     {
                         PrepareBuster = false;
@@ -102,6 +103,12 @@ public class PlayerAnimations : MonoBehaviour
             Condition = () => AnimationFinished && ActiveInputThisFrame
         };
 
+        PlayerAnimationStateTransition ClimbTransition = new PlayerAnimationStateTransition
+        {
+            To = () => Climb,
+            Condition = () => player.ladder.OnLadder
+        };
+
         Idle = new PlayerAnimationState
         {
             StateName = "Idle",
@@ -113,6 +120,7 @@ public class PlayerAnimations : MonoBehaviour
                     Condition = () => player.movement.HorizontalOutput != 0
                 },
                 BusterTransition,
+                ClimbTransition,
                 JumpTransition,
             }
         };
@@ -128,7 +136,22 @@ public class PlayerAnimations : MonoBehaviour
                     Condition = () => player.movement.HorizontalOutput == 0
                 },
                 BusterTransition,
+                ClimbTransition,
                 JumpTransition,
+            }
+        };
+
+        Climb = new PlayerAnimationState
+        {
+            StateName = "Climb",
+            Loop = true,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
+                BusterTransition,
+                new PlayerAnimationStateTransition {
+                    To = () => Idle,
+                    Condition = () => !player.ladder.OnLadder
+                }
             }
         };
 
@@ -193,9 +216,10 @@ public class PlayerAnimations : MonoBehaviour
 
         ClimbBuster = new PlayerAnimationState
         {
-            StateName = "Jump Buster",
+            StateName = "Climb Buster",
             Loop = false,
-            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+            ImmediateTransitions = new List<PlayerAnimationStateTransition>
+            {
                 new PlayerAnimationStateTransition {
                     To = () => Idle,
                     Condition = () => !player.ladder.OnLadder
@@ -226,6 +250,7 @@ public class PlayerAnimations : MonoBehaviour
                     Condition = () => player. controller.isGrounded
                 },
                 BusterTransition,
+                ClimbTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Fall,
                     Condition = () => player.controller.velocity.y < 0
@@ -244,6 +269,7 @@ public class PlayerAnimations : MonoBehaviour
                     Condition = () => player.controller.isGrounded
                 },
                 BusterTransition,
+                ClimbTransition,
             }
         };
 
@@ -313,7 +339,6 @@ public class PlayerAnimations : MonoBehaviour
                 }
             }
         } while (MovedState);
-        Debug.Log(TimesMoved);
         TimesMoved = 0;
         if (player.movement.input.Horizontal != 0)
         {

@@ -15,6 +15,7 @@ public class BossThirdPhaseShoot : BossThirdPhaseState
     {
         if (!shot)
         {
+            animator.Play("Shoot");
             shot = true;
             foreach (var dir in props.Teleports[props.currentTeleport].GetDirections())
             {
