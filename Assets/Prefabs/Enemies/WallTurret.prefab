@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 940473793275927721}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spawn3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 940473793278175500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spawn2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,8 @@ GameObject:
   - component: {fileID: 940473793404584021}
   - component: {fileID: 8118378004748555362}
   - component: {fileID: 6738338039827390045}
-  m_Layer: 0
+  - component: {fileID: -7299273514687881879}
+  m_Layer: 9
   m_Name: WallTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,6 +202,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Children: {fileID: 502368388317529080}
+--- !u!61 &-7299273514687881879
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940473793404584022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.015220299, y: 0.1255675}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 2, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.96955943, y: 0.9923898}
+  m_EdgeRadius: 0
 --- !u!1 &940473794544059526
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +237,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 940473794544059525}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spawn1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +267,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 502368388317529080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Children
   m_TagString: Untagged
   m_Icon: {fileID: 0}
