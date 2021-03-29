@@ -58,11 +58,11 @@ MonoBehaviour:
     - m_Name: Hit
       m_Hash: 1654612129
       m_Sprite: {fileID: 21300000, guid: 84443e42b0ac35e498dbf5497c051b31, type: 3}
-    - m_Name: ClimbingShot0
-      m_Hash: -243086001
+    - m_Name: ClimbingBuster0
+      m_Hash: 1505441157
       m_Sprite: {fileID: 7139558215109585454, guid: 425db16e69d216f40b9bb7688bde4164, type: 3}
-    - m_Name: ClimbingShot1
-      m_Hash: -2038039079
+    - m_Name: ClimbingBuster1
+      m_Hash: 784074003
       m_Sprite: {fileID: -2459987859654949922, guid: 425db16e69d216f40b9bb7688bde4164, type: 3}
     - m_Name: JumpBuster0
       m_Hash: -370917667
@@ -70,6 +70,18 @@ MonoBehaviour:
     - m_Name: JumpBuster1
       m_Hash: -1629286837
       m_Sprite: {fileID: 3681441821392402436, guid: b3a89519869d03841b29730cddba9e82, type: 3}
+    - m_Name: WalkBuster0
+      m_Hash: -1805013059
+      m_Sprite: {fileID: 916376318648572908, guid: 7213b08fa44f81945859a8466ee31a58, type: 3}
+    - m_Name: WalkBuster1
+      m_Hash: -479289557
+      m_Sprite: {fileID: 2015195999799003879, guid: 7213b08fa44f81945859a8466ee31a58, type: 3}
+    - m_Name: WalkBuster2
+      m_Hash: 2053623441
+      m_Sprite: {fileID: 657036097531723556, guid: 7213b08fa44f81945859a8466ee31a58, type: 3}
+    - m_Name: WalkBuster3
+      m_Hash: 224460295
+      m_Sprite: {fileID: -4697874954082979526, guid: 7213b08fa44f81945859a8466ee31a58, type: 3}
   - m_Name: Dark
     m_Hash: -1152511291
     m_CategoryList:
