@@ -10,11 +10,13 @@ public class Explosion : MonoBehaviour
     [SerializeField] float HorizontalImpulse = 3;
     [SerializeField] float UpwardImpulse = 5;
     [SerializeField] float DownwardImpulse = 1;
+    //public GameObject explosionAnimation;
 
     void OnValidate()
     {
         Range = Mathf.Max(Range, 0);
         GetComponent<CircleCollider2D>().radius = Range;
+       // Instantiate(explosionAnimation, this.transform);
     }
 
     void OnTriggerEnter2D(Collider2D collider)

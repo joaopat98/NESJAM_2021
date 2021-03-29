@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
             get
             {
                 return Horizontal != 0
+                    || Vertical != 0
                     || StartJump;
             }
         }
@@ -64,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        animations.ActiveInputThisFrame = input.isActive;
+        animations.ActiveInputThisFrame = animations.ActiveInputThisFrame || input.isActive;
 
         moveVel = Vector3.zero;
         HorizontalOutput = 0;
