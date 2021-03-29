@@ -9,5 +9,6 @@ public class CreditsMenu : MonoBehaviour
     public void Submit(BaseEventData data)
     {
         Debug.Log("TEST");
+        SceneManager.LoadScene(0);
     }
 }
