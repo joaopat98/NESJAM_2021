@@ -16,7 +16,6 @@ public class ShooterShoot : ShooterState
     public override void StateStart()
     {
         base.StateStart();
-        //TODO trocar de sprite
         direction = target.facingRight ? 1 : -1;
         prepareCooldown = target.TimeToPrepare;
         idleCooldown = target.TimeToPrepare;
