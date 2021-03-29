@@ -8,6 +8,7 @@ public class PlayerAnimations : MonoBehaviour
     PlayerEntity player;
     Animator anim;
     new SpriteRenderer renderer;
+    int TimesMoved = 0;
 
     bool MovedStateThisFrame;
 
@@ -159,6 +160,17 @@ public class PlayerAnimations : MonoBehaviour
             }
         };
 
+        RunBuster = new PlayerAnimationState
+        {
+            StateName = "Run Buster",
+            Loop = false,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                GetHitTransition,
+                BusterTransition,
+                BusterOutTransition,
+            }
+        };
+
         JumpBuster = new PlayerAnimationState
         {
             StateName = "Jump Buster",
@@ -267,6 +279,7 @@ public class PlayerAnimations : MonoBehaviour
         current.Play(anim);
         MovedState = true;
         MovedStateThisFrame = true;
+        TimesMoved++;
     }
 
     void LateUpdate()
@@ -300,7 +313,8 @@ public class PlayerAnimations : MonoBehaviour
                 }
             }
         } while (MovedState);
-        Debug.Log(current.StateName);
+        Debug.Log(TimesMoved);
+        TimesMoved = 0;
         if (player.movement.input.Horizontal != 0)
         {
             renderer.flipX = player.movement.input.Horizontal < 0;
