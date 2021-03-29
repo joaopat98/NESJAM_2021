@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb7a1447587d5845ba4e6e89be54693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 5181507960108375270, guid: 2bc78bb2ecf55d94fa48d727c70742eb, type: 3}
   Unlocked: 1
   TimeBetweenFire: 0.75
   BulletPrefab: {fileID: 1809762467263088743, guid: 99e70d41b633a2c41ba98b5fbd7b8264, type: 3}
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad32d663e0b131b4c99db83a4f00f626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4838c0618e25c3f4bbb7d69d451023fc, type: 3}
   Unlocked: 1
   TimeBetweenFire: 0.3
   BulletPrefab: {fileID: 432945860730461941, guid: b12a17929e45cf84aacfb4ca96acbc5e, type: 3}
@@ -477,6 +477,7 @@ MonoBehaviour:
   CurrentHealth: 0
   MaxHealth: 10
   NumLives: 3
+  shotsPerLife: 5
   InvincibilityFrame: 2
   BlinkFrequency: 12
   TimeToRecover: 0.5
@@ -900,7 +901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44c703145fdee641af6a868f78706f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 6096171766293946048, guid: 454b99299e694094c965e71013d89a86, type: 3}
   Unlocked: 1
   TimeBetweenFire: 0.3
   bulletSpawn: {fileID: 3551230276137039757}
@@ -995,7 +996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eef37d2c7d8fa94cbbd71aa43b79cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 205962192749836046, guid: 54aecbe456897f94faa007fdeec26301, type: 3}
   Unlocked: 1
   TimeBetweenFire: 0
   BulletPrefab: {fileID: 7508031161343455810, guid: eaf3c0aaae1543748aa792a7f0a402ce, type: 3}
@@ -1047,7 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a929cacb3f91b4f8d2f89bd0a4bf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 6ea7a153e6758e749a2e8dd79ed7ce36, type: 3}
   Unlocked: 1
   TimeBetweenFire: 2
   BulletPrefab: {fileID: 8035390794158653678, guid: 141716d3744f5ee4fab94abacdfc5ae5, type: 3}
@@ -1097,7 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44c703145fdee641af6a868f78706f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
+  icon: {fileID: 6096171766293946048, guid: 454b99299e694094c965e71013d89a86, type: 3}
   Unlocked: 1
   TimeBetweenFire: 0.3
   bulletSpawn: {fileID: 4730150514077122951}

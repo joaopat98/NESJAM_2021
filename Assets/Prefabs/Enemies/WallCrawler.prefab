@@ -80,8 +80,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736f9291461fc4f4ebcaf65f94acdce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 1
-  MaxHealth: 1
+  CurrentHealth: 3
+  MaxHealth: 3
   ExplosionPrefab: {fileID: 0}
   ExplosionSpawn: {fileID: 0}
   startUp: 0

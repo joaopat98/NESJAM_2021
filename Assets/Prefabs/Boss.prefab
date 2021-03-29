@@ -508,7 +508,7 @@ MonoBehaviour:
         m_Bits: 192
       FlySpeed: 5
       AttackRange: 1
-      FlyRange: 10
+      FlyRange: 8
       LockOnTime: 0.5
       DropSpeed: 10
       RecoverSpeed: 3

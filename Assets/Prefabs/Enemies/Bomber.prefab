@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2741260da2bed2f42bf945b44e8f64db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 0
-  MaxHealth: 10
-  ExplosionPrefab: {fileID: 0}
+  CurrentHealth: 3
+  MaxHealth: 3
+  ExplosionPrefab: {fileID: 2973301809393341137, guid: c1d7cff0938bdf5448a1378f032ad517, type: 3}
   ExplosionSpawn: {fileID: 0}
   FlySpeed: 4
   FlyRange: 7
