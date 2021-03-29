@@ -14,7 +14,7 @@ public class ThrowerIdle : ThrowerState
     {
         base.StateStart();
         cooldownLeft = target.shootingCooldown;
-        //TODO trocar sprite/animação
+        animator.Play("Idle");
     }
 
     public override void StateUpdate()
