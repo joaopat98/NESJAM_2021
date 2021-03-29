@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4631bd29ae6f543bf8c6447e073863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHealth: 5
-  MaxHealth: 5
+  CurrentHealth: 1
+  MaxHealth: 1
   ExplosionPrefab: {fileID: 0}
   ExplosionSpawn: {fileID: 0}
   shootingCooldown: 3
