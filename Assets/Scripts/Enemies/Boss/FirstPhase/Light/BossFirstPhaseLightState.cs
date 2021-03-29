@@ -36,7 +36,7 @@ public abstract class BossFirstPhaseLightState : BossState
         {
             if (teleportCoroutine != null)
                 StopCoroutine(teleportCoroutine);
-            phaseProps.Assets.SetActive(false);
+            props.Assets.SetActive(false);
             SetState(BossSecondPhaseLightThrow.Create(target));
         }
         else

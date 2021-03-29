@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccb7a1447587d5845ba4e6e89be54693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   Unlocked: 1
   TimeBetweenFire: 0.75
   BulletPrefab: {fileID: 1809762467263088743, guid: 99e70d41b633a2c41ba98b5fbd7b8264, type: 3}
@@ -229,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad32d663e0b131b4c99db83a4f00f626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   Unlocked: 1
   TimeBetweenFire: 0.3
   BulletPrefab: {fileID: 432945860730461941, guid: b12a17929e45cf84aacfb4ca96acbc5e, type: 3}
@@ -356,8 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsJumping: 0
-  Speed: 10
-  JumpHeight: 4
+  Speed: 6
+  JumpHeight: 3
   GravityScale: 6
   FallMultiplier: 1.5
   HorizontalOutput: 0
@@ -496,10 +498,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VerticalRays: 16
   HorizontalRays: 8
-  SkinWidth: 0.02
+  SkinWidth: 0.06
   PlatformMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   MaxSlope: 10
 --- !u!95 &3551230275707976984
 Animator:
@@ -554,7 +556,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.009721994}
+  m_Offset: {x: 0, y: -0.06397027}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -565,7 +567,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.980556}
+  m_Size: {x: 0.6, y: 1.8}
   m_EdgeRadius: 0
 --- !u!114 &3551230275707976965
 MonoBehaviour:
@@ -898,6 +900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44c703145fdee641af6a868f78706f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   Unlocked: 1
   TimeBetweenFire: 0.3
   bulletSpawn: {fileID: 3551230276137039757}
@@ -992,6 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eef37d2c7d8fa94cbbd71aa43b79cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   Unlocked: 1
   TimeBetweenFire: 0
   BulletPrefab: {fileID: 7508031161343455810, guid: eaf3c0aaae1543748aa792a7f0a402ce, type: 3}
@@ -1043,6 +1047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a929cacb3f91b4f8d2f89bd0a4bf41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   Unlocked: 1
   TimeBetweenFire: 2
   BulletPrefab: {fileID: 8035390794158653678, guid: 141716d3744f5ee4fab94abacdfc5ae5, type: 3}
@@ -1092,6 +1097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44c703145fdee641af6a868f78706f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   Unlocked: 1
   TimeBetweenFire: 0.3
   bulletSpawn: {fileID: 4730150514077122951}

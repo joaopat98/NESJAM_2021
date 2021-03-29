@@ -18,7 +18,7 @@ public abstract class BossSecondPhaseLightState : BossState
         base.OnGetHit();
         if (target.CurrentHealth <= phaseProps.HealthThreshold)
         {
-            phaseProps.Assets.SetActive(false);
+            props.Assets.SetActive(false);
             SetState(BossThirdPhaseIdle.Create(target));
         }
     }

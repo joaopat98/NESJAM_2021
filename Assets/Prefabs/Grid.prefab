@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2548091674863425571}
   - component: {fileID: 6251473955713675900}
   - component: {fileID: 2481077273171023500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DarkEffectorPlatforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
