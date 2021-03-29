@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 6ed10514d41238a4eba22cd97cef265a
+guid: f4c62c1434e142a42b451f1468373d00
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7986193747436987363
-    second: climbing_and_shoot-Sheet_0
+      213: -144086436941075341
+    second: skull_enemy-Sheet_0
   - first:
-      213: -5918234486966512548
-    second: climbing_and_shoot-Sheet_1
+      213: 4960254892714809572
+    second: skull_enemy-Sheet_1
+  - first:
+      213: -5116096275159733747
+    second: skull_enemy-Sheet_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: climbing_and_shoot-Sheet_0
+      name: skull_enemy-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 40
-        height: 40
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3e36d6f86e8a4de60800000000000000
-      internalID: 7986193747436987363
+      spriteID: 37cec25262a100ef0800000000000000
+      internalID: -144086436941075341
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: climbing_and_shoot-Sheet_1
+      name: skull_enemy-Sheet_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 16
         y: 0
-        width: 40
-        height: 40
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +159,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5415ea17153edda0800000000000000
-      internalID: -5918234486966512548
+      spriteID: 4e8d8ab5b8d56d440800000000000000
+      internalID: 4960254892714809572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: skull_enemy-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0aa7624b89fff8b0800000000000000
+      internalID: -5116096275159733747
       vertices: []
       indices: 
       edges: []
