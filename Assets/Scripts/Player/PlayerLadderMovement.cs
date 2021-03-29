@@ -12,6 +12,7 @@ public class PlayerLadderMovement : MonoBehaviour
     [HideInInspector] public bool OnLadder = false;
     Transform ladder;
     private PlayerMovement playerMovement;
+    PlayerAnimations animations;
 
     CharacterController2D controller;
     float VerticalOutput;
@@ -24,11 +25,13 @@ public class PlayerLadderMovement : MonoBehaviour
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        animations = GetComponent<PlayerAnimations>();
         controller = GetComponent<CharacterController2D>();
     }
 
     void Update()
     {
+        animations.ActiveInputThisFrame = animations.ActiveInputThisFrame || ladderInput.isActive;
         if (OnLadder)
         {
             controller.Move(Vector2.up * ladderInput.Vertical * Speed * Time.deltaTime);
