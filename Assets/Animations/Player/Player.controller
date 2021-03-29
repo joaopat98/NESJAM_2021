@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Run Buster Shoot
+  m_Name: Run Buster
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -72,7 +72,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: cef836218ab1b6e4497e1fff99e4fdb5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5eb6a4dfbd98e5845b236fc560939400, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -85,7 +85,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Climb
+  m_Name: Climb
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -137,7 +137,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Fall Buster Shoot
+  m_Name: Fall Buster
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -163,7 +163,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Climb Buster Shoot
+  m_Name: Climb Buster
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -315,7 +315,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player Jump Buster Shoot
+  m_Name: Jump Buster
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -367,7 +367,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player DownShot Shoot
+  m_Name: Down Shot
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -418,25 +418,22 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 420, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6096697789158447133}
-    m_Position: {x: 530, y: 170, z: 0}
-  - serializedVersion: 1
-    m_State: {fileID: 2766487833507480566}
-    m_Position: {x: 530, y: 270, z: 0}
+    m_Position: {x: 520, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3379459594629974904}
-    m_Position: {x: 530, y: 320, z: 0}
+    m_Position: {x: 520, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -689209786630545678}
-    m_Position: {x: 530, y: 370, z: 0}
+    m_Position: {x: 520, y: 270, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7773782478022801864}
-    m_Position: {x: 530, y: 420, z: 0}
+    m_Position: {x: 520, y: 320, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -791311913672184186}
-    m_Position: {x: 530, y: 220, z: 0}
+    m_Position: {x: 520, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7780002570732357252}
-    m_Position: {x: 565, y: 285, z: 0}
+    m_Position: {x: 520, y: 370, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []

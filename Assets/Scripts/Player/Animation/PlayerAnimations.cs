@@ -21,8 +21,23 @@ public class PlayerAnimations : MonoBehaviour
     bool MovedState;
     public bool ActiveInputThisFrame;
 
-    [HideInInspector] public PlayerAnimationState Idle, Run, BusterPrepare, BusterShoot, Jump, Fall, GetHit;
-    public bool PrepareBuster;
+    [HideInInspector]
+    public PlayerAnimationState Idle,
+    Run,
+    BusterPrepare,
+    BusterShoot,
+    JumpBuster,
+    FallBuster,
+    Climb,
+    ClimbBuster,
+    DownShot,
+    RunBuster,
+    Jump,
+    Fall,
+    GetHit;
+
+
+    public bool PrepareBuster, StartDownShot;
     public PlayerAnimationState current;
     // Start is called before the first frame update
     void Awake()
@@ -39,14 +54,51 @@ public class PlayerAnimations : MonoBehaviour
 
         PlayerAnimationStateTransition BusterTransition = new PlayerAnimationStateTransition
         {
-            To = () => BusterPrepare,
-            Condition = () => PrepareBuster
+            To = () =>
+            {
+                if (PrepareBuster)
+                {
+                    if (player.ladder.OnLadder)
+                    {
+                        PrepareBuster = false;
+                        return ClimbBuster;
+                    }
+                    if (!player.controller.isGrounded)
+                    {
+                        if (player.controller.velocity.y > 0)
+                        {
+                            PrepareBuster = false;
+                            return JumpBuster;
+                        }
+                        PrepareBuster = false;
+                        return FallBuster;
+                    }
+                    if (player.movement.input.Horizontal != 0)
+                    {
+                        PrepareBuster = false;
+                        return RunBuster;
+                    }
+                    return BusterPrepare;
+                }
+                else
+                {
+                    StartDownShot = false;
+                    return DownShot;
+                };
+            },
+            Condition = () => PrepareBuster || StartDownShot
         };
 
         PlayerAnimationStateTransition GetHitTransition = new PlayerAnimationStateTransition
         {
             To = () => GetHit,
             Condition = () => player.health.GettingHit
+        };
+
+        PlayerAnimationStateTransition BusterOutTransition = new PlayerAnimationStateTransition
+        {
+            To = () => Run,
+            Condition = () => AnimationFinished && ActiveInputThisFrame
         };
 
         Idle = new PlayerAnimationState
@@ -98,14 +150,55 @@ public class PlayerAnimations : MonoBehaviour
             Loop = false,
             ImmediateTransitions = new List<PlayerAnimationStateTransition> {
                 GetHitTransition,
-                new PlayerAnimationStateTransition {
-                    To = () => Run,
-                    Condition = () => AnimationFinished && ActiveInputThisFrame
-                },
+                BusterOutTransition,
                 new PlayerAnimationStateTransition {
                     To = () => Jump,
                     Condition = () => !player.controller.isGrounded && player.movement.input.StartJump
                 },
+                BusterTransition,
+            }
+        };
+
+        JumpBuster = new PlayerAnimationState
+        {
+            StateName = "Jump Buster",
+            Loop = false,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                BusterOutTransition,
+                BusterTransition,
+            }
+        };
+
+        FallBuster = new PlayerAnimationState
+        {
+            StateName = "Fall Buster",
+            Loop = false,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                BusterOutTransition,
+                BusterTransition,
+            }
+        };
+
+        ClimbBuster = new PlayerAnimationState
+        {
+            StateName = "Jump Buster",
+            Loop = false,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                new PlayerAnimationStateTransition {
+                    To = () => Idle,
+                    Condition = () => !player.ladder.OnLadder
+                },
+                BusterOutTransition,
+                BusterTransition,
+            }
+        };
+
+        DownShot = new PlayerAnimationState
+        {
+            StateName = "Down Shot",
+            Loop = false,
+            ImmediateTransitions = new List<PlayerAnimationStateTransition> {
+                BusterOutTransition,
                 BusterTransition,
             }
         };
@@ -207,6 +300,7 @@ public class PlayerAnimations : MonoBehaviour
                 }
             }
         } while (MovedState);
+        Debug.Log(current.StateName);
         if (player.movement.input.Horizontal != 0)
         {
             renderer.flipX = player.movement.input.Horizontal < 0;
