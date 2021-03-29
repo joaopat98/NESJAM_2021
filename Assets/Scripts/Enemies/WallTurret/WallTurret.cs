@@ -11,6 +11,10 @@ public class WallTurret : EnemyBase<WallTurret>
     {
         base.Start();
         state = WallTurretIdle.Create(this);
+        if (!facingRight)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
 }

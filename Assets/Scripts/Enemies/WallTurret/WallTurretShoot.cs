@@ -13,7 +13,7 @@ public class WallTurretShoot : WallTurretState
     public override void StateStart()
     {
         base.StateStart();
-        //TODO trocar sprite
+        animator.Play("Shoot");
         direction = target.facingRight ? 1 : -1;
     }
 
@@ -26,11 +26,8 @@ public class WallTurretShoot : WallTurretState
         bullet1.Init(Vector3.right * direction);
         bullet2.Init((Vector3.up + Vector3.right) * direction);
         bullet3.Init((Vector3.down + Vector3.right) * direction);
-        /*
-          bullet1.Init(target.bulletSpawn[0].position * 2 * direction);
-        bullet2.Init(target.bulletSpawn[1].position * 2 * direction);
-        bullet3.Init(target.bulletSpawn[2].position * 2 * direction); 
-         */
+
         SetState(WallTurretIdle.Create(target));
     }
+
 }
