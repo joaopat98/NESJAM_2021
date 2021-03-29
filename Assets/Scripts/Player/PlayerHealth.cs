@@ -118,6 +118,23 @@ public class PlayerHealth : MonoBehaviour
         WorldManager.SwitchWorld();
     }
 
+    public void Instakill()
+    {
+        audioManager.Play("PlayerDeath");
+
+        CurrentHealth = MaxHealth;
+        CurrentLives--;
+        if (CurrentLives > 0)
+        {
+            Respawn();
+        }
+        else
+        {
+            hasRan = false;
+            SceneManager.LoadScene("Scenes/GameOver");
+        }
+    }
+
     public void GameOver()
     {
         Debug.Log("Game Over");
